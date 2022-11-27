@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticationViewController" customModule="CRS" customModuleProvider="target">
+            <connections>
+                <outlet property="passwordTextField" destination="4c5-vP-3Dr" id="8gC-Va-biK"/>
+                <outlet property="pickerView" destination="P8A-lX-xil" id="fga-HE-il3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4c5-vP-3Dr">
+                    <rect key="frame" x="78.666666666666671" y="417.33333333333331" width="235.66666666666663" height="42.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-lX-xil" customClass="UIPickerView">
+                    <rect key="frame" x="78.666666666666671" y="358.66666666666669" width="235.66666666666663" height="42.666666666666686"/>
+                    <color key="backgroundColor" red="0.43754506110000002" green="0.79387968779999996" blue="0.71370965239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="s0c-03-Uif"/>
+                        <outlet property="delegate" destination="-1" id="hq8-Nm-fUZ"/>
+                    </connections>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4Z-o1-2HC">
+                    <rect key="frame" x="78.666666666666671" y="475.66666666666669" width="235.66666666666663" height="35.333333333333314"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="LOG IN">
+                        <color key="baseBackgroundColor" red="0.43921568630000002" green="0.79215686269999996" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="dYR-GR-G2U"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOG IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiO-N2-kKL">
+                    <rect key="frame" x="49.666666666666657" y="248.66666666666663" width="294" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="A4Z-o1-2HC" firstAttribute="centerX" secondItem="P8A-lX-xil" secondAttribute="centerX" id="2EM-Rs-bNc"/>
+                <constraint firstItem="P8A-lX-xil" firstAttribute="centerX" secondItem="4c5-vP-3Dr" secondAttribute="centerX" id="AT0-oo-zFb"/>
+                <constraint firstItem="A4Z-o1-2HC" firstAttribute="width" secondItem="4c5-vP-3Dr" secondAttribute="width" id="Abv-gM-Kqk"/>
+                <constraint firstItem="EiO-N2-kKL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ILM-AB-qEf"/>
+                <constraint firstItem="P8A-lX-xil" firstAttribute="height" secondItem="4c5-vP-3Dr" secondAttribute="height" id="OJU-vZ-QVK"/>
+                <constraint firstItem="4c5-vP-3Dr" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="PrA-0S-Q7i"/>
+                <constraint firstItem="A4Z-o1-2HC" firstAttribute="top" secondItem="4c5-vP-3Dr" secondAttribute="bottom" constant="16" id="VKu-GV-Wbb"/>
+                <constraint firstItem="A4Z-o1-2HC" firstAttribute="height" secondItem="4c5-vP-3Dr" secondAttribute="height" multiplier="0.826772" id="Vu9-s0-cbn"/>
+                <constraint firstItem="EiO-N2-kKL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.748092" id="d7z-zS-p7e"/>
+                <constraint firstItem="4c5-vP-3Dr" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="mC2-t6-HtP"/>
+                <constraint firstItem="4c5-vP-3Dr" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05" id="nxb-LI-a0A"/>
+                <constraint firstItem="P8A-lX-xil" firstAttribute="width" secondItem="4c5-vP-3Dr" secondAttribute="width" id="peq-Hr-Vu8"/>
+                <constraint firstItem="4c5-vP-3Dr" firstAttribute="top" secondItem="P8A-lX-xil" secondAttribute="bottom" constant="16" id="qRt-Nq-44i"/>
+                <constraint firstItem="4c5-vP-3Dr" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="ugT-E9-WTP"/>
+                <constraint firstItem="P8A-lX-xil" firstAttribute="top" secondItem="EiO-N2-kKL" secondAttribute="bottom" constant="80" id="w6J-ch-hcA"/>
+            </constraints>
+            <point key="canvasLocation" x="20.610687022900763" y="19.718309859154932"/>
+        </view>
+    </objects>
+</document>

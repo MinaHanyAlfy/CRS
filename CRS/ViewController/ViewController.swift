@@ -13,6 +13,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         // Do any additional setup after loading the view.
+    
+        let vc = AuthenticationViewController()
+        let navVc = UINavigationController(rootViewController: vc)
+        navVc.modalPresentationStyle = .fullScreen
+        self.present(navVc, animated: true)
     }
 
 

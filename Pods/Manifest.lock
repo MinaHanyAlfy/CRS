@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.6.4)
+  - IQKeyboardManager (6.5.10)
+  - KDCircularProgress (1.5.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.6.4)
+  - IQKeyboardManager (~> 6.5.10)
+  - KDCircularProgress (~> 1.5.4)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManager
+    - KDCircularProgress
+
+SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
+  KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
+
+PODFILE CHECKSUM: 3fd1074abec990bc34fd74d4201b5e4b737f75fb
+
+COCOAPODS: 1.11.3
