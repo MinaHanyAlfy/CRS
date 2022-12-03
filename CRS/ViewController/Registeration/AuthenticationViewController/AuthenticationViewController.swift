@@ -20,33 +20,35 @@ class AuthenticationViewController: UIViewController {
                 guard let callResponse = self.callResponse else { return }
                 if callResponse == "verified" {
                     let vc = LoginViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true)
                 } else {
-                    
+                    self.alertIssues(message: "Please, recheck your data.")
                 }
             }
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.hideKeyboardWhenTappedAround()
     } 
     
     @IBAction func loginAction(_ sender: Any) {
         guard let password = passwordTextField.text else { return }
         print(companyName, password)
-        
-        NetworkServiceMock.shared.getResultsStrings(APICase: .companyLogin(company_log_in: companyName, password: password), decodingModel: ResponseString.self) { result in
-            switch result {
-            case .success(let response):
-                print("Response: ",response)
-                self.callResponse = "verified"
-            case .failure(let error):
-                print("Error: ",error.localizedDescription)
-            }
-            
-                 
-        }
+        self.callResponse = "verified"
+//        NetworkServiceMock.shared.getResultsStrings(APICase: .companyLogin(company_log_in: companyName, password: password), decodingModel: ResponseString.self) { result in
+//            switch result {
+//            case .success(let response):
+//                print("Response: ",response)
+//                self.callResponse = response
+//            case .failure(let error):
+//                print("Error: ",error.localizedDescription)
+//            }
+//
+//
+//        }
     }
     
 }

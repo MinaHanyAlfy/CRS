@@ -6,13 +6,216 @@
 //
 
 import UIKit
+import WebKit
+import SideMenu
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    private var levels: [String] = ["Representative","First_Line_Manager","Middle_Manager","Higher_Manager"]
+    private var levelName: String = "Representative"
+    private var company: Company?
+    private var username: String?
+    private var password: String?
+    
+    private var userId: String?{
+        didSet{
+            DispatchQueue.main.async { [self] in
+                guard let username = username, let password = password else { return }
+                callingAPI(username: username, password: password, level: levelName)
+            }
+        }
+    }
+    private var products : Products?
+    private var managers: Managers?
+    private var customers: Customers?
+    private var accounts: Accounts?
+    private var keys: Keys?
+    private var pharmacies: Pharmacies?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.hideKeyboardWhenTappedAround()
     }
 
+    @IBAction func loginAction(_ sender: Any) {
+        guard let username = usernameTextField.text, let password = passwordTextField.text, password != "", username != "" else {
+            self.alertIssues(message: "Please, Check your level, username and password")
+            return
+        }
+        self.username = username
+        self.password = password
+        
+        //To get ID
+        NetworkServiceMock.shared.getResultsStrings(APICase: .userLoginID(name: username, password: password, level: levelName), decodingModel: ResponseString.self) { response in
+            switch response {
+            case .success(let data):
+                self.userId = data
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+
+            }
+        }
+    }
+    
+    @IBAction func privacyPolicyAction(_ sender: Any) {
+        if let url = URL(string: "https://ark-crs.com/PrivacyPolicy.docx") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    
 }
+
+//MARK: - UIPickerViewDelegate
+extension LoginViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.view.endEditing(true)
+        return levels[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Selected", levels[row])
+        levelName = levels[row]
+//        self.pickerView.isHidden = true
+    }
+    
+}
+
+//MARK: - UIPickerViewDataSource
+extension LoginViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return levels.count
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+           if textField == self.passwordTextField {
+               textField.endEditing(true)
+           }
+       }
+}
+
+//MARK: - Calling API NETWORK AFTER LOGIN
+extension LoginViewController {
+    private func callingAPI(username: String,password: String,level: String){
+        //Sameh Comapny
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        NetworkServiceMock.shared.getResults(APICase: .companyAuth(company: username, password: password, level: level), decodingModel: Company.self, completed: { response in
+            switch response {
+            case .success(let data):
+                self.company = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        })
+        //To get products
+        dispatchGroup.enter()
+        guard let id = userId else { return }
+        NetworkServiceMock.shared.getResults(APICase: .getProducts(level: level, userId: id), decodingModel: Products.self) { response in
+            switch response {
+            case .success(let data):
+                self.products = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+        //To get managers
+        dispatchGroup.enter()
+        NetworkServiceMock.shared.getResults(APICase: .getManagers(level: level, userId: id), decodingModel: Managers.self) { response in
+            switch response {
+            case .success(let data):
+                self.managers = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        //To get Customers
+        dispatchGroup.enter()
+        NetworkServiceMock.shared.getResults(APICase: .getCustomers(level: level, userId: id), decodingModel: Customers.self) { response in
+            switch response {
+            case .success(let data):
+                self.customers = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+        //To get Accounts
+        dispatchGroup.enter()
+        NetworkServiceMock.shared.getResults(APICase: .getAccounts(level: level, userId: id), decodingModel: Accounts.self) { response in
+            switch response {
+            case .success(let data):
+                self.accounts = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        //To get Keys
+        dispatchGroup.enter()
+        NetworkServiceMock.shared.getResults(APICase: .getKeys(level: level, userId: id), decodingModel: Keys.self) { response in
+            switch response {
+            case .success(let data):
+                self.keys = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        //To get Pharmacies
+        dispatchGroup.enter()
+        NetworkServiceMock.shared.getResults(APICase: .getPharmacies(level: level, userId: id), decodingModel: Pharmacies.self) { response in
+            switch response {
+            case .success(let data):
+                self.pharmacies = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        
+        dispatchGroup.notify(queue: .main){ [self] in
+            guard let company = company?.first else { return }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                      
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
+            initialViewController.company = company
+//            let vc = HomeViewController(company: company)
+            print("All Data received successfully!")
+//            print(products, "....",keys, "....", customers , "....", accounts , "....", pharmacies, "....", managers )
+            
+            let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
+            navigationController.modalPresentationStyle = .fullScreen
+            navigationController.pushViewController(initialViewController, animated: false)
+            
+            
+//            initialViewController.company = company
+            self.present(navigationController, animated: true)
+        }
+    }
+    
+    
+    
+    
+}
+

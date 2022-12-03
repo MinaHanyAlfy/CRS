@@ -28,6 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-lX-xil" customClass="UIPickerView">
                     <rect key="frame" x="78.666666666666671" y="358.66666666666669" width="235.66666666666663" height="42.666666666666686"/>
                     <color key="backgroundColor" red="0.43754506110000002" green="0.79387968779999996" blue="0.71370965239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="s0c-03-Uif"/>
                         <outlet property="delegate" destination="-1" id="hq8-Nm-fUZ"/>

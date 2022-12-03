@@ -13,42 +13,6 @@ class NetworkServiceMock {
     
     static let shared = NetworkServiceMock()
     
-    func getResults<M: Codable>(_ url : String? = nil, APICase: API? = nil,decodingModel: M.Type, completed: @escaping (Result<M,ErorrMessage> ) -> Void) {
-        
-        if url == nil {
-            guard let APICase = APICase else {
-                return
-            }
-        let urlRequest = APICase.request
-        let request = AF.request(urlRequest)
-        request.responseDecodable(of: M.self) { (response) in
-          guard let results = response.value else {
-              completed((.failure(.InvalidData)))
-              return
-          }
-            completed((.success(results)))
-            print(results)
-        }
-        } else {
-            guard let url = url else {
-                return
-            }
-            let realURL: URL = URL(string: url)!
-//            let url: Alamofire.URLConvertible = realURL
-
-            let urlRequest = URLRequest(url: realURL)
-
-            AF.request(urlRequest).responseDecodable(of: M.self) { (response) in
-                guard let results = response.value else {
-                    completed((.failure(.InvalidData)))
-                    return
-                }
-                  completed((.success(results)))
-                  print(results)
-              }
-        }
-    }
-    
    func getResultsStrings<M: Codable>(APICase: API,decodingModel: M.Type, completed: @escaping (Result<String,ErorrMessage> ) -> Void) {
         var request : URLRequest = APICase.request
 
@@ -89,6 +53,38 @@ class NetworkServiceMock {
         }
         task.resume()
     }
-    
+    func getResults<M: Codable>(APICase: API,decodingModel: M.Type, completed: @escaping (Result<M,ErorrMessage> ) -> Void) {
+     
+        var request : URLRequest = APICase.request
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error =  error {
+                completed((.failure(.InvalidData)))
+            }
+            guard let data = data else {
+                completed((.failure(.InvalidData)))
+                return
+            }
+            guard let response =  response  as? HTTPURLResponse ,response.statusCode == 200 else{
+                completed((.failure(.InvalidResponse)))
+                return
+            }
+            let decoder = JSONDecoder()
+            do
+            {
+               
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let results = try decoder.decode(M.self, from: data)
+                print(results)
+                completed((.success(results)))
+                
+            }catch {
+                print(error)
+                completed((.failure(.InvalidData)))
+            }
+            
+        }
+        task.resume()
+    }
     
 }
