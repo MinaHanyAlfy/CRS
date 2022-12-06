@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     private var company: Company?
     private var username: String?
     private var password: String?
-    
+    let coreData = CoreDataManager.shared
     private var userId: String?{
         didSet{
             DispatchQueue.main.async { [self] in
@@ -29,12 +29,60 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    private var products : Products?
-    private var managers: Managers?
-    private var customers: Customers?
-    private var accounts: Accounts?
-    private var keys: Keys?
-    private var pharmacies: Pharmacies?
+    private var products : Products?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let products = products else { return }
+                coreData.saveProducts(products: products)
+            }
+        }
+    }
+    private var managers: Managers?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let managers = managers else { return }
+                coreData.saveManagers(managers: managers)
+            }
+        }
+    }
+    private var customers: Customers?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let customers = customers else { return }
+                coreData.saveCustomers(customers: customers)
+            }
+        }
+    }
+    private var accounts: Accounts?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let accounts = accounts else { return }
+                coreData.saveAccounts(accounts: accounts)
+            }
+        }
+    }
+    private var keys: Keys?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let keys = keys else { return }
+                coreData.saveKeys(keys: keys)
+            }
+        }
+    }
+    private var pharmacies: Pharmacies?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let pharmacies = pharmacies else { return }
+                coreData.savePharmacy(pharmacies: pharmacies)
+            }
+        }
+    }
     
     
     override func viewDidLoad() {

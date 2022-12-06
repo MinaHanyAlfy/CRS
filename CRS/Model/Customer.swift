@@ -12,7 +12,7 @@ struct Customer: Codable {
     var customerID, customerName, customerPotential: String?
     var customerPrescription, pharmacy: String?
     var customerLatitude, customerLongitude, specialityName: String?
-    var zoneName: JSONNull?
+    var zoneName: String? = "No Address"
 
     enum CodingKeys: String, CodingKey {
         case customerID = "customer_id"

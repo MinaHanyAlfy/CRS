@@ -22,13 +22,26 @@ class CustomersViewController: UIViewController {
         return controller
     }()
 
+    private var customers: Customers?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                tableView.reloadData()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigation()
         setupTableView()
         view.addSubview(tableView)
+        fetchCustomers()
         searchController.searchResultsUpdater = self
+    }
+    private func fetchCustomers () {
+        let coreData = CoreDataManager.shared
+        customers = coreData.getCustomers()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,12 +83,15 @@ extension CustomersViewController: UISearchResultsUpdating {
 //MARK: - UITableViewDataSource
 extension CustomersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return customers?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(tableViewCell: CustomerTableViewCell.self , forIndexPath: indexPath)
-        
+        guard let customer = customers?[indexPath.row] else {
+            return UITableViewCell()
+        }
+        cell.config(customer: customer)
         return cell
     }
     

@@ -5,16 +5,36 @@
 //  Created by John Doe on 2022-12-05.
 //
 
-import Foundation
 import CoreData
+import UIKit
 
 class CoreDataManager {
     static let shared = CoreDataManager()
+    
     let userDef = UserDefaults.standard
+    func appDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    func context() ->  NSManagedObjectContext {
+        let context = appDelegate().persistentContainer.viewContext
+        return context
+    }
     
+    func save() {
+        appDelegate().saveContext()
+    }
     
-    
+    func clearAll() {
+        clearUserInfo()
+        clearKeys()
+        clearAccounts()
+        clearManagers()
+        clearPharmacy()
+        clearProducts()
+        clearCustomers()
+    }
 }
+
 
 
 //MARK: - USER INFO UserDefults
@@ -52,6 +72,6 @@ extension CoreDataManager {
         return user
     }
     func isLogin() -> Bool {
-        return userDef.value(forKey: "id") != nil 
+        return userDef.value(forKey: "id") != nil
     }
 }

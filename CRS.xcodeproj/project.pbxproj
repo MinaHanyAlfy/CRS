@@ -31,6 +31,8 @@
 		7F15F39F2930CC4F009BD8D0 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F15F39D2930CC4F009BD8D0 /* AuthenticationViewController.xib */; };
 		7F4182632932856E0055DC7B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4182622932856E0055DC7B /* UIViewController+Extensions.swift */; };
 		7F418265293290120055DC7B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F418264293290120055DC7B /* User.swift */; };
+		7F427633293FE990006B063C /* AccountsCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F427631293FE98F006B063C /* AccountsCD+CoreDataClass.swift */; };
+		7F427634293FE990006B063C /* AccountsCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */; };
 		7F593797293BDC6B00FFF055 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F593795293BDC6B00FFF055 /* SideMenuTableViewCell.swift */; };
 		7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F593796293BDC6B00FFF055 /* SideMenuTableViewCell.xib */; };
 		7F7EA3F4293E92F600E72E49 /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F2293E92F600E72E49 /* CustomersViewController.swift */; };
@@ -57,6 +59,22 @@
 		7FC5CAF5292A0B08000D228A /* CRSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CAF4292A0B08000D228A /* CRSTests.swift */; };
 		7FC5CAFF292A0B09000D228A /* CRSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CAFE292A0B09000D228A /* CRSUITests.swift */; };
 		7FC5CB01292A0B09000D228A /* CRSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CB00292A0B09000D228A /* CRSUITestsLaunchTests.swift */; };
+		7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */; };
+		7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */; };
+		7FDC0F5C293FD5880025D3DC /* PharmacyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */; };
+		7FDC0F5D293FD5880025D3DC /* CustomerCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F53293FD5840025D3DC /* CustomerCD+CoreDataProperties.swift */; };
+		7FDC0F5E293FD5880025D3DC /* KeyCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F54293FD5850025D3DC /* KeyCD+CoreDataClass.swift */; };
+		7FDC0F5F293FD5880025D3DC /* KeyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F55293FD5850025D3DC /* KeyCD+CoreDataProperties.swift */; };
+		7FDC0F60293FD5880025D3DC /* ProductCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F56293FD5860025D3DC /* ProductCD+CoreDataClass.swift */; };
+		7FDC0F61293FD5880025D3DC /* CustomerCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F57293FD5860025D3DC /* CustomerCD+CoreDataClass.swift */; };
+		7FDC0F62293FD5880025D3DC /* PharmacyCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F58293FD5870025D3DC /* PharmacyCD+CoreDataClass.swift */; };
+		7FDC0F63293FD5880025D3DC /* ManagerCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F59293FD5870025D3DC /* ManagerCD+CoreDataClass.swift */; };
+		7FDC0F65293FD8E70025D3DC /* AccountCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F64293FD8E70025D3DC /* AccountCoreDataManager.swift */; };
+		7FDC0F67293FD9040025D3DC /* PharmacyCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F66293FD9040025D3DC /* PharmacyCoreDataManager.swift */; };
+		7FDC0F69293FDB630025D3DC /* KeyCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F68293FDB630025D3DC /* KeyCoreDataManager.swift */; };
+		7FDC0F6B293FDC730025D3DC /* CustomerCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F6A293FDC730025D3DC /* CustomerCoreDataManager.swift */; };
+		7FDC0F77293FDF920025D3DC /* ProductCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F76293FDF920025D3DC /* ProductCoreDataManager.swift */; };
+		7FDC0F79293FE0460025D3DC /* ManagerCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F78293FE0460025D3DC /* ManagerCoreDataManager.swift */; };
 		7FE7D9022934221700F52352 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7D9002934221700F52352 /* LoginViewController.swift */; };
 		7FE7D9032934221700F52352 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE7D9012934221700F52352 /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
@@ -103,6 +121,8 @@
 		7F15F39D2930CC4F009BD8D0 /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		7F4182622932856E0055DC7B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7F418264293290120055DC7B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7F427631293FE98F006B063C /* AccountsCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountsCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountsCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F593795293BDC6B00FFF055 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		7F593796293BDC6B00FFF055 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		7F7EA3F2293E92F600E72E49 /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +153,22 @@
 		7FC5CAFA292A0B09000D228A /* CRSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CRSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC5CAFE292A0B09000D228A /* CRSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRSUITests.swift; sourceTree = "<group>"; };
 		7FC5CB00292A0B09000D228A /* CRSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagerCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PharmacyCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDC0F53293FD5840025D3DC /* CustomerCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomerCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDC0F54293FD5850025D3DC /* KeyCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7FDC0F55293FD5850025D3DC /* KeyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDC0F56293FD5860025D3DC /* ProductCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7FDC0F57293FD5860025D3DC /* CustomerCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomerCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7FDC0F58293FD5870025D3DC /* PharmacyCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PharmacyCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7FDC0F59293FD5870025D3DC /* ManagerCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagerCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7FDC0F64293FD8E70025D3DC /* AccountCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoreDataManager.swift; sourceTree = "<group>"; };
+		7FDC0F66293FD9040025D3DC /* PharmacyCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmacyCoreDataManager.swift; sourceTree = "<group>"; };
+		7FDC0F68293FDB630025D3DC /* KeyCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCoreDataManager.swift; sourceTree = "<group>"; };
+		7FDC0F6A293FDC730025D3DC /* CustomerCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCoreDataManager.swift; sourceTree = "<group>"; };
+		7FDC0F76293FDF920025D3DC /* ProductCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCoreDataManager.swift; sourceTree = "<group>"; };
+		7FDC0F78293FE0460025D3DC /* ManagerCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCoreDataManager.swift; sourceTree = "<group>"; };
 		7FE7D9002934221700F52352 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7FE7D9012934221700F52352 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		849068A3A194DEAB507C57D3 /* Pods-CRS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CRS.release.xcconfig"; path = "Target Support Files/Pods-CRS/Pods-CRS.release.xcconfig"; sourceTree = "<group>"; };
@@ -345,8 +381,9 @@
 		7FC5CB0F292A0B36000D228A /* Core Data Manager */ = {
 			isa = PBXGroup;
 			children = (
-				7FC5CAE3292A0B07000D228A /* CRS.xcdatamodeld */,
+				7FDC0EDA293FCD4F0025D3DC /* CoreDataModels */,
 				7F7EA408293E9A0500E72E49 /* CoreDataManager.swift */,
+				7FC5CAE3292A0B07000D228A /* CRS.xcdatamodeld */,
 			);
 			path = "Core Data Manager";
 			sourceTree = "<group>";
@@ -445,6 +482,79 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7FDC0EDA293FCD4F0025D3DC /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC0F6C293FDE580025D3DC /* CustomerManager */,
+				7FDC0F72293FDED90025D3DC /* AccountManager */,
+				7FDC0F6D293FDE710025D3DC /* KeyManager */,
+				7FDC0F74293FDF5C0025D3DC /* ManagerManage */,
+				7FDC0F73293FDF500025D3DC /* PharmacyManager */,
+				7FDC0F75293FDF7F0025D3DC /* ProductManager */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		7FDC0F6C293FDE580025D3DC /* CustomerManager */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC0F6A293FDC730025D3DC /* CustomerCoreDataManager.swift */,
+				7FDC0F57293FD5860025D3DC /* CustomerCD+CoreDataClass.swift */,
+				7FDC0F53293FD5840025D3DC /* CustomerCD+CoreDataProperties.swift */,
+			);
+			path = CustomerManager;
+			sourceTree = "<group>";
+		};
+		7FDC0F6D293FDE710025D3DC /* KeyManager */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC0F54293FD5850025D3DC /* KeyCD+CoreDataClass.swift */,
+				7FDC0F55293FD5850025D3DC /* KeyCD+CoreDataProperties.swift */,
+				7FDC0F68293FDB630025D3DC /* KeyCoreDataManager.swift */,
+			);
+			path = KeyManager;
+			sourceTree = "<group>";
+		};
+		7FDC0F72293FDED90025D3DC /* AccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				7F427631293FE98F006B063C /* AccountsCD+CoreDataClass.swift */,
+				7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */,
+				7FDC0F64293FD8E70025D3DC /* AccountCoreDataManager.swift */,
+			);
+			path = AccountManager;
+			sourceTree = "<group>";
+		};
+		7FDC0F73293FDF500025D3DC /* PharmacyManager */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC0F58293FD5870025D3DC /* PharmacyCD+CoreDataClass.swift */,
+				7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */,
+				7FDC0F66293FD9040025D3DC /* PharmacyCoreDataManager.swift */,
+			);
+			path = PharmacyManager;
+			sourceTree = "<group>";
+		};
+		7FDC0F74293FDF5C0025D3DC /* ManagerManage */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC0F59293FD5870025D3DC /* ManagerCD+CoreDataClass.swift */,
+				7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */,
+				7FDC0F78293FE0460025D3DC /* ManagerCoreDataManager.swift */,
+			);
+			path = ManagerManage;
+			sourceTree = "<group>";
+		};
+		7FDC0F75293FDF7F0025D3DC /* ProductManager */ = {
+			isa = PBXGroup;
+			children = (
+				7FDC0F56293FD5860025D3DC /* ProductCD+CoreDataClass.swift */,
+				7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */,
+				7FDC0F76293FDF920025D3DC /* ProductCoreDataManager.swift */,
+			);
+			path = ProductManager;
+			sourceTree = "<group>";
+		};
 		E178B0ABF648BD8905BF084B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,7 +577,7 @@
 				7FC5CAD4292A0B07000D228A /* Frameworks */,
 				7FC5CAD5292A0B07000D228A /* Resources */,
 				A09DD1DAD5089A6B9BD01837 /* [CP] Embed Pods Frameworks */,
-				1621DAFB65219DFC8E7E1462 /* [CP] Copy Pods Resources */,
+				07F5DF7F1759A7FD183B3CF8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -600,7 +710,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1621DAFB65219DFC8E7E1462 /* [CP] Copy Pods Resources */ = {
+		07F5DF7F1759A7FD183B3CF8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -741,38 +851,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FDC0F63293FD5880025D3DC /* ManagerCD+CoreDataClass.swift in Sources */,
 				7FE7D9022934221700F52352 /* LoginViewController.swift in Sources */,
 				7F15F3932930CB35009BD8D0 /* ErrorMessage.swift in Sources */,
 				7F0AAAC5293A1FAF00454371 /* Product.swift in Sources */,
 				7F593797293BDC6B00FFF055 /* SideMenuTableViewCell.swift in Sources */,
 				7F7EA3FD293E942200E72E49 /* ReportsViewController.swift in Sources */,
 				7F0AAAC7293A218600454371 /* Manager.swift in Sources */,
+				7FDC0F65293FD8E70025D3DC /* AccountCoreDataManager.swift in Sources */,
 				7F7EA40D293EB34300E72E49 /* SearchResultViewController.swift in Sources */,
 				7F0AAAD5293A475A00454371 /* UICollectionView+Extensions.swift in Sources */,
 				7F7EA3F4293E92F600E72E49 /* CustomersViewController.swift in Sources */,
 				7F0AAAD3293A3DEF00454371 /* SideMenuViewController.swift in Sources */,
+				7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */,
 				7F7EA3F8293E933700E72E49 /* AccountsViewController.swift in Sources */,
+				7FDC0F69293FDB630025D3DC /* KeyCoreDataManager.swift in Sources */,
 				7F7EA412293EB51000E72E49 /* CustomerTableViewCell.swift in Sources */,
 				7F116A192933DF0F00683729 /* URLSession+Extensions.swift in Sources */,
+				7FDC0F79293FE0460025D3DC /* ManagerCoreDataManager.swift in Sources */,
 				7F0AAACB293A244700454371 /* Account.swift in Sources */,
 				7F0AAACF293A25AA00454371 /* Pharmacy.swift in Sources */,
+				7FDC0F5C293FD5880025D3DC /* PharmacyCD+CoreDataProperties.swift in Sources */,
+				7FDC0F60293FD5880025D3DC /* ProductCD+CoreDataClass.swift in Sources */,
 				7FC5CAE5292A0B07000D228A /* CRS.xcdatamodeld in Sources */,
 				7F15F3972930CB54009BD8D0 /* NetworkServiceMock.swift in Sources */,
 				7F0AAAC02939483600454371 /* HomeViewController.swift in Sources */,
 				7F0AAAD7293A485900454371 /* UITableView+Extensions.swift in Sources */,
+				7F427634293FE990006B063C /* AccountsCD+CoreDataProperties.swift in Sources */,
 				7F7EA401293E94BB00E72E49 /* ProspectionToolViewController.swift in Sources */,
+				7FDC0F5D293FD5880025D3DC /* CustomerCD+CoreDataProperties.swift in Sources */,
 				7F7EA409293E9A0500E72E49 /* CoreDataManager.swift in Sources */,
 				7F15F3952930CB4E009BD8D0 /* EndPoint.swift in Sources */,
+				7FDC0F5E293FD5880025D3DC /* KeyCD+CoreDataClass.swift in Sources */,
 				7F4182632932856E0055DC7B /* UIViewController+Extensions.swift in Sources */,
 				7F15F39E2930CC4F009BD8D0 /* AuthenticationViewController.swift in Sources */,
 				7F0AAAC9293A22C900454371 /* Customer.swift in Sources */,
+				7FDC0F61293FD5880025D3DC /* CustomerCD+CoreDataClass.swift in Sources */,
 				7FC5CADF292A0B07000D228A /* ViewController.swift in Sources */,
 				7FC5CADB292A0B07000D228A /* AppDelegate.swift in Sources */,
+				7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */,
 				7F0AAACD293A24FF00454371 /* Key.swift in Sources */,
 				7F7EA406293E959400E72E49 /* RefreshViewController.swift in Sources */,
 				7F418265293290120055DC7B /* User.swift in Sources */,
+				7F427633293FE990006B063C /* AccountsCD+CoreDataClass.swift in Sources */,
+				7FDC0F6B293FDC730025D3DC /* CustomerCoreDataManager.swift in Sources */,
 				7F0AAABD2939456100454371 /* Company.swift in Sources */,
+				7FDC0F5F293FD5880025D3DC /* KeyCD+CoreDataProperties.swift in Sources */,
 				7F15F3992930CB5B009BD8D0 /* API.swift in Sources */,
+				7FDC0F62293FD5880025D3DC /* PharmacyCD+CoreDataClass.swift in Sources */,
+				7FDC0F77293FDF920025D3DC /* ProductCoreDataManager.swift in Sources */,
+				7FDC0F67293FD9040025D3DC /* PharmacyCoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

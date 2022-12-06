@@ -38,7 +38,7 @@ class SideMenuTableViewCell: UITableViewCell {
         }
     }
     
-    func setSelectedCell(index: IndexPath, navigationController: UINavigationController) {
+    func setSelectedCell(index: IndexPath, navigationController: UINavigationController, viewController: UIViewController) {
         if index.section == 0 {
             switch index.row {
             case 0:
@@ -64,9 +64,10 @@ class SideMenuTableViewCell: UITableViewCell {
             }
         } else {
             let logOutVc = AuthenticationViewController()
-            cdManager.clearUserInfo()
-            navigationController.modalPresentationStyle = .fullScreen
-            navigationController.present(logOutVc, animated: true)
+//            cdManager.clearUserInfo()
+            cdManager.clearAll()
+            logOutVc.modalPresentationStyle = .fullScreen
+            viewController.present(logOutVc, animated: true)
         }
         
     }

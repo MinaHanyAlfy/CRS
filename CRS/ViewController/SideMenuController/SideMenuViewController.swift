@@ -55,7 +55,7 @@ extension SideMenuViewController: UITableViewDelegate{
         let cell = tableView.cellForRow(at: indexPath) as! SideMenuTableViewCell
 //        print(cell.sideMenuLabel.text)
         guard let navigationController = navigationController else { return }
-        cell.setSelectedCell(index: indexPath, navigationController: navigationController)
+        cell.setSelectedCell(index: indexPath, navigationController: navigationController,viewController: self)
         
     }
 }

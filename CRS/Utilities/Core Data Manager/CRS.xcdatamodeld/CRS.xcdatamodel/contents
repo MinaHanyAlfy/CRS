@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AccountCD" representedClassName="AccountCD" syncable="YES" codeGenerationType="class">
+    <entity name="AccountsCD" representedClassName=".AccountsCD" syncable="YES">
         <attribute name="accountID" optional="YES" attributeType="String"/>
         <attribute name="accountLatitude" optional="YES" attributeType="String"/>
         <attribute name="accountLongitude" optional="YES" attributeType="String"/>
@@ -11,7 +11,7 @@
         <attribute name="specialityName" optional="YES" attributeType="String"/>
         <attribute name="zoneName" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="CustomerCD" representedClassName="CustomerCD" syncable="YES" codeGenerationType="class">
+    <entity name="CustomerCD" representedClassName=".CustomerCD" syncable="YES">
         <attribute name="customerID" optional="YES" attributeType="String"/>
         <attribute name="customerLatitude" optional="YES" attributeType="String"/>
         <attribute name="customerLongitude" optional="YES" attributeType="String"/>
@@ -22,25 +22,26 @@
         <attribute name="specialityName" optional="YES" attributeType="String"/>
         <attribute name="zoneName" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="KeyCD" representedClassName="KeyCD" syncable="YES" codeGenerationType="class">
+    <entity name="KeyCD" representedClassName=".KeyCD" syncable="YES">
+        <attribute name="accountID" optional="YES" attributeType="String"/>
         <attribute name="keyPersonID" optional="YES" attributeType="String"/>
         <attribute name="keyPersonName" optional="YES" attributeType="String"/>
         <attribute name="mobile" optional="YES" attributeType="String"/>
         <attribute name="specialityName" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ManagerCD" representedClassName="ManagerCD" syncable="YES" codeGenerationType="class">
+    <entity name="ManagerCD" representedClassName=".ManagerCD" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="PharmacyCD" representedClassName="PharmacyCD" syncable="YES" codeGenerationType="class">
+    <entity name="PharmacyCD" representedClassName=".PharmacyCD" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="customerID" optional="YES" attributeType="String"/>
         <attribute name="pharmacyID" optional="YES" attributeType="String"/>
         <attribute name="pharmacyName" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ProductCD" representedClassName="ProductCD" syncable="YES" codeGenerationType="class">
+    <entity name="ProductCD" representedClassName=".ProductCD" syncable="YES">
         <attribute name="productID" optional="YES" attributeType="String"/>
         <attribute name="productName" optional="YES" attributeType="String"/>
     </entity>

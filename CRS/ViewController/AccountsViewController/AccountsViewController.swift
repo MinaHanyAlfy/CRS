@@ -21,6 +21,16 @@ class AccountsViewController: UIViewController {
         controller.searchBar.searchBarStyle = .minimal
         return controller
     }()
+    
+    private var accounts: Accounts?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                tableView.reloadData()
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +38,7 @@ class AccountsViewController: UIViewController {
         setupNavigation()
         setupTableView()
         view.addSubview(tableView)
+        fetchAccounts()
         searchController.searchResultsUpdater = self
     }
     
@@ -51,6 +62,11 @@ class AccountsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    private func fetchAccounts () {
+        let coreData = CoreDataManager.shared
+        accounts = coreData.getAccounts()
+    }
 }
 //MARK: - UISearchResultsUpdating
 extension AccountsViewController: UISearchResultsUpdating {
@@ -64,18 +80,22 @@ extension AccountsViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultViewController else {
                   return
               }
+        
+        
     }
 }
 
 //MARK: - UITableViewDataSource
 extension AccountsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return accounts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(tableViewCell: CustomerTableViewCell.self , forIndexPath: indexPath)
         cell.cellConfig(index: indexPath.row, isAccount: true)
+        guard let account = accounts?[indexPath.row] else { return UITableViewCell() }
+        cell.config(account: account)
         return cell
     }
     

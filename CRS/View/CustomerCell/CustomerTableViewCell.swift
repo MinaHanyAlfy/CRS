@@ -40,4 +40,21 @@ class CustomerTableViewCell: UITableViewCell {
         }
     }
     
+    func config(customer: Customer) {
+        nameLabel.text = customer.customerName
+        categoryLabel.text = customer.pharmacy
+        zoneLabel.text = customer.specialityName
+    }
+    
+    func config(account: Account) {
+        nameLabel.text = account.accountName
+        categoryLabel.text = account.specialityName
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = ""
+        categoryLabel.text = ""
+        zoneLabel.text = ""
+    }
 }
