@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AccountCD" representedClassName="AccountCD" syncable="YES" codeGenerationType="class">
+        <attribute name="accountID" optional="YES" attributeType="String"/>
+        <attribute name="accountLatitude" optional="YES" attributeType="String"/>
+        <attribute name="accountLongitude" optional="YES" attributeType="String"/>
+        <attribute name="accountName" optional="YES" attributeType="String"/>
+        <attribute name="accountPotential" optional="YES" attributeType="String"/>
+        <attribute name="accountPrescription" optional="YES" attributeType="String"/>
+        <attribute name="keyPerson" optional="YES" attributeType="String"/>
+        <attribute name="specialityName" optional="YES" attributeType="String"/>
+        <attribute name="zoneName" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CustomerCD" representedClassName="CustomerCD" syncable="YES" codeGenerationType="class">
+        <attribute name="customerID" optional="YES" attributeType="String"/>
+        <attribute name="customerLatitude" optional="YES" attributeType="String"/>
+        <attribute name="customerLongitude" optional="YES" attributeType="String"/>
+        <attribute name="customerName" optional="YES" attributeType="String"/>
+        <attribute name="customerPotential" optional="YES" attributeType="String"/>
+        <attribute name="customerPrescription" optional="YES" attributeType="String"/>
+        <attribute name="pharmacy" optional="YES" attributeType="String"/>
+        <attribute name="specialityName" optional="YES" attributeType="String"/>
+        <attribute name="zoneName" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="KeyCD" representedClassName="KeyCD" syncable="YES" codeGenerationType="class">
+        <attribute name="keyPersonID" optional="YES" attributeType="String"/>
+        <attribute name="keyPersonName" optional="YES" attributeType="String"/>
+        <attribute name="mobile" optional="YES" attributeType="String"/>
+        <attribute name="specialityName" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ManagerCD" representedClassName="ManagerCD" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="level" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PharmacyCD" representedClassName="PharmacyCD" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="customerID" optional="YES" attributeType="String"/>
+        <attribute name="pharmacyID" optional="YES" attributeType="String"/>
+        <attribute name="pharmacyName" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ProductCD" representedClassName="ProductCD" syncable="YES" codeGenerationType="class">
+        <attribute name="productID" optional="YES" attributeType="String"/>
+        <attribute name="productName" optional="YES" attributeType="String"/>
+    </entity>
 </model>

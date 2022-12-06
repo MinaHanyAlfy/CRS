@@ -12,6 +12,8 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     let userDef = UserDefaults.standard
     
+    
+    
 }
 
 
