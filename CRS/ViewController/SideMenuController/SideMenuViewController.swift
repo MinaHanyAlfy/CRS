@@ -28,7 +28,6 @@ extension SideMenuViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(tableViewCell: SideMenuTableViewCell.self, forIndexPath: indexPath)
         cell.cellConfig(section: indexPath.section, index: indexPath.row)
-        
         return cell
     }
     
@@ -54,7 +53,9 @@ extension SideMenuViewController: UITableViewDataSource{
 extension SideMenuViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! SideMenuTableViewCell
-       
-        print( cell.sideMenuLabel.text)
+//        print(cell.sideMenuLabel.text)
+        guard let navigationController = navigationController else { return }
+        cell.setSelectedCell(index: indexPath, navigationController: navigationController)
+        
     }
 }

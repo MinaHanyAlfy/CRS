@@ -200,16 +200,11 @@ extension LoginViewController {
                       
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
             initialViewController.company = company
-//            let vc = HomeViewController(company: company)
             print("All Data received successfully!")
-//            print(products, "....",keys, "....", customers , "....", accounts , "....", pharmacies, "....", managers )
-            
             let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
             navigationController.modalPresentationStyle = .fullScreen
             navigationController.pushViewController(initialViewController, animated: false)
-            
-            
-//            initialViewController.company = company
+            CoreDataManager.shared.saveUserInfo(user: User(name: self.username,id: userId, company: CompanyElement(serial: company.serial, name: company.name, pass: company.pass, title: company.title, address: company.address, latitude: company.latitude, longitude: company.longitude, tel: company.tel, retrospectiveReport: company.retrospectiveReport)))
             self.present(navigationController, animated: true)
         }
     }

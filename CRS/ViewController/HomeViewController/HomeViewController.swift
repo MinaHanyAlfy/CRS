@@ -23,12 +23,16 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         guard let company = company else {
              return
         }
 
         DispatchQueue.main.async {
-            [self] in    
+            [self] in
             self.companyNameLabel.text = company.name
             self.departmentLabel.text = company.title
             self.locationLabel.text = company.address
@@ -45,9 +49,5 @@ class HomeViewController: UIViewController {
             )
             self.mapView = GMSMapView(frame : self.view.bounds, camera: camera)
         }
-    }
-    override func loadView() {
-        super.loadView()
-      
     }
 }

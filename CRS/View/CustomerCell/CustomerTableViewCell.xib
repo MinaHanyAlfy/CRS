@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="105" id="KGk-i7-Jjw" customClass="CustomerTableViewCell" customModule="CRS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="458" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="458" height="105"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M89-s6-AhD">
+                        <rect key="frame" x="8" y="36.666666666666664" width="80" height="31.999999999999993"/>
+                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="JBf-vL-z8D"/>
+                            <constraint firstAttribute="height" constant="32" id="rjd-W2-f9O"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Map">
+                            <color key="baseForegroundColor" systemColor="systemIndigoColor"/>
+                        </buttonConfiguration>
+                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Xt9-Ns-2KR">
+                        <rect key="frame" x="96" y="16" width="354" height="73"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZnP-KM-VPu">
+                                <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="73"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="0.082979093739999996" green="0.1156656356" blue="0.51993021340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="derma" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lM0-s2-Sg2">
+                                <rect key="frame" x="66.666666666666657" y="0.0" width="71" height="73"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="0.082979093739999996" green="0.1156656356" blue="0.51993021340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اسامه عكاشه محمد" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tPB-Oo-nf3">
+                                <rect key="frame" x="141.66666666666663" y="0.0" width="212.33333333333337" height="73"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" red="0.082979093739999996" green="0.1156656356" blue="0.51993021340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lM0-s2-Sg2" firstAttribute="width" secondItem="Xt9-Ns-2KR" secondAttribute="width" multiplier="0.2" id="1ca-Ic-Jm2"/>
+                            <constraint firstItem="tPB-Oo-nf3" firstAttribute="width" secondItem="Xt9-Ns-2KR" secondAttribute="width" multiplier="0.6" id="yw2-Se-iwi"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Xt9-Ns-2KR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="B1m-C3-PMk"/>
+                    <constraint firstAttribute="trailing" secondItem="Xt9-Ns-2KR" secondAttribute="trailing" constant="8" id="HmS-md-MC5"/>
+                    <constraint firstAttribute="bottom" secondItem="Xt9-Ns-2KR" secondAttribute="bottom" constant="16" id="Te5-1P-0q8"/>
+                    <constraint firstItem="Xt9-Ns-2KR" firstAttribute="centerY" secondItem="M89-s6-AhD" secondAttribute="centerY" id="biS-3I-pwK"/>
+                    <constraint firstItem="M89-s6-AhD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="hyu-Qx-DZe"/>
+                    <constraint firstItem="M89-s6-AhD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rAz-Un-x0i"/>
+                    <constraint firstItem="Xt9-Ns-2KR" firstAttribute="leading" secondItem="M89-s6-AhD" secondAttribute="trailing" constant="8" id="zzl-4h-WU8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryLabel" destination="lM0-s2-Sg2" id="HyG-uJ-Xbk"/>
+                <outlet property="mapButton" destination="M89-s6-AhD" id="jH3-Se-VHr"/>
+                <outlet property="nameLabel" destination="tPB-Oo-nf3" id="kKQ-Pa-3iq"/>
+                <outlet property="stackView" destination="Xt9-Ns-2KR" id="ayX-xd-3Nj"/>
+                <outlet property="zoneLabel" destination="ZnP-KM-VPu" id="N6l-CL-kOa"/>
+            </connections>
+            <point key="canvasLocation" x="-145.03816793893128" y="29.929577464788736"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

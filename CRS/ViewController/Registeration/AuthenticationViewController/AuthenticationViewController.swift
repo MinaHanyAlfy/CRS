@@ -19,6 +19,7 @@ class AuthenticationViewController: UIViewController {
             DispatchQueue.main.async {
                 guard let callResponse = self.callResponse else { return }
                 if callResponse == "verified" {
+                    
                     let vc = LoginViewController()
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true)
