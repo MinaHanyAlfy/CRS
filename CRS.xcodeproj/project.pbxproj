@@ -75,6 +75,8 @@
 		7FDC0F6B293FDC730025D3DC /* CustomerCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F6A293FDC730025D3DC /* CustomerCoreDataManager.swift */; };
 		7FDC0F77293FDF920025D3DC /* ProductCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F76293FDF920025D3DC /* ProductCoreDataManager.swift */; };
 		7FDC0F79293FE0460025D3DC /* ManagerCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F78293FE0460025D3DC /* ManagerCoreDataManager.swift */; };
+		7FDD590C2943813E00EE969B /* ProspectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD590A2943813E00EE969B /* ProspectionTableViewCell.swift */; };
+		7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FDD590B2943813E00EE969B /* ProspectionTableViewCell.xib */; };
 		7FE7D9022934221700F52352 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7D9002934221700F52352 /* LoginViewController.swift */; };
 		7FE7D9032934221700F52352 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE7D9012934221700F52352 /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
@@ -169,6 +171,8 @@
 		7FDC0F6A293FDC730025D3DC /* CustomerCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCoreDataManager.swift; sourceTree = "<group>"; };
 		7FDC0F76293FDF920025D3DC /* ProductCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCoreDataManager.swift; sourceTree = "<group>"; };
 		7FDC0F78293FE0460025D3DC /* ManagerCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCoreDataManager.swift; sourceTree = "<group>"; };
+		7FDD590A2943813E00EE969B /* ProspectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectionTableViewCell.swift; sourceTree = "<group>"; };
+		7FDD590B2943813E00EE969B /* ProspectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProspectionTableViewCell.xib; sourceTree = "<group>"; };
 		7FE7D9002934221700F52352 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7FE7D9012934221700F52352 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		849068A3A194DEAB507C57D3 /* Pods-CRS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CRS.release.xcconfig"; path = "Target Support Files/Pods-CRS/Pods-CRS.release.xcconfig"; sourceTree = "<group>"; };
@@ -474,6 +478,7 @@
 		7FC5CB18292A0F69000D228A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FDD5909294380EB00EE969B /* ProspectionAnswersCell */,
 				7F7EA40F293EB4F000E72E49 /* CustomerCell */,
 				7F593794293BDC5100FFF055 /* SideMenuCell */,
 				7FC5CAE0292A0B07000D228A /* Main.storyboard */,
@@ -553,6 +558,15 @@
 				7FDC0F76293FDF920025D3DC /* ProductCoreDataManager.swift */,
 			);
 			path = ProductManager;
+			sourceTree = "<group>";
+		};
+		7FDD5909294380EB00EE969B /* ProspectionAnswersCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FDD590A2943813E00EE969B /* ProspectionTableViewCell.swift */,
+				7FDD590B2943813E00EE969B /* ProspectionTableViewCell.xib */,
+			);
+			path = ProspectionAnswersCell;
 			sourceTree = "<group>";
 		};
 		E178B0ABF648BD8905BF084B /* Frameworks */ = {
@@ -685,6 +699,7 @@
 				7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */,
 				7F7EA3F9293E933700E72E49 /* AccountsViewController.xib in Resources */,
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
+				7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */,
 				7F15F39F2930CC4F009BD8D0 /* AuthenticationViewController.xib in Resources */,
 				7FC5CAEA292A0B08000D228A /* LaunchScreen.storyboard in Resources */,
 				7F7EA413293EB51000E72E49 /* CustomerTableViewCell.xib in Resources */,
@@ -875,6 +890,7 @@
 				7FDC0F60293FD5880025D3DC /* ProductCD+CoreDataClass.swift in Sources */,
 				7FC5CAE5292A0B07000D228A /* CRS.xcdatamodeld in Sources */,
 				7F15F3972930CB54009BD8D0 /* NetworkServiceMock.swift in Sources */,
+				7FDD590C2943813E00EE969B /* ProspectionTableViewCell.swift in Sources */,
 				7F0AAAC02939483600454371 /* HomeViewController.swift in Sources */,
 				7F0AAAD7293A485900454371 /* UITableView+Extensions.swift in Sources */,
 				7F427634293FE990006B063C /* AccountsCD+CoreDataProperties.swift in Sources */,

@@ -64,7 +64,6 @@ class SideMenuTableViewCell: UITableViewCell {
             }
         } else {
             let logOutVc = AuthenticationViewController()
-//            cdManager.clearUserInfo()
             cdManager.clearAll()
             logOutVc.modalPresentationStyle = .fullScreen
             viewController.present(logOutVc, animated: true)
