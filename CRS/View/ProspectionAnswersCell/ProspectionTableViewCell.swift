@@ -31,18 +31,20 @@ class ProspectionTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if self.isSelected{
-            radioImageView.image = UIImage(systemName: "circle.inset.filled")
-        } else {
-            radioImageView.image = UIImage(systemName: "circle")
-        }
+//        if self.isSelected{
+//            radioImageView.image = UIImage(systemName: "circle.inset.filled")
+//        } else {
+//            radioImageView.image = UIImage(systemName: "circle")
+//        }
     
         // Configure the view for the selected state
     }
     
-    func cellConfig(indexPath: IndexPath) {
+    func cellConfig(indexPath: IndexPath,isSelect: Bool) {
         answerLabel.text = answers[indexPath.section][indexPath.row]
-        
+      
+        radioImageView.image = isSelect ? UIImage(systemName: "circle.inset.filled") : UIImage(systemName: "circle") ?? UIImage()
+    
     }
     
 }

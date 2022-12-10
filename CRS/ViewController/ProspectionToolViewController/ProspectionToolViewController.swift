@@ -12,7 +12,7 @@ class ProspectionToolViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var submitButton: UIButton!
-    
+    private var selectedindex : [Int?] = [nil, nil, nil,nil,nil,nil,nil,nil,nil]
     private var questions = ["How Many Patients Were Waiting in Your First Visit ?","When was this first visit ?","How Many patients were waiting in your last visit ?","When Was this last visit ?","How did the nearest pharmacist describe the prospected customer ?", "What is the right discription of the prospected customer ?","How did the nearest pharmacist describe the prospected customer ?","How was his reply on asking for a commitment ?","Who suggested this prospect ?"]
     
     private var answers = [
@@ -26,9 +26,12 @@ class ProspectionToolViewController: UIViewController {
         ["Negative","Possitive"],
         ["EX-Customer","Exhibition or Medical Directories","Cold Canvassing or New Clinic","Peer or Colleague Referral","Center of influence (KOL)"]]
     
+    
+    private var answerDictionary : [Int:String] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        submitButton.addTarget(self, action: #selector(sumbitAction), for: .touchUpInside)
         setupNavigation()
         setupTableView()
         setupView()
@@ -53,6 +56,23 @@ class ProspectionToolViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.registerCell(tableViewCell: ProspectionTableViewCell.self)
     }
+    
+    @objc private func sumbitAction() {
+        var isNil = false
+        for i in selectedindex {
+            if let _ = i { } else {
+                isNil = true
+            }
+        }
+        if isNil {
+            self.alertIssues(message: "Please, Answer all questions.")
+            return
+        } else {
+            print("all answers submit")
+            //Send answers
+        
+        }
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -67,7 +87,7 @@ extension ProspectionToolViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(tableViewCell: ProspectionTableViewCell.self , forIndexPath: indexPath)
-        cell.cellConfig(indexPath: indexPath)
+        cell.cellConfig(indexPath: indexPath,isSelect: selectedindex[indexPath.section] == indexPath.row)
         return cell
     }
     
@@ -90,8 +110,7 @@ extension ProspectionToolViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension ProspectionToolViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedindex[indexPath.section] = indexPath.row
+        tableView.reloadData()
     }
-    
-    
 }
