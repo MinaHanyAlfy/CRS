@@ -12,10 +12,13 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    let cdManager = CoreDataManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        welcomeLabel.text = "Welcome \((cdManager.getUserInfo().name ?? "").uppercased()) "
     }
     
     private func setupTableView() {

@@ -478,6 +478,7 @@
 		7FC5CB18292A0F69000D228A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FDD59132945356D00EE969B /* ReportsCell */,
 				7FDD5909294380EB00EE969B /* ProspectionAnswersCell */,
 				7F7EA40F293EB4F000E72E49 /* CustomerCell */,
 				7F593794293BDC5100FFF055 /* SideMenuCell */,
@@ -567,6 +568,13 @@
 				7FDD590B2943813E00EE969B /* ProspectionTableViewCell.xib */,
 			);
 			path = ProspectionAnswersCell;
+			sourceTree = "<group>";
+		};
+		7FDD59132945356D00EE969B /* ReportsCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReportsCell;
 			sourceTree = "<group>";
 		};
 		E178B0ABF648BD8905BF084B /* Frameworks */ = {

@@ -23,17 +23,17 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prospection Double Classification Evaluation Questionnaire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0s-F4-HtD">
-                    <rect key="frame" x="8" y="75" width="377" height="51"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prospection Double Classification Evaluation Questionnaire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="a0s-F4-HtD">
+                    <rect key="frame" x="8" y="75" width="377" height="68"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="qpn-tj-KAr">
-                    <rect key="frame" x="16" y="126" width="361" height="692"/>
+                    <rect key="frame" x="16" y="143" width="361" height="675"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oDn-9r-LDt">
-                            <rect key="frame" x="0.0" y="0.0" width="361" height="606"/>
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="589"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="rL1-P1-t2f"/>
@@ -41,7 +41,7 @@
                             </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF9-Ri-nZa">
-                            <rect key="frame" x="0.0" y="612" width="361" height="80"/>
+                            <rect key="frame" x="0.0" y="595" width="361" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="1Sh-EQ-ohM"/>
                             </constraints>
@@ -64,7 +64,7 @@
             <constraints>
                 <constraint firstItem="a0s-F4-HtD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="D27-yt-Y0w"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qpn-tj-KAr" secondAttribute="bottom" id="cSx-sj-Xir"/>
-                <constraint firstItem="a0s-F4-HtD" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="eSJ-7x-nYd"/>
+                <constraint firstItem="a0s-F4-HtD" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="eSJ-7x-nYd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a0s-F4-HtD" secondAttribute="trailing" constant="8" id="qit-UZ-DR0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qpn-tj-KAr" secondAttribute="trailing" constant="16" id="sHP-jE-XUc"/>
                 <constraint firstItem="a0s-F4-HtD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="wH3-tP-hVT"/>
