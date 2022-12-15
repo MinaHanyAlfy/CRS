@@ -67,6 +67,10 @@ extension AuthenticationViewController: UIPickerViewDelegate {
         
         
     }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: companies[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+    }
 }
 
 //MARK: - UIPickerViewDataSource

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,8 +27,8 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-lX-xil" customClass="UIPickerView">
-                    <rect key="frame" x="78.666666666666671" y="358.66666666666669" width="235.66666666666663" height="42.666666666666686"/>
-                    <color key="backgroundColor" red="0.43754506110000002" green="0.79387968779999996" blue="0.71370965239999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <rect key="frame" x="78.666666666666671" y="333" width="235.66666666666663" height="68.333333333333314"/>
+                    <color key="backgroundColor" name="bluePrimary"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="s0c-03-Uif"/>
@@ -38,14 +39,14 @@
                     <rect key="frame" x="78.666666666666671" y="475.66666666666669" width="235.66666666666663" height="35.333333333333314"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="LOG IN">
-                        <color key="baseBackgroundColor" red="0.43921568630000002" green="0.79215686269999996" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="baseBackgroundColor" name="bluePrimary"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="dYR-GR-G2U"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOG IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiO-N2-kKL">
-                    <rect key="frame" x="49.666666666666657" y="248.66666666666663" width="294" height="30"/>
+                    <rect key="frame" x="49.666666666666657" y="223" width="294" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -58,7 +59,6 @@
                 <constraint firstItem="P8A-lX-xil" firstAttribute="centerX" secondItem="4c5-vP-3Dr" secondAttribute="centerX" id="AT0-oo-zFb"/>
                 <constraint firstItem="A4Z-o1-2HC" firstAttribute="width" secondItem="4c5-vP-3Dr" secondAttribute="width" id="Abv-gM-Kqk"/>
                 <constraint firstItem="EiO-N2-kKL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ILM-AB-qEf"/>
-                <constraint firstItem="P8A-lX-xil" firstAttribute="height" secondItem="4c5-vP-3Dr" secondAttribute="height" id="OJU-vZ-QVK"/>
                 <constraint firstItem="4c5-vP-3Dr" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="PrA-0S-Q7i"/>
                 <constraint firstItem="A4Z-o1-2HC" firstAttribute="top" secondItem="4c5-vP-3Dr" secondAttribute="bottom" constant="16" id="VKu-GV-Wbb"/>
                 <constraint firstItem="A4Z-o1-2HC" firstAttribute="height" secondItem="4c5-vP-3Dr" secondAttribute="height" multiplier="0.826772" id="Vu9-s0-cbn"/>
@@ -69,8 +69,14 @@
                 <constraint firstItem="4c5-vP-3Dr" firstAttribute="top" secondItem="P8A-lX-xil" secondAttribute="bottom" constant="16" id="qRt-Nq-44i"/>
                 <constraint firstItem="4c5-vP-3Dr" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="ugT-E9-WTP"/>
                 <constraint firstItem="P8A-lX-xil" firstAttribute="top" secondItem="EiO-N2-kKL" secondAttribute="bottom" constant="80" id="w6J-ch-hcA"/>
+                <constraint firstItem="P8A-lX-xil" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="xYu-KN-g1J"/>
             </constraints>
             <point key="canvasLocation" x="20.610687022900763" y="19.718309859154932"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="bluePrimary">
+            <color red="0.067000001668930054" green="0.14100000262260437" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

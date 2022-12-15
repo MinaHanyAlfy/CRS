@@ -18,7 +18,8 @@ class SideMenuViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        welcomeLabel.text = "Welcome \((cdManager.getUserInfo().name ?? "").uppercased()) "
+        welcomeLabel.text = "Welcome \((cdManager.getUserInfo().name ?? "").uppercased())"
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setupTableView() {

@@ -50,6 +50,10 @@
 		7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA40C293EB34300E72E49 /* SearchResultViewController.xib */; };
 		7F7EA412293EB51000E72E49 /* CustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA410293EB51000E72E49 /* CustomerTableViewCell.swift */; };
 		7F7EA413293EB51000E72E49 /* CustomerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA411293EB51000E72E49 /* CustomerTableViewCell.xib */; };
+		7FA939C82946698900AF3A33 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA939C62946698900AF3A33 /* ReportTableViewCell.swift */; };
+		7FA939C92946698900AF3A33 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */; };
+		7FA939CD294678C200AF3A33 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA939CB294678C200AF3A33 /* AddViewController.swift */; };
+		7FA939CE294678C200AF3A33 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA939CC294678C200AF3A33 /* AddViewController.xib */; };
 		7FC5CADB292A0B07000D228A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CADA292A0B07000D228A /* AppDelegate.swift */; };
 		7FC5CADF292A0B07000D228A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CADE292A0B07000D228A /* ViewController.swift */; };
 		7FC5CAE2292A0B07000D228A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5CAE0292A0B07000D228A /* Main.storyboard */; };
@@ -142,6 +146,10 @@
 		7F7EA40C293EB34300E72E49 /* SearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultViewController.xib; sourceTree = "<group>"; };
 		7F7EA410293EB51000E72E49 /* CustomerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewCell.swift; sourceTree = "<group>"; };
 		7F7EA411293EB51000E72E49 /* CustomerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerTableViewCell.xib; sourceTree = "<group>"; };
+		7FA939C62946698900AF3A33 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
+		7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
+		7FA939CB294678C200AF3A33 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		7FA939CC294678C200AF3A33 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		7FC5CAD7292A0B07000D228A /* CRS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC5CADA292A0B07000D228A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FC5CADE292A0B07000D228A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +315,15 @@
 			path = CustomerCell;
 			sourceTree = "<group>";
 		};
+		7FA939CA2946789000AF3A33 /* AddViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FA939CB294678C200AF3A33 /* AddViewController.swift */,
+				7FA939CC294678C200AF3A33 /* AddViewController.xib */,
+			);
+			path = AddViewController;
+			sourceTree = "<group>";
+		};
 		7FC5CACE292A0B07000D228A = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +461,7 @@
 		7FC5CB14292A0E3D000D228A /* ReportsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7FA939CA2946789000AF3A33 /* AddViewController */,
 				7F7EA3FB293E942200E72E49 /* ReportsViewController.swift */,
 				7F7EA3FC293E942200E72E49 /* ReportsViewController.xib */,
 			);
@@ -573,6 +591,8 @@
 		7FDD59132945356D00EE969B /* ReportsCell */ = {
 			isa = PBXGroup;
 			children = (
+				7FA939C62946698900AF3A33 /* ReportTableViewCell.swift */,
+				7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */,
 			);
 			path = ReportsCell;
 			sourceTree = "<group>";
@@ -699,12 +719,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F7EA407293E959400E72E49 /* RefreshViewController.xib in Resources */,
+				7FA939CE294678C200AF3A33 /* AddViewController.xib in Resources */,
 				7F7EA3F5293E92F600E72E49 /* CustomersViewController.xib in Resources */,
 				7F0AAAC32939598B00454371 /* GoogleService-Info.plist in Resources */,
 				7F7EA3FE293E942200E72E49 /* ReportsViewController.xib in Resources */,
 				7F7EA402293E94BB00E72E49 /* ProspectionToolViewController.xib in Resources */,
 				7FE7D9032934221700F52352 /* LoginViewController.xib in Resources */,
 				7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */,
+				7FA939C92946698900AF3A33 /* ReportTableViewCell.xib in Resources */,
 				7F7EA3F9293E933700E72E49 /* AccountsViewController.xib in Resources */,
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
 				7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */,
@@ -917,6 +939,7 @@
 				7F0AAACD293A24FF00454371 /* Key.swift in Sources */,
 				7F7EA406293E959400E72E49 /* RefreshViewController.swift in Sources */,
 				7F418265293290120055DC7B /* User.swift in Sources */,
+				7FA939C82946698900AF3A33 /* ReportTableViewCell.swift in Sources */,
 				7F427633293FE990006B063C /* AccountsCD+CoreDataClass.swift in Sources */,
 				7FDC0F6B293FDC730025D3DC /* CustomerCoreDataManager.swift in Sources */,
 				7F0AAABD2939456100454371 /* Company.swift in Sources */,
@@ -924,6 +947,7 @@
 				7F15F3992930CB5B009BD8D0 /* API.swift in Sources */,
 				7FDC0F62293FD5880025D3DC /* PharmacyCD+CoreDataClass.swift in Sources */,
 				7FDC0F77293FDF920025D3DC /* ProductCoreDataManager.swift in Sources */,
+				7FA939CD294678C200AF3A33 /* AddViewController.swift in Sources */,
 				7FDC0F67293FD9040025D3DC /* PharmacyCoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

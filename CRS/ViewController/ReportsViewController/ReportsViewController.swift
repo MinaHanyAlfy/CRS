@@ -17,6 +17,8 @@ class ReportsViewController: UIViewController {
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
+    private var comments : [String] = []
+    
     var timeVisit : String?{
         didSet{
             DispatchQueue.main.async {
@@ -26,21 +28,53 @@ class ReportsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerCell(tableViewCell: ProspectionTableViewCell.self)
+        
+        buttonsAction()
+        setupTableView()
+        tableView.registerCell(tableViewCell: ReportTableViewCell.self)
         // Do any additional setup after loading the view.
     }
 
+    private func setupTableView() {
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+     private func buttonsAction() {
+         sendButton.addTarget(self, action: #selector(sendAction), for: .touchUpInside)
+         addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
+        
+    }
 
 
 }
+
+//MARK: - Actions
+extension ReportsViewController {
+    @objc func sendAction() {
+        guard let comment = commentTextField.text, comment.count > 3 else { return }
+        comments.append(comment)
+        tableView.reloadData()
+    }
+    @objc func addAction() {
+        
+    }
+    
+    
+    
+}
+
+
+
+
 //MARK: - UITableViewDataSource
 extension ReportsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(tableViewCell: ProspectionTableViewCell.self , forIndexPath: indexPath)
+        let cell = tableView.dequeue(tableViewCell: ReportTableViewCell.self , forIndexPath: indexPath)
+        cell.commentLabel.text = comments[indexPath.row]
         return cell
     }
     

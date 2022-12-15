@@ -88,6 +88,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pickerView.tintColor = .white
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -131,6 +132,10 @@ extension LoginViewController: UIPickerViewDelegate {
         print("Selected", levels[row])
         levelName = levels[row]
 //        self.pickerView.isHidden = true
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: levels[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
 }
