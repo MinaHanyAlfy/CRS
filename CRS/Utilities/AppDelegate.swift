@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import GoogleMaps
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
