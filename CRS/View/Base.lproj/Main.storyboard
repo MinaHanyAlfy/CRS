@@ -81,7 +81,7 @@
                         <outlet property="companyNameLabel" destination="lIa-JS-ASD" id="B1e-zV-arq"/>
                         <outlet property="departmentLabel" destination="BpR-88-H6x" id="Y1t-oU-3NT"/>
                         <outlet property="locationLabel" destination="LSh-Bg-YZ5" id="e2e-v7-TR6"/>
-                        <outlet property="mapView" destination="jSN-Ed-WlL" id="jpd-aY-9gn"/>
+                        <outlet property="mapView" destination="jSN-Ed-WlL" id="HmD-nk-xwS"/>
                         <outlet property="numberLabel" destination="YXL-wm-HtA" id="dj7-YO-oIG"/>
                     </connections>
                 </viewController>

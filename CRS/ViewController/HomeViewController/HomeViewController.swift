@@ -14,8 +14,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var numberLabel: UILabel!
+
+    @IBOutlet var mapView: GMSMapView!
     
     var company: CompanyElement?
     var long: Double = 0.0
@@ -41,7 +42,6 @@ class HomeViewController: UIViewController {
                 long = Double(company.longitude ?? "0.0")!
             }
             self.numberLabel.text = company.tel
-            
             let camera = GMSCameraPosition(
                 latitude: self.lat ,
                 longitude: self.long,

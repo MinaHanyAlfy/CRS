@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -63,6 +63,22 @@
 		7FC5CAF5292A0B08000D228A /* CRSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CAF4292A0B08000D228A /* CRSTests.swift */; };
 		7FC5CAFF292A0B09000D228A /* CRSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CAFE292A0B09000D228A /* CRSUITests.swift */; };
 		7FC5CB01292A0B09000D228A /* CRSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CB00292A0B09000D228A /* CRSUITestsLaunchTests.swift */; };
+		7FD7398D295486AD00261488 /* DoctorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7398B295486AD00261488 /* DoctorTableViewCell.swift */; };
+		7FD7398E295486AD00261488 /* DoctorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD7398C295486AD00261488 /* DoctorTableViewCell.xib */; };
+		7FD739932954870100261488 /* DoubleVisitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739912954870100261488 /* DoubleVisitTableViewCell.swift */; };
+		7FD739942954870100261488 /* DoubleVisitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739922954870100261488 /* DoubleVisitTableViewCell.xib */; };
+		7FD739982954872000261488 /* ProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739962954872000261488 /* ProductsTableViewCell.swift */; };
+		7FD739992954872000261488 /* ProductsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739972954872000261488 /* ProductsTableViewCell.xib */; };
+		7FD7399D2954884400261488 /* PharmaciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7399B2954884400261488 /* PharmaciesTableViewCell.swift */; };
+		7FD7399E2954884400261488 /* PharmaciesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD7399C2954884400261488 /* PharmaciesTableViewCell.xib */; };
+		7FD739A22954886800261488 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739A02954886800261488 /* CommentTableViewCell.swift */; };
+		7FD739A32954886800261488 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739A12954886800261488 /* CommentTableViewCell.xib */; };
+		7FD739A72954888C00261488 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739A52954888C00261488 /* ButtonTableViewCell.swift */; };
+		7FD739A82954888C00261488 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739A62954888C00261488 /* ButtonTableViewCell.xib */; };
+		7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739AB295488D900261488 /* RequestTableViewCell.swift */; };
+		7FD739AE295488D900261488 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739AC295488D900261488 /* RequestTableViewCell.xib */; };
+		7FD739B22954893700261488 /* VisitingDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739B02954893700261488 /* VisitingDayViewController.swift */; };
+		7FD739B32954893700261488 /* VisitingDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739B12954893700261488 /* VisitingDayViewController.xib */; };
 		7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */; };
 		7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */; };
 		7FDC0F5C293FD5880025D3DC /* PharmacyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */; };
@@ -163,6 +179,22 @@
 		7FC5CAFA292A0B09000D228A /* CRSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CRSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC5CAFE292A0B09000D228A /* CRSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRSUITests.swift; sourceTree = "<group>"; };
 		7FC5CB00292A0B09000D228A /* CRSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7FD7398B295486AD00261488 /* DoctorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorTableViewCell.swift; sourceTree = "<group>"; };
+		7FD7398C295486AD00261488 /* DoctorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorTableViewCell.xib; sourceTree = "<group>"; };
+		7FD739912954870100261488 /* DoubleVisitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleVisitTableViewCell.swift; sourceTree = "<group>"; };
+		7FD739922954870100261488 /* DoubleVisitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleVisitTableViewCell.xib; sourceTree = "<group>"; };
+		7FD739962954872000261488 /* ProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewCell.swift; sourceTree = "<group>"; };
+		7FD739972954872000261488 /* ProductsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductsTableViewCell.xib; sourceTree = "<group>"; };
+		7FD7399B2954884400261488 /* PharmaciesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmaciesTableViewCell.swift; sourceTree = "<group>"; };
+		7FD7399C2954884400261488 /* PharmaciesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PharmaciesTableViewCell.xib; sourceTree = "<group>"; };
+		7FD739A02954886800261488 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		7FD739A12954886800261488 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		7FD739A52954888C00261488 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		7FD739A62954888C00261488 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
+		7FD739AB295488D900261488 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		7FD739AC295488D900261488 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
+		7FD739B02954893700261488 /* VisitingDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitingDayViewController.swift; sourceTree = "<group>"; };
+		7FD739B12954893700261488 /* VisitingDayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitingDayViewController.xib; sourceTree = "<group>"; };
 		7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagerCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PharmacyCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -427,11 +459,12 @@
 		7FC5CB11292A0E0A000D228A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7FD739AF2954890E00261488 /* VisitingDayViewController */,
+				7FC5CADE292A0B07000D228A /* ViewController.swift */,
 				7F7EA40A293EB32500E72E49 /* SearchResultViewController */,
 				7F7EA403293E958300E72E49 /* RefreshViewController */,
 				7F15F39A2930CBD0009BD8D0 /* Registeration */,
 				7F7EA3FA293E93FD00E72E49 /* ProspectionToolViewController */,
-				7FC5CADE292A0B07000D228A /* ViewController.swift */,
 				7FC5CB17292A0E7F000D228A /* ProductsViewController */,
 				7FC5CB16292A0E5A000D228A /* AccountsViewController */,
 				7FC5CB15292A0E4C000D228A /* CustomersViewController */,
@@ -496,6 +529,7 @@
 		7FC5CB18292A0F69000D228A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FD7398A2954866700261488 /* VisitingDayCells */,
 				7FDD59132945356D00EE969B /* ReportsCell */,
 				7FDD5909294380EB00EE969B /* ProspectionAnswersCell */,
 				7F7EA40F293EB4F000E72E49 /* CustomerCell */,
@@ -504,6 +538,100 @@
 				7FC5CAE8292A0B08000D228A /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7FD7398A2954866700261488 /* VisitingDayCells */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739AA295488C300261488 /* SendRequestTableViewCell */,
+				7FD739A9295488AD00261488 /* NextVisitTableViewCell */,
+				7FD739A42954887600261488 /* ButtonTableViewCell */,
+				7FD7399F2954884F00261488 /* CommentTableViewCell */,
+				7FD7399A2954882400261488 /* PharmciesTableViewCell */,
+				7FD739952954870600261488 /* ProductsTableViewCell */,
+				7FD73990295486D900261488 /* VisitWithManagerTableViewCell */,
+				7FD7398F295486CB00261488 /* CustomerTableViewCell */,
+			);
+			path = VisitingDayCells;
+			sourceTree = "<group>";
+		};
+		7FD7398F295486CB00261488 /* CustomerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD7398B295486AD00261488 /* DoctorTableViewCell.swift */,
+				7FD7398C295486AD00261488 /* DoctorTableViewCell.xib */,
+			);
+			path = CustomerTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD73990295486D900261488 /* VisitWithManagerTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739912954870100261488 /* DoubleVisitTableViewCell.swift */,
+				7FD739922954870100261488 /* DoubleVisitTableViewCell.xib */,
+			);
+			path = VisitWithManagerTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD739952954870600261488 /* ProductsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739962954872000261488 /* ProductsTableViewCell.swift */,
+				7FD739972954872000261488 /* ProductsTableViewCell.xib */,
+			);
+			path = ProductsTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD7399A2954882400261488 /* PharmciesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD7399B2954884400261488 /* PharmaciesTableViewCell.swift */,
+				7FD7399C2954884400261488 /* PharmaciesTableViewCell.xib */,
+			);
+			path = PharmciesTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD7399F2954884F00261488 /* CommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739A02954886800261488 /* CommentTableViewCell.swift */,
+				7FD739A12954886800261488 /* CommentTableViewCell.xib */,
+			);
+			path = CommentTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD739A42954887600261488 /* ButtonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739A52954888C00261488 /* ButtonTableViewCell.swift */,
+				7FD739A62954888C00261488 /* ButtonTableViewCell.xib */,
+			);
+			path = ButtonTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD739A9295488AD00261488 /* NextVisitTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NextVisitTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD739AA295488C300261488 /* SendRequestTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739AB295488D900261488 /* RequestTableViewCell.swift */,
+				7FD739AC295488D900261488 /* RequestTableViewCell.xib */,
+			);
+			path = SendRequestTableViewCell;
+			sourceTree = "<group>";
+		};
+		7FD739AF2954890E00261488 /* VisitingDayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FD739B02954893700261488 /* VisitingDayViewController.swift */,
+				7FD739B12954893700261488 /* VisitingDayViewController.xib */,
+			);
+			path = VisitingDayViewController;
 			sourceTree = "<group>";
 		};
 		7FDC0EDA293FCD4F0025D3DC /* CoreDataModels */ = {
@@ -694,7 +822,7 @@
 				};
 			};
 			buildConfigurationList = 7FC5CAD2292A0B07000D228A /* Build configuration list for PBXProject "CRS" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -720,6 +848,7 @@
 			files = (
 				7F7EA407293E959400E72E49 /* RefreshViewController.xib in Resources */,
 				7FA939CE294678C200AF3A33 /* AddViewController.xib in Resources */,
+				7FD739A82954888C00261488 /* ButtonTableViewCell.xib in Resources */,
 				7F7EA3F5293E92F600E72E49 /* CustomersViewController.xib in Resources */,
 				7F0AAAC32939598B00454371 /* GoogleService-Info.plist in Resources */,
 				7F7EA3FE293E942200E72E49 /* ReportsViewController.xib in Resources */,
@@ -728,11 +857,18 @@
 				7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */,
 				7FA939C92946698900AF3A33 /* ReportTableViewCell.xib in Resources */,
 				7F7EA3F9293E933700E72E49 /* AccountsViewController.xib in Resources */,
+				7FD7398E295486AD00261488 /* DoctorTableViewCell.xib in Resources */,
+				7FD7399E2954884400261488 /* PharmaciesTableViewCell.xib in Resources */,
+				7FD739AE295488D900261488 /* RequestTableViewCell.xib in Resources */,
+				7FD739942954870100261488 /* DoubleVisitTableViewCell.xib in Resources */,
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
+				7FD739B32954893700261488 /* VisitingDayViewController.xib in Resources */,
 				7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */,
 				7F15F39F2930CC4F009BD8D0 /* AuthenticationViewController.xib in Resources */,
 				7FC5CAEA292A0B08000D228A /* LaunchScreen.storyboard in Resources */,
 				7F7EA413293EB51000E72E49 /* CustomerTableViewCell.xib in Resources */,
+				7FD739992954872000261488 /* ProductsTableViewCell.xib in Resources */,
+				7FD739A32954886800261488 /* CommentTableViewCell.xib in Resources */,
 				7FC5CAE7292A0B08000D228A /* Assets.xcassets in Resources */,
 				7FC5CAE2292A0B07000D228A /* Main.storyboard in Resources */,
 			);
@@ -906,6 +1042,7 @@
 				7FDC0F65293FD8E70025D3DC /* AccountCoreDataManager.swift in Sources */,
 				7F7EA40D293EB34300E72E49 /* SearchResultViewController.swift in Sources */,
 				7F0AAAD5293A475A00454371 /* UICollectionView+Extensions.swift in Sources */,
+				7FD739A72954888C00261488 /* ButtonTableViewCell.swift in Sources */,
 				7F7EA3F4293E92F600E72E49 /* CustomersViewController.swift in Sources */,
 				7F0AAAD3293A3DEF00454371 /* SideMenuViewController.swift in Sources */,
 				7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */,
@@ -928,23 +1065,30 @@
 				7FDC0F5D293FD5880025D3DC /* CustomerCD+CoreDataProperties.swift in Sources */,
 				7F7EA409293E9A0500E72E49 /* CoreDataManager.swift in Sources */,
 				7F15F3952930CB4E009BD8D0 /* EndPoint.swift in Sources */,
+				7FD7398D295486AD00261488 /* DoctorTableViewCell.swift in Sources */,
 				7FDC0F5E293FD5880025D3DC /* KeyCD+CoreDataClass.swift in Sources */,
 				7F4182632932856E0055DC7B /* UIViewController+Extensions.swift in Sources */,
 				7F15F39E2930CC4F009BD8D0 /* AuthenticationViewController.swift in Sources */,
 				7F0AAAC9293A22C900454371 /* Customer.swift in Sources */,
+				7FD739982954872000261488 /* ProductsTableViewCell.swift in Sources */,
 				7FDC0F61293FD5880025D3DC /* CustomerCD+CoreDataClass.swift in Sources */,
 				7FC5CADF292A0B07000D228A /* ViewController.swift in Sources */,
+				7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */,
+				7FD7399D2954884400261488 /* PharmaciesTableViewCell.swift in Sources */,
 				7FC5CADB292A0B07000D228A /* AppDelegate.swift in Sources */,
 				7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */,
 				7F0AAACD293A24FF00454371 /* Key.swift in Sources */,
 				7F7EA406293E959400E72E49 /* RefreshViewController.swift in Sources */,
 				7F418265293290120055DC7B /* User.swift in Sources */,
 				7FA939C82946698900AF3A33 /* ReportTableViewCell.swift in Sources */,
+				7FD739B22954893700261488 /* VisitingDayViewController.swift in Sources */,
 				7F427633293FE990006B063C /* AccountsCD+CoreDataClass.swift in Sources */,
 				7FDC0F6B293FDC730025D3DC /* CustomerCoreDataManager.swift in Sources */,
+				7FD739A22954886800261488 /* CommentTableViewCell.swift in Sources */,
 				7F0AAABD2939456100454371 /* Company.swift in Sources */,
 				7FDC0F5F293FD5880025D3DC /* KeyCD+CoreDataProperties.swift in Sources */,
 				7F15F3992930CB5B009BD8D0 /* API.swift in Sources */,
+				7FD739932954870100261488 /* DoubleVisitTableViewCell.swift in Sources */,
 				7FDC0F62293FD5880025D3DC /* PharmacyCD+CoreDataClass.swift in Sources */,
 				7FDC0F77293FDF920025D3DC /* ProductCoreDataManager.swift in Sources */,
 				7FA939CD294678C200AF3A33 /* AddViewController.swift in Sources */,
