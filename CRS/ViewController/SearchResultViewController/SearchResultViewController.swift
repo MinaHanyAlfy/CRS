@@ -8,22 +8,57 @@
 import UIKit
 
 class SearchResultViewController: UIViewController {
-
+    
+    private var customers: Customers = []
+    private let tableView :UITableView = {
+        let tableView = UITableView()
+        tableView.registerCell(tableViewCell: CustomersTableViewCell.self)
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
+        setUpTableView()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
-    */
+    
+    private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
+    }
+    
+    
+    
+}
 
+//MARK: - UITableViewDelegate
+extension SearchResultViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(customers[indexPath.row])
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension SearchResultViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return customers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(tableViewCell: CustomersTableViewCell.self, forIndexPath: indexPath)
+        
+        cell.config(name: customers[indexPath.row].customerName ?? "Unknown")
+        
+        return cell
+    }
+    
+    
 }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let cdManager = CoreDataManager.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyBYFetiZjmJJBmPlY5O-15anl1m8_AFTxc")
+        GMSServices.provideAPIKey("AIzaSyBMrrPRP9xqAmZKArzyfd6bs8gzKF0H7XI")
 //        GMSPlacesClient.provideAPIKey("AIzaSyBYFetiZjmJJBmPlY5O-15anl1m8_AFTxc")
 
         

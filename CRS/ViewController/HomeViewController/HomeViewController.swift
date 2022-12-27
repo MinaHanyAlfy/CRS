@@ -45,8 +45,9 @@ class HomeViewController: UIViewController {
             let camera = GMSCameraPosition(
                 latitude: self.lat ,
                 longitude: self.long,
-                zoom: 16
+                zoom: 1000
             )
+            print("Camera :", long , lat)
             self.mapView = GMSMapView(frame : self.view.bounds, camera: camera)
         }
     }

@@ -16,7 +16,7 @@ class ReportsViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-
+    
     private var comments : [String] = []
     
     var timeVisit : String?{
@@ -56,7 +56,9 @@ extension ReportsViewController {
         tableView.reloadData()
     }
     @objc func addAction() {
-        
+        let vc = AddViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

@@ -7,23 +7,156 @@
 
 import UIKit
 
+enum AddVisitSections : Int{
+    case doctor = 0
+    case doubleVisit = 1
+    case product = 2
+    case pharmacy = 3
+    case comment = 4
+    case nextVisit = 5
+    case sendRequest = 6
+    case button = 7
+    
+}
+
+
 class AddViewController: UIViewController {
 
+    private let tableView :UITableView = {
+        let tableView = UITableView()
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.registerCell(tableViewCell: PharmaciesTableViewCell.self)
+        tableView.registerCell(tableViewCell: ProductsTableViewCell.self)
+        tableView.registerCell(tableViewCell: DoctorTableViewCell.self)
+        tableView.registerCell(tableViewCell: DoubleVisitTableViewCell.self)
+        tableView.registerCell(tableViewCell: CommentTableViewCell.self)
+        tableView.registerCell(tableViewCell: ButtonTableViewCell.self)
+        tableView.registerCell(tableViewCell: NextVisitTableViewCell.self)
+        tableView.registerCell(tableViewCell: RequestTableViewCell.self)
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
+        return tableView
+    }()
+    private var buttons = ["Next Visit","Send Request","Report","Cancel"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupTableView()
         // Do any additional setup after loading the view.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
-    */
+    
+    private func setupNavigation() {
+        title = "Adding New Visit"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.tintColor = .black
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
+    }
+}
 
+//MARK: - UITableViewDataSource
+extension AddViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 6:
+            return 4
+        case 5:
+            return 4
+        default:
+            return 1
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeue(tableViewCell: DoctorTableViewCell.self , forIndexPath: indexPath)
+            return cell
+        case 1:
+            let cell = tableView.dequeue(tableViewCell: DoubleVisitTableViewCell.self , forIndexPath: indexPath)
+            return cell
+        case 2:
+            let cell = tableView.dequeue(tableViewCell: ProductsTableViewCell.self , forIndexPath: indexPath)
+            return cell
+        case 3:
+            let cell = tableView.dequeue(tableViewCell: PharmaciesTableViewCell.self , forIndexPath: indexPath)
+            if let nav = navigationController {
+                cell.config(navigationController: nav)
+            }
+            return cell
+        case 4:
+           let cell = tableView.dequeue(tableViewCell: CommentTableViewCell.self , forIndexPath: indexPath)
+            return cell
+            
+        default:
+            let cell = tableView.dequeue(tableViewCell: ButtonTableViewCell.self , forIndexPath: indexPath)
+            cell.config(title: buttons[indexPath.row])
+            cell.delegate = self
+            return cell
+        }
+    }
+    
+    
+}
+
+//MARK: - UITableViewDelegate
+extension AddViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Index: ", indexPath.row)
+    }
+}
+
+extension AddViewController: ButtonTableViewCellDelegate {
+    func nextVisitAction() {
+        print("NextVisit")
+        let vc = AddNextVisitViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .popover
+        self.present(vc, animated: true, completion: nil)
+    }
+    func sendRequestAction() {
+        let vc = AddSendRequestVisitViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .popover
+        self.present(vc, animated: true, completion: nil)
+        print("Send request")
+    }
+    func reportAction() {
+        print("Report")
+        //Save Visit
+    }
+    
+    func cancelAction() {
+        print("Cancel")
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: - AddNextVisitDelegate
+extension AddViewController: AddNextVisitDelegate {
+    func nextVisitTime(date: String) {
+        print("Success Date: ", date)
+    }
+}
+
+//MARK: - AddSend
+extension AddViewController: AddSendRequestVisitDelegate {
+    func addDoubleVisitRequest(manager: Manager, message: String) {
+        print("Manager: ",manager ,"-", message)
+    }
 }

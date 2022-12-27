@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNextVisitViewController" customModule="CRS" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="kXm-Ch-EM0" id="n6v-Qp-huV"/>
+                <outlet property="datePickerView" destination="UX8-yC-NcR" id="kA3-5B-kD2"/>
+                <outlet property="doneButton" destination="NcC-vj-Q4P" id="Pag-Js-dAC"/>
+                <outlet property="majorView" destination="D9l-pL-Uy3" id="yHU-7v-a6A"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9l-pL-Uy3">
+                    <rect key="frame" x="41.5" y="292" width="331" height="322"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LnU-Zr-JRq">
+                            <rect key="frame" x="8" y="8" width="315" height="306"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Visit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="fVY-jG-9bm">
+                                    <rect key="frame" x="0.0" y="0.0" width="315" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="XjO-F9-ADo"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" name="bluePrimary"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="UX8-yC-NcR">
+                                    <rect key="frame" x="0.0" y="56" width="315" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="oo4-cl-9xm"/>
+                                    </constraints>
+                                </datePicker>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="FtD-Pa-KKq">
+                                    <rect key="frame" x="0.0" y="264" width="315" height="42"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXm-Ch-EM0">
+                                            <rect key="frame" x="0.0" y="0.0" width="148.5" height="42"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Cancel" cornerStyle="capsule">
+                                                <backgroundConfiguration key="background">
+                                                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                    <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </backgroundConfiguration>
+                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcC-vj-Q4P">
+                                            <rect key="frame" x="166.5" y="0.0" width="148.5" height="42"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Done" cornerStyle="capsule">
+                                                <backgroundConfiguration key="background">
+                                                    <color key="backgroundColor" red="0.0" green="0.76942896842956543" blue="0.11912564565893621" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </backgroundConfiguration>
+                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="I9g-aM-Z3Y"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="LnU-Zr-JRq" secondAttribute="bottom" constant="8" id="ftr-9x-dUU"/>
+                        <constraint firstAttribute="trailing" secondItem="LnU-Zr-JRq" secondAttribute="trailing" constant="8" id="n7p-Dh-d5i"/>
+                        <constraint firstItem="LnU-Zr-JRq" firstAttribute="top" secondItem="D9l-pL-Uy3" secondAttribute="top" constant="8" id="o1a-uL-zbL"/>
+                        <constraint firstItem="LnU-Zr-JRq" firstAttribute="leading" secondItem="D9l-pL-Uy3" secondAttribute="leading" constant="8" id="wk9-WP-jof"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="D9l-pL-Uy3" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="3F9-rj-ET2"/>
+                <constraint firstItem="D9l-pL-Uy3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="N92-I4-JIq"/>
+                <constraint firstItem="D9l-pL-Uy3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Od6-57-Ggt"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="46"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="bluePrimary">
+            <color red="0.067000001668930054" green="0.14100000262260437" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -77,6 +77,7 @@ extension CustomersViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultViewController else {
                   return
               }
+            
     }
 }
 
