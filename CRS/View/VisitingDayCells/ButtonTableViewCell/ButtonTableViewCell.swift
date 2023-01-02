@@ -6,10 +6,11 @@
 //
 
 import UIKit
-
+import CoreLocation
 protocol ButtonTableViewCellDelegate: AnyObject {
     func cancelAction()
     func nextVisitAction()
+    func reportAction(location: CLLocation)
     func reportAction()
     func sendRequestAction()
 }
@@ -18,8 +19,11 @@ class ButtonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var button: UIButton!
     public weak var delegate: ButtonTableViewCellDelegate?
+    var locManager = CLLocationManager()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,6 +37,7 @@ class ButtonTableViewCell: UITableViewCell {
         } else if title == "Send Request" {
             button.addTarget(self, action: #selector(sendRequestTap), for: .touchUpInside)
         } else if title == "Report" {
+            locManager.requestWhenInUseAuthorization()
             button.addTarget(self, action: #selector(reportTap), for: .touchUpInside)
         } else if title == "Cancel" {
             button.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
@@ -50,7 +55,15 @@ class ButtonTableViewCell: UITableViewCell {
     }
     
     @objc private func reportTap() {
-        delegate?.reportAction()
+        var currentLocation: CLLocation!
+         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() ==  .authorizedAlways {
+             currentLocation = locManager.location
+             delegate?.reportAction(location: currentLocation)
+         }else {
+             delegate?.reportAction()
+         }
+        
     }
     
     @objc private func cancelTap() {

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddKeyPersonViewController" customModule="CRS" customModuleProvider="target">
+            <connections>
+                <outlet property="commentTextField" destination="X0l-n8-i95" id="cF5-wx-TNr"/>
+                <outlet property="keyPersonNameTextField" destination="ynn-D4-IPg" id="NN3-A0-FIZ"/>
+                <outlet property="keyPersonView" destination="oVU-Qk-GCA" id="Asb-ID-aWb"/>
+                <outlet property="noButton" destination="a77-Ld-SQE" id="EGa-oN-Odf"/>
+                <outlet property="phoneTextField" destination="zvU-mr-yCE" id="xxh-Pu-PbR"/>
+                <outlet property="specTextField" destination="INz-2M-sZN" id="CPW-yl-e8D"/>
+                <outlet property="view" destination="Tzu-IZ-FaP" id="hFg-8T-Cje"/>
+                <outlet property="yesButton" destination="GPU-Mi-QxB" id="znX-BS-dso"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Tzu-IZ-FaP">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVU-Qk-GCA">
+                    <rect key="frame" x="59" y="268" width="275" height="341"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ey4-x7-AIp">
+                            <rect key="frame" x="8" y="8" width="259" height="325"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Typing" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynn-D4-IPg">
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="58.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Specialization" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INz-2M-sZN">
+                                    <rect key="frame" x="0.0" y="66.666666666666686" width="259" height="58.666666666666657"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvU-mr-yCE">
+                                    <rect key="frame" x="0.0" y="133.33333333333331" width="259" height="58.333333333333343"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Commnet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0l-n8-i95">
+                                    <rect key="frame" x="0.0" y="199.66666666666669" width="259" height="58.666666666666686"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snd-p9-mam">
+                                    <rect key="frame" x="0.0" y="266.33333333333337" width="259" height="58.666666666666686"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a77-Ld-SQE">
+                                            <rect key="frame" x="0.0" y="0.0" width="129.66666666666666" height="58.666666666666664"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="NO"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPU-Mi-QxB">
+                                            <rect key="frame" x="129.66666666666663" y="0.0" width="129.33333333333337" height="58.666666666666664"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="YES"/>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Ey4-x7-AIp" secondAttribute="bottom" constant="8" id="7pL-gE-jzh"/>
+                        <constraint firstItem="Ey4-x7-AIp" firstAttribute="leading" secondItem="oVU-Qk-GCA" secondAttribute="leading" constant="8" id="Nh9-sB-lFV"/>
+                        <constraint firstAttribute="trailing" secondItem="Ey4-x7-AIp" secondAttribute="trailing" constant="8" id="UOQ-Ee-W6a"/>
+                        <constraint firstItem="Ey4-x7-AIp" firstAttribute="top" secondItem="oVU-Qk-GCA" secondAttribute="top" constant="8" id="wsd-Q5-tc6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="IDL-ju-S3K"/>
+            <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="oVU-Qk-GCA" firstAttribute="height" secondItem="Tzu-IZ-FaP" secondAttribute="height" multiplier="0.4" id="2GK-oh-9rh"/>
+                <constraint firstItem="oVU-Qk-GCA" firstAttribute="width" secondItem="Tzu-IZ-FaP" secondAttribute="width" multiplier="0.7" id="LVj-e0-Bh2"/>
+                <constraint firstItem="oVU-Qk-GCA" firstAttribute="centerX" secondItem="IDL-ju-S3K" secondAttribute="centerX" id="PEG-lt-A1R"/>
+                <constraint firstItem="oVU-Qk-GCA" firstAttribute="centerY" secondItem="IDL-ju-S3K" secondAttribute="centerY" id="tRQ-o6-hgN"/>
+            </constraints>
+            <point key="canvasLocation" x="10" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -51,6 +51,7 @@ class SideMenuTableViewCell: UITableViewCell {
             case 2:
                 let reportVc = ReportsViewController()
                 reportVc.timeVisit = "PM"
+                reportVc.isPM = true
                 navigationController.pushViewController(reportVc, animated: true)
             case 3:
                 let accountVc = AccountsViewController()

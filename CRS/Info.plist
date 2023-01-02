@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Application Need Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Application Need Location</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -9,11 +13,10 @@
 	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<false/>
-    
-    <key>LSApplicationQueriesSchemes</key>
-        <array>
-        <string>comgooglemaps</string>
-        <string>comgooglemaps-x-callback</string>
-        </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+		<string>comgooglemaps-x-callback</string>
+	</array>
 </dict>
 </plist>

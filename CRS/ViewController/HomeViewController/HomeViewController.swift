@@ -7,11 +7,12 @@
 
 import UIKit
 import GoogleMaps
+import MapKit
 
-
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var companyNameLabel: UILabel!
+    @IBOutlet weak var mkMapView: MKMapView!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
@@ -24,7 +25,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        mkMapView.delegate = self
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -47,8 +48,13 @@ class HomeViewController: UIViewController {
                 longitude: self.long,
                 zoom: 1000
             )
+            let mkPointAnnotation = MKPointAnnotation()
+            mkPointAnnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            mkMapView.addAnnotation(mkPointAnnotation)
+            
             print("Camera :", long , lat)
             self.mapView = GMSMapView(frame : self.view.bounds, camera: camera)
+            
         }
     }
 }

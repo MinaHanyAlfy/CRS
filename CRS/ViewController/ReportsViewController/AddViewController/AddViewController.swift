@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 enum AddVisitSections : Int{
     case doctor = 0
@@ -34,11 +35,14 @@ class AddViewController: UIViewController {
         tableView.registerCell(tableViewCell: ButtonTableViewCell.self)
         tableView.registerCell(tableViewCell: NextVisitTableViewCell.self)
         tableView.registerCell(tableViewCell: RequestTableViewCell.self)
+        tableView.registerCell(tableViewCell: KeyPersonsTableViewCell.self)
+        tableView.registerCell(tableViewCell: AccountTableViewCell.self)
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         return tableView
     }()
     private var buttons = ["Next Visit","Send Request","Report","Cancel"]
+    var isPm: Bool = false
     
     
     override func viewDidLoad() {
@@ -85,8 +89,13 @@ extension AddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeue(tableViewCell: DoctorTableViewCell.self , forIndexPath: indexPath)
-            return cell
+            if isPm {
+                let cell = tableView.dequeue(tableViewCell: DoctorTableViewCell.self , forIndexPath: indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeue(tableViewCell: AccountTableViewCell.self,forIndexPath: indexPath)
+                return cell
+            }
         case 1:
             let cell = tableView.dequeue(tableViewCell: DoubleVisitTableViewCell.self , forIndexPath: indexPath)
             return cell
@@ -94,11 +103,20 @@ extension AddViewController: UITableViewDataSource {
             let cell = tableView.dequeue(tableViewCell: ProductsTableViewCell.self , forIndexPath: indexPath)
             return cell
         case 3:
-            let cell = tableView.dequeue(tableViewCell: PharmaciesTableViewCell.self , forIndexPath: indexPath)
-            if let nav = navigationController {
-                cell.config(navigationController: nav)
+            
+            if isPm {
+                let cell = tableView.dequeue(tableViewCell: PharmaciesTableViewCell.self , forIndexPath: indexPath)
+                if let nav = navigationController {
+                    cell.config(navigationController: nav)
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeue(tableViewCell: KeyPersonsTableViewCell.self, forIndexPath: indexPath)
+                if let nav = navigationController {
+                    cell.config(navigationController: nav)
+                }
+                return cell
             }
-            return cell
         case 4:
            let cell = tableView.dequeue(tableViewCell: CommentTableViewCell.self , forIndexPath: indexPath)
             return cell
@@ -138,6 +156,30 @@ extension AddViewController: ButtonTableViewCellDelegate {
     }
     func reportAction() {
         print("Report")
+    }
+    func reportAction(location: CLLocation) {
+        print("Report")
+        let alert = UIAlertController(title: "Location", message: "Set this location for this customer ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes",style: .default, handler: { action in
+            //Send Location to update it in JAVA
+            /*RequestQueue queue = Volley.newRequestQueue(NewPMVisitActivity.this);
+             String ApplicationURL = S_Pref.getString("ApplicationURL", "");
+             String store_customer_location_url = ApplicationURL + "" +
+                     "?customer_id="+customer_id+
+                     "&lat="+current_latitude+
+                     "&long="+current_longitude+
+                     "&store_customer_location=x";
+
+             StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, store_customer_location_url, storeCustomerLocationResponseListener, ErrorListener);
+             queue.add(stringRequest);*/
+            print(location)
+        }))
+        alert.addAction(UIAlertAction(title: "No",style: .default, handler: { action in
+            //Dismiss it
+            self.dismiss(animated: true)
+        }))
+        
+        present(alert, animated: true)
         //Save Visit
     }
     

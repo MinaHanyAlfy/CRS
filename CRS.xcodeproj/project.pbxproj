@@ -35,6 +35,14 @@
 		7F427634293FE990006B063C /* AccountsCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */; };
 		7F593797293BDC6B00FFF055 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F593795293BDC6B00FFF055 /* SideMenuTableViewCell.swift */; };
 		7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F593796293BDC6B00FFF055 /* SideMenuTableViewCell.xib */; };
+		7F5C4216295E0EE000ECE925 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C4214295E0EE000ECE925 /* AccountTableViewCell.swift */; };
+		7F5C4217295E0EE000ECE925 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5C4215295E0EE000ECE925 /* AccountTableViewCell.xib */; };
+		7F5C421A295E11E700ECE925 /* KeyPersonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C4218295E11E700ECE925 /* KeyPersonsTableViewCell.swift */; };
+		7F5C421B295E11E700ECE925 /* KeyPersonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5C4219295E11E700ECE925 /* KeyPersonsTableViewCell.xib */; };
+		7F5C421F295E125900ECE925 /* KeyPersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C421D295E125900ECE925 /* KeyPersonTableViewCell.swift */; };
+		7F5C4220295E125900ECE925 /* KeyPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5C421E295E125900ECE925 /* KeyPersonTableViewCell.xib */; };
+		7F5C4225295E16D100ECE925 /* AddKeyPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C4223295E16D100ECE925 /* AddKeyPersonViewController.swift */; };
+		7F5C4226295E16D100ECE925 /* AddKeyPersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5C4224295E16D100ECE925 /* AddKeyPersonViewController.xib */; };
 		7F7EA3F4293E92F600E72E49 /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F2293E92F600E72E49 /* CustomersViewController.swift */; };
 		7F7EA3F5293E92F600E72E49 /* CustomersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F3293E92F600E72E49 /* CustomersViewController.xib */; };
 		7F7EA3F8293E933700E72E49 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F6293E933700E72E49 /* AccountsViewController.swift */; };
@@ -159,6 +167,14 @@
 		7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountsCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F593795293BDC6B00FFF055 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		7F593796293BDC6B00FFF055 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
+		7F5C4214295E0EE000ECE925 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		7F5C4215295E0EE000ECE925 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		7F5C4218295E11E700ECE925 /* KeyPersonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPersonsTableViewCell.swift; sourceTree = "<group>"; };
+		7F5C4219295E11E700ECE925 /* KeyPersonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPersonsTableViewCell.xib; sourceTree = "<group>"; };
+		7F5C421D295E125900ECE925 /* KeyPersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPersonTableViewCell.swift; sourceTree = "<group>"; };
+		7F5C421E295E125900ECE925 /* KeyPersonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPersonTableViewCell.xib; sourceTree = "<group>"; };
+		7F5C4223295E16D100ECE925 /* AddKeyPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddKeyPersonViewController.swift; sourceTree = "<group>"; };
+		7F5C4224295E16D100ECE925 /* AddKeyPersonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKeyPersonViewController.xib; sourceTree = "<group>"; };
 		7F7EA3F2293E92F600E72E49 /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
 		7F7EA3F3293E92F600E72E49 /* CustomersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomersViewController.xib; sourceTree = "<group>"; };
 		7F7EA3F6293E933700E72E49 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +351,43 @@
 			path = SideMenuCell;
 			sourceTree = "<group>";
 		};
+		7F5C420E295E0E4000ECE925 /* KeyPersonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F5C421C295E124600ECE925 /* KeyPersonTableViewCell */,
+				7F5C4218295E11E700ECE925 /* KeyPersonsTableViewCell.swift */,
+				7F5C4219295E11E700ECE925 /* KeyPersonsTableViewCell.xib */,
+			);
+			path = KeyPersonTableViewCell;
+			sourceTree = "<group>";
+		};
+		7F5C420F295E0E4D00ECE925 /* AccountTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F5C4214295E0EE000ECE925 /* AccountTableViewCell.swift */,
+				7F5C4215295E0EE000ECE925 /* AccountTableViewCell.xib */,
+			);
+			path = AccountTableViewCell;
+			sourceTree = "<group>";
+		};
+		7F5C421C295E124600ECE925 /* KeyPersonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F5C421D295E125900ECE925 /* KeyPersonTableViewCell.swift */,
+				7F5C421E295E125900ECE925 /* KeyPersonTableViewCell.xib */,
+			);
+			path = KeyPersonTableViewCell;
+			sourceTree = "<group>";
+		};
+		7F5C4221295E163A00ECE925 /* AddKeyPersonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F5C4223295E16D100ECE925 /* AddKeyPersonViewController.swift */,
+				7F5C4224295E16D100ECE925 /* AddKeyPersonViewController.xib */,
+			);
+			path = AddKeyPersonViewController;
+			sourceTree = "<group>";
+		};
 		7F7EA3FA293E93FD00E72E49 /* ProspectionToolViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +427,7 @@
 		7FA939CA2946789000AF3A33 /* AddViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7F5C4221295E163A00ECE925 /* AddKeyPersonViewController */,
 				7FD607ED295B288D00A1D5AA /* AddSendRequestVisitViewController */,
 				7FD607E8295B20A900A1D5AA /* AddNextVisitViewController */,
 				7FBA39B1295A4DF800770209 /* AddPharmacyViewController */,
@@ -616,6 +670,8 @@
 		7FD7398A2954866700261488 /* VisitingDayCells */ = {
 			isa = PBXGroup;
 			children = (
+				7F5C420F295E0E4D00ECE925 /* AccountTableViewCell */,
+				7F5C420E295E0E4000ECE925 /* KeyPersonTableViewCell */,
 				7FD739AA295488C300261488 /* SendRequestTableViewCell */,
 				7FD739A9295488AD00261488 /* NextVisitTableViewCell */,
 				7FD739A42954887600261488 /* ButtonTableViewCell */,
@@ -923,6 +979,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F7EA407293E959400E72E49 /* RefreshViewController.xib in Resources */,
+				7F5C421B295E11E700ECE925 /* KeyPersonsTableViewCell.xib in Resources */,
 				7FA939CE294678C200AF3A33 /* AddViewController.xib in Resources */,
 				7FD739A82954888C00261488 /* ButtonTableViewCell.xib in Resources */,
 				7F7EA3F5293E92F600E72E49 /* CustomersViewController.xib in Resources */,
@@ -932,6 +989,7 @@
 				7FE7D9032934221700F52352 /* LoginViewController.xib in Resources */,
 				7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */,
 				7FD607E7295B06F400A1D5AA /* PharmacyTableViewCell.xib in Resources */,
+				7F5C4217295E0EE000ECE925 /* AccountTableViewCell.xib in Resources */,
 				7FA939C92946698900AF3A33 /* ReportTableViewCell.xib in Resources */,
 				7FD607F1295B28AC00A1D5AA /* AddSendRequestVisitViewController.xib in Resources */,
 				7F7EA3F9293E933700E72E49 /* AccountsViewController.xib in Resources */,
@@ -940,8 +998,10 @@
 				7FD739AE295488D900261488 /* RequestTableViewCell.xib in Resources */,
 				7FD739942954870100261488 /* DoubleVisitTableViewCell.xib in Resources */,
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
+				7F5C4220295E125900ECE925 /* KeyPersonTableViewCell.xib in Resources */,
 				7FBA39A92959DD6900770209 /* NextVisitTableViewCell.xib in Resources */,
 				7FD739B32954893700261488 /* VisitingDayViewController.xib in Resources */,
+				7F5C4226295E16D100ECE925 /* AddKeyPersonViewController.xib in Resources */,
 				7FBA39AF295A2B9900770209 /* CustomersTableViewCell.xib in Resources */,
 				7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */,
 				7F15F39F2930CC4F009BD8D0 /* AuthenticationViewController.xib in Resources */,
@@ -1122,6 +1182,7 @@
 				7F7EA3FD293E942200E72E49 /* ReportsViewController.swift in Sources */,
 				7F0AAAC7293A218600454371 /* Manager.swift in Sources */,
 				7FDC0F65293FD8E70025D3DC /* AccountCoreDataManager.swift in Sources */,
+				7F5C421A295E11E700ECE925 /* KeyPersonsTableViewCell.swift in Sources */,
 				7F7EA40D293EB34300E72E49 /* SearchResultViewController.swift in Sources */,
 				7FBA39AE295A2B9900770209 /* CustomersTableViewCell.swift in Sources */,
 				7F0AAAD5293A475A00454371 /* UICollectionView+Extensions.swift in Sources */,
@@ -1158,6 +1219,8 @@
 				7F0AAAC9293A22C900454371 /* Customer.swift in Sources */,
 				7FD739982954872000261488 /* ProductsTableViewCell.swift in Sources */,
 				7FDC0F61293FD5880025D3DC /* CustomerCD+CoreDataClass.swift in Sources */,
+				7F5C4225295E16D100ECE925 /* AddKeyPersonViewController.swift in Sources */,
+				7F5C4216295E0EE000ECE925 /* AccountTableViewCell.swift in Sources */,
 				7FC5CADF292A0B07000D228A /* ViewController.swift in Sources */,
 				7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */,
 				7FD607F0295B28AC00A1D5AA /* AddSendRequestVisitViewController.swift in Sources */,
@@ -1166,6 +1229,7 @@
 				7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */,
 				7F0AAACD293A24FF00454371 /* Key.swift in Sources */,
 				7F7EA406293E959400E72E49 /* RefreshViewController.swift in Sources */,
+				7F5C421F295E125900ECE925 /* KeyPersonTableViewCell.swift in Sources */,
 				7F418265293290120055DC7B /* User.swift in Sources */,
 				7FA939C82946698900AF3A33 /* ReportTableViewCell.swift in Sources */,
 				7FD739B22954893700261488 /* VisitingDayViewController.swift in Sources */,

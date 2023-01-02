@@ -12,6 +12,7 @@ class CustomersViewController: UIViewController {
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.registerCell(tableViewCell: CustomerTableViewCell.self)
+        tableView.allowsSelection = false
         return tableView
     }()
     private let searchController : UISearchController = {
@@ -50,7 +51,9 @@ class CustomersViewController: UIViewController {
     }
     
     private func setupNavigation() {
-        title = "Customers"
+//        title =
+        navigationItem.title = "Customers"
+//        navigationItem.titleView?.tintColor = UIColor(named: "bluePrimary")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationItem.searchController = searchController
@@ -102,7 +105,7 @@ extension CustomersViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension CustomersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Index: ", indexPath.row)
+        // DidSelect
     }
 }
 

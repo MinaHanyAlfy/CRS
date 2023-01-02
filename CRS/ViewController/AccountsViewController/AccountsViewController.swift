@@ -12,6 +12,7 @@ class AccountsViewController: UIViewController {
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.registerCell(tableViewCell: CustomerTableViewCell.self)
+        tableView.allowsSelection = false
         return tableView
     }()
     private let searchController : UISearchController = {
@@ -80,8 +81,6 @@ extension AccountsViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultViewController else {
                   return
               }
-        
-        
     }
 }
 
@@ -105,6 +104,7 @@ extension AccountsViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension AccountsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Index: ", indexPath.row)
+        // DidSelect
     }
 }
+

@@ -18,7 +18,7 @@ class ReportsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var comments : [String] = []
-    
+    var isPM: Bool = false
     var timeVisit : String?{
         didSet{
             DispatchQueue.main.async {
@@ -57,6 +57,9 @@ extension ReportsViewController {
     }
     @objc func addAction() {
         let vc = AddViewController()
+        if isPM {
+            vc.isPm = true
+        }
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
