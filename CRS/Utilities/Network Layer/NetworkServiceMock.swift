@@ -35,7 +35,7 @@ class NetworkServiceMock {
                 completed((.failure(.InvalidResponse)))
                 return
             }
-            let decoder = JSONDecoder()
+//            let decoder = JSONDecoder()
             do
             {
                 
@@ -45,7 +45,7 @@ class NetworkServiceMock {
                 
                 completed((.success(str)))
                 
-            }catch {
+            } catch {
                 print(error)
                 completed((.failure(.InvalidData)))
             }
@@ -55,7 +55,7 @@ class NetworkServiceMock {
     }
     func getResults<M: Codable>(APICase: API,decodingModel: M.Type, completed: @escaping (Result<M,ErorrMessage> ) -> Void) {
      
-        var request : URLRequest = APICase.request
+        let request : URLRequest = APICase.request
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error =  error {

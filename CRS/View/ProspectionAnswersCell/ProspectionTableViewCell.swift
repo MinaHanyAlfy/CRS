@@ -18,6 +18,7 @@ class ProspectionTableViewCell: UITableViewCell {
         ["Least likely will prescribes your product class","May shift to your products class","Already prescribing your product class"],
         ["Negative","Possitive"],
         ["EX-Customer","Exhibition or Medical Directories","Cold Canvassing or New Clinic","Peer or Colleague Referral","Center of influence (KOL)"]]
+
     
     @IBOutlet weak var radioImageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!

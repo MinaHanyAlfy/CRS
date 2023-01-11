@@ -22,7 +22,7 @@ enum AddVisitSections : Int{
 
 
 class AddViewController: UIViewController {
-
+    let network = NetworkServiceMock.shared
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.estimatedRowHeight = 200
@@ -155,6 +155,13 @@ extension AddViewController: ButtonTableViewCellDelegate {
         print("Send request")
     }
     func reportAction() {
+        if isPm {
+//            network.getResultsStrings(APICase: API.addPMVisit(level: <#T##String#>, userId: <#T##String#>, manager_level: <#T##String#>, manager_id: <#T##String#>, product_1: <#T##String#>, product_2: <#T##String#>, product_3: <#T##String#>, product_4: <#T##String#>, customer_id: <#T##String#>, lat: <#T##String#>, long: <#T##String#>, comment: <#T##String#>, plan_date: <#T##String#>, recipient_level: <#T##String#>, recipient_id: <#T##String#>, message: <#T##String#>, visiting_day_date: <#T##String#>, p_ids: <#T##String#>, p_names: <#T##String#>, p_addresses: <#T##String#>, p_phones: <#T##String#>, p_comments: <#T##String#>), decodingModel: <#T##(Decodable & Encodable).Protocol#>, completed: <#T##(Result<String, ErorrMessage>) -> Void#>)
+        } else {
+//            network.getResultsStrings(APICase: API.addAMVisit(level: <#T##String#>, userId: <#T##String#>, manager_level: <#T##String#>, manager_id: <#T##String#>, product_1: <#T##String#>, product_2: <#T##String#>, product_3: <#T##String#>, product_4: <#T##String#>, account_id: <#T##String#>, lat: <#T##String#>, long: <#T##String#>, comment: <#T##String#>, plan_date: <#T##String#>, recipient_level: <#T##String#>, recipient_id: <#T##String#>, message: <#T##String#>, visiting_day_date: <#T##String#>, k_ids: <#T##String#>, k_names: <#T##String#>, k_specialities: <#T##String#>, k_mobiles: <#T##String#>, k_comments: <#T##String#>), decodingModel: <#T##(Decodable & Encodable).Protocol#>, completed: <#T##(Result<String, ErorrMessage>) -> Void#>)
+        }
+        
+        
         print("Report")
     }
     func reportAction(location: CLLocation) {

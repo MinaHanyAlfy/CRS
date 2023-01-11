@@ -27,6 +27,9 @@ class ProspectionToolViewController: UIViewController {
         ["EX-Customer","Exhibition or Medical Directories","Cold Canvassing or New Clinic","Peer or Colleague Referral","Center of influence (KOL)"]]
     
     
+    var q1: Int = 0, q2: Int = 0, q3: Int = 0, q4: Int = 0, q5: Int = 0, q6: Int = 0, q7: Int = 0, q8: Int = 0, q9: Int = 0
+    var potScore: Int = 0 , prespScore: Int = 0
+    
     private var answerDictionary : [Int:String] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +71,22 @@ class ProspectionToolViewController: UIViewController {
             self.alertIssues(message: "Please, Answer all questions.")
             return
         } else {
+            
+            var potString: String = ""
+            var prepString: String = ""
+            potScore = q2 + q4 + q5 + q6 + q9
+            prespScore = q7 + q8
+            
+            if potScore < 21 { potString = "LOW" }
+            if potScore > 20 && potScore < 36 { potString = "MEDIUM" }
+            if potScore > 35 { potString = "HIGH" }
+            if prespScore < 12 { prepString = "LOW" }
+            if prespScore > 11 && prespScore < 20 { prepString = "MEDIUM" }
+            if prespScore > 19 { prepString = "HIGH" }
+            
+            let alert = UIAlertController(title: "Score", message: "Your answers indicate \(potString) potentiality & \(prepString) prescription level.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
             print("all answers submit")
             //Send answers
         
@@ -112,5 +131,115 @@ extension ProspectionToolViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedindex[indexPath.section] = indexPath.row
         tableView.reloadData()
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0{
+                q1 = 2
+                break
+            }else if indexPath.row == 1 {
+                q1 = 4
+                break
+            }else if indexPath.row == 2 {
+                q1 = 6
+                break
+            }
+            break
+        case 1:
+            if indexPath.row == 0{
+                q2 = q1
+                break
+            }else if indexPath.row == 1 {
+                q2 = q1+4
+                break
+            }
+            break
+        case 2:
+            if indexPath.row == 0{
+                q3 = 2
+                break
+            }else if indexPath.row == 1 {
+                q3 = 4
+                break
+            }else if indexPath.row == 2 {
+                q3 = 6
+                break
+            }
+            break
+        case 3:
+            if indexPath.row == 0{
+                q4 = q3
+                break
+            }else if indexPath.row == 1 {
+                q4 = q3 + 4
+                break
+            }
+            break
+        case 4:
+            if indexPath.row == 0{
+                q5 = 2
+                break
+            }else if indexPath.row == 1 {
+                q5 = 6
+                break
+            }else if indexPath.row == 2 {
+                q5 = 10
+                break
+            }
+            break
+        case 5:
+            if indexPath.row == 0{
+                q6 = 6
+                break
+            }else if indexPath.row == 1 {
+                q6 = 8
+                break
+            }else if indexPath.row == 2 {
+                q6 = 10
+                break
+            }
+            break
+        case 6:
+            if indexPath.row == 0{
+                q7 = 2
+                break
+            }else if indexPath.row == 1 {
+                q7 = 6
+                break
+            }else if indexPath.row == 2 {
+                q7 = 10
+                break
+            }
+            break
+        case 7:
+            if indexPath.row == 0{
+                q8 = 2
+                break
+            }else if indexPath.row == 1 {
+                q8 = 10
+                break
+            }
+            break
+        case 8:
+            if indexPath.row == 0{
+                q9 = 2
+                break
+            } else if indexPath.row == 1 {
+                q9 = 4
+                break
+            } else if indexPath.row == 2 {
+                q9 = 6
+                break
+            } else if indexPath.row == 3 {
+                q9 = 8
+                break
+            } else if indexPath.row == 4 {
+                q9 = 10
+                break
+            }
+            break
+        default:
+            print("")
+        }
     }
 }
+
