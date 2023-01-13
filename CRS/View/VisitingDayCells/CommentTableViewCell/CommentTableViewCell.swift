@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol CommentTableViewDelegate: AnyObject {
+    func getComment(comment: String)
+}
 class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var commentTextView: UITextView!
+    public weak var delegate: CommentTableViewDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         textViewHandle()
+        
     }
 
     private func textViewHandle() {
@@ -37,15 +43,19 @@ class CommentTableViewCell: UITableViewCell {
 
 extension CommentTableViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-            commentTextView.text = ""
+        commentTextView.text = ""
         commentTextView.textColor = UIColor(named: "bluePrimary")
-        }
+    }
 
     func textViewDidEndEditing(_ textView: UITextView) {
          if commentTextView.text.isEmpty {
              commentTextView.text = "Write your comment."
              commentTextView.textColor = UIColor(named: "bluePrimary")
+         } else {
+             let comment: String = commentTextView.text
+             delegate?.getComment(comment: comment)
          }
+           
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

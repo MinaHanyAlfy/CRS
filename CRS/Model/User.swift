@@ -11,12 +11,15 @@ typealias ResponseString = String
 
 struct User {
     var name: String?
-    var id: String?
+    var idEncoded: String?
+    var idDecoded: String?
     var company: CompanyElement?
-    
-    init(name: String? = nil, id: String? = nil, company: CompanyElement? = nil) {
+    var level: String?
+    init(name: String? = nil, idEncoded: String? = nil, company: CompanyElement? = nil,level: String? = nil,idDecoded: String? = nil) {
         self.name = name
-        self.id = id
+        self.idEncoded = idEncoded
+        self.idDecoded = idDecoded
         self.company = company
+        self.level = level
     }
 }

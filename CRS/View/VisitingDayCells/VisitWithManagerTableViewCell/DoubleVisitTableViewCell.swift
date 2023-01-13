@@ -7,11 +7,14 @@
 
 import UIKit
 
+
+protocol DoubleVisitTableViewDelegate: AnyObject {
+   func getManagerDoubleVisit(manager: Manager)
+}
 class DoubleVisitTableViewCell: UITableViewCell {
     
-    
-    
     @IBOutlet weak var managersTextField: UITextField!
+    public weak var delegate: DoubleVisitTableViewDelegate?
     private var pickerView = UIPickerView()
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +38,7 @@ class DoubleVisitTableViewCell: UITableViewCell {
 extension DoubleVisitTableViewCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         managersTextField.text = managers[row].name ?? "Unknown"
+        delegate?.getManagerDoubleVisit(manager: managers[row])
     }
 }
 

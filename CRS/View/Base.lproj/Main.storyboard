@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Map view configurations" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,40 +19,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="tkL-jk-SBC">
-                                <rect key="frame" x="-3" y="-3" width="415" height="899"/>
+                                <rect key="frame" x="-3" y="0.0" width="415" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="riq-s1-j0f">
-                                        <rect key="frame" x="20" y="172" width="375" height="613"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="riq-s1-j0f">
+                                        <rect key="frame" x="20" y="168" width="375" height="614"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="lIa-JS-ASD">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Department" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="BpR-88-H6x">
-                                                <rect key="frame" x="0.0" y="102" width="375" height="102.5"/>
+                                                <rect key="frame" x="0.0" y="124.5" width="375" height="116.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LSh-Bg-YZ5">
-                                                <rect key="frame" x="0.0" y="204.5" width="375" height="102"/>
+                                                <rect key="frame" x="0.0" y="249" width="375" height="116"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSN-Ed-WlL" customClass="GMSMapView">
-                                                <rect key="frame" x="0.0" y="306.5" width="375" height="102"/>
+                                                <rect key="frame" x="0.0" y="373" width="375" height="116.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIu-oB-DLs">
-                                                <rect key="frame" x="0.0" y="408.5" width="375" height="102.5"/>
-                                                <hybridMapConfiguration key="preferredConfiguration"/>
-                                            </mapView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-wm-HtA">
-                                                <rect key="frame" x="0.0" y="511" width="375" height="102"/>
+                                                <rect key="frame" x="0.0" y="497.5" width="375" height="116.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -87,13 +82,12 @@
                         <outlet property="departmentLabel" destination="BpR-88-H6x" id="Y1t-oU-3NT"/>
                         <outlet property="locationLabel" destination="LSh-Bg-YZ5" id="e2e-v7-TR6"/>
                         <outlet property="mapView" destination="jSN-Ed-WlL" id="HmD-nk-xwS"/>
-                        <outlet property="mkMapView" destination="XIu-oB-DLs" id="Iev-0w-25Q"/>
                         <outlet property="numberLabel" destination="YXL-wm-HtA" id="dj7-YO-oIG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ko6-J8-LSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2364" y="-142"/>
+            <point key="canvasLocation" x="2405.7971014492755" y="-142.63392857142856"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="oET-J3-Vta">
@@ -159,7 +153,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mbJ-pm-zep"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qle-73-EyY">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -180,7 +174,7 @@
                 <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="gvT-uQ-cj3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CdA-I7-653">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -194,8 +188,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle.fill" catalog="system" width="128" height="123"/>
-        <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <namedColor name="bluePrimary">
             <color red="0.067000001668930054" green="0.14100000262260437" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

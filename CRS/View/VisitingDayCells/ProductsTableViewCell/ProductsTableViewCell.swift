@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+protocol ProductsTableViewDelegate: AnyObject {
+    func getFirstProduct(product: Product)
+    func getSecondProduct(product: Product)
+    func getThirdProduct(product: Product)
+    func getFourthProduct(product: Product)
+}
 class ProductsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var fourthProductTextField: UITextField!
@@ -16,10 +23,13 @@ class ProductsTableViewCell: UITableViewCell {
     
     
     private var products: Products = []
+    private var productsBack: Products = []
     private var firstPickerView = UIPickerView()
     private var secondPickerView = UIPickerView()
     private var thirdPickerView = UIPickerView()
     private var fourthPickerView = UIPickerView()
+    public weak var delegate: ProductsTableViewDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         products = CoreDataManager.shared.getProducts()
@@ -62,12 +72,16 @@ extension ProductsTableViewCell: UIPickerViewDelegate {
         switch pickerView {
         case firstPickerView:
             firstProductTextField.text = products[row].productName ?? "Unknown"
+            delegate?.getFirstProduct(product: products[row])
         case secondPickerView:
             secondProductTextField.text = products[row].productName ?? "Unknown"
+            delegate?.getSecondProduct(product: products[row])
         case thirdPickerView:
             thirdProductTextField.text = products[row].productName ?? "Unknown"
+            delegate?.getThirdProduct(product: products[row])
         case fourthPickerView:
             fourthProductTextField.text = products[row].productName ?? "Unknown"
+            delegate?.getFourthProduct(product: products[row])
         default:
             print("No Products added correct.")
         }

@@ -8,19 +8,6 @@
 import UIKit
 import CoreLocation
 
-enum AddVisitSections : Int{
-    case doctor = 0
-    case doubleVisit = 1
-    case product = 2
-    case pharmacy = 3
-    case comment = 4
-    case nextVisit = 5
-    case sendRequest = 6
-    case button = 7
-    
-}
-
-
 class AddViewController: UIViewController {
     let network = NetworkServiceMock.shared
     private let tableView :UITableView = {
@@ -41,6 +28,22 @@ class AddViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    private var planNextVisitDate: String = ""
+    private var planManager: Manager?
+    private var planMessage: String = ""
+    
+    private var customer: Customer?
+    private var account: Account?
+    private var keyPersons: Keys = []
+    private var pharmacies: Pharmacies = []
+    private var manager: Manager?
+    private var product_1: Product?
+    private var product_2: Product?
+    private var product_3: Product?
+    private var product_4: Product?
+    private var comment: String = ""
+    private var pharmacyComments: [String] = []
+    private var keyPersonsComments: [String] = []
     private var buttons = ["Next Visit","Send Request","Report","Cancel"]
     var isPm: Bool = false
     
@@ -91,16 +94,20 @@ extension AddViewController: UITableViewDataSource {
         case 0:
             if isPm {
                 let cell = tableView.dequeue(tableViewCell: DoctorTableViewCell.self , forIndexPath: indexPath)
+                cell.delegate = self
                 return cell
             } else {
                 let cell = tableView.dequeue(tableViewCell: AccountTableViewCell.self,forIndexPath: indexPath)
+                cell.delegate = self
                 return cell
             }
         case 1:
             let cell = tableView.dequeue(tableViewCell: DoubleVisitTableViewCell.self , forIndexPath: indexPath)
+                cell.delegate = self
             return cell
         case 2:
             let cell = tableView.dequeue(tableViewCell: ProductsTableViewCell.self , forIndexPath: indexPath)
+                cell.delegate = self
             return cell
         case 3:
             
@@ -108,17 +115,21 @@ extension AddViewController: UITableViewDataSource {
                 let cell = tableView.dequeue(tableViewCell: PharmaciesTableViewCell.self , forIndexPath: indexPath)
                 if let nav = navigationController {
                     cell.config(navigationController: nav)
+                    cell.delegate = self
                 }
                 return cell
             } else {
                 let cell = tableView.dequeue(tableViewCell: KeyPersonsTableViewCell.self, forIndexPath: indexPath)
                 if let nav = navigationController {
                     cell.config(navigationController: nav)
+                    cell.delegate = self
                 }
+                
                 return cell
             }
         case 4:
-           let cell = tableView.dequeue(tableViewCell: CommentTableViewCell.self , forIndexPath: indexPath)
+            let cell = tableView.dequeue(tableViewCell: CommentTableViewCell.self , forIndexPath: indexPath)
+            cell.delegate = self
             return cell
             
         default:
@@ -155,12 +166,75 @@ extension AddViewController: ButtonTableViewCellDelegate {
         print("Send request")
     }
     func reportAction() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date: String = dateFormatter.string(from: Date())
+        print("Next Visit ", date)
+        let user = CoreDataManager.shared.getUserInfo()
+        print("user ID: ", user.idDecoded, user.level)
         if isPm {
-//            network.getResultsStrings(APICase: API.addPMVisit(level: <#T##String#>, userId: <#T##String#>, manager_level: <#T##String#>, manager_id: <#T##String#>, product_1: <#T##String#>, product_2: <#T##String#>, product_3: <#T##String#>, product_4: <#T##String#>, customer_id: <#T##String#>, lat: <#T##String#>, long: <#T##String#>, comment: <#T##String#>, plan_date: <#T##String#>, recipient_level: <#T##String#>, recipient_id: <#T##String#>, message: <#T##String#>, visiting_day_date: <#T##String#>, p_ids: <#T##String#>, p_names: <#T##String#>, p_addresses: <#T##String#>, p_phones: <#T##String#>, p_comments: <#T##String#>), decodingModel: <#T##(Decodable & Encodable).Protocol#>, completed: <#T##(Result<String, ErorrMessage>) -> Void#>)
+            
+            let pharmacyIDs: String = pharmacies.map { $0.pharmacyID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+            let pharmacyNames: String = pharmacies.map { $0.pharmacyName ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+            let pharmacyPhones: String = pharmacies.map { $0.phone ?? "Unavalible Phone" } .joined(separator: " | ")
+            let pharmacyAddresses: String = pharmacies.map { $0.address ?? "Unavalible Address" } .joined(separator: " | ")
+            guard let customer = self.customer else {
+                alertIssues(message: "Please update Customer field.")
+                return
+            }
+            guard let product = self.product_1 else {
+                alertIssues(message: "Please check at least 1 product.")
+                return
+            }
+            
+            
+            let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
+            network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idDecoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: date, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
+                switch response {
+                case .success(let message):
+                    DispatchQueue.main.async {
+                        if message == "Added" {
+                            self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                        }
+                    }
+                    print("Response: ",message)
+                case .failure(let error):
+                    self.alertIssues(message: error.localizedDescription)
+                }
+           
+            }
         } else {
-//            network.getResultsStrings(APICase: API.addAMVisit(level: <#T##String#>, userId: <#T##String#>, manager_level: <#T##String#>, manager_id: <#T##String#>, product_1: <#T##String#>, product_2: <#T##String#>, product_3: <#T##String#>, product_4: <#T##String#>, account_id: <#T##String#>, lat: <#T##String#>, long: <#T##String#>, comment: <#T##String#>, plan_date: <#T##String#>, recipient_level: <#T##String#>, recipient_id: <#T##String#>, message: <#T##String#>, visiting_day_date: <#T##String#>, k_ids: <#T##String#>, k_names: <#T##String#>, k_specialities: <#T##String#>, k_mobiles: <#T##String#>, k_comments: <#T##String#>), decodingModel: <#T##(Decodable & Encodable).Protocol#>, completed: <#T##(Result<String, ErorrMessage>) -> Void#>)
+            guard let account = self.account else {
+                alertIssues(message: "Please update Account field.")
+                return
+            }
+            guard let product = self.product_1 else {
+                alertIssues(message: "Please check at least 1 product.")
+                return
+            }
+            let keyPerIDs: String = keyPersons.map { $0.keyPersonID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+            let keyPerNames: String = keyPersons.map { $0.keyPersonName ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+            let keyPerMobiles: String = keyPersons.map { $0.mobile ?? "Unavalible Phone" } .joined(separator: " | ")
+            let keyPerSpecial: String = keyPersons.map { $0.specialityName ?? "Unavalible Address" } .joined(separator: " | ")
+            let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
+            
+            network.getResultsStrings(APICase: .addAMVisit(level: user.level!, userId: user.idDecoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, account_id: account.accountID, lat: account.accountLatitude, long: account.accountLongitude, comment: comment, plan_date: date, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, k_ids: keyPerIDs, k_names: keyPerNames , k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { response in
+                switch response {
+                case .success(let message):
+                    print("Response: ",message)
+                    if message == "Added" {
+                        self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                    }
+                case .failure(let error):
+                    self.alertIssues(message: error.localizedDescription)
+                }
+           
+            }
+            
         }
-        
+            
         
         print("Report")
     }
@@ -172,11 +246,11 @@ extension AddViewController: ButtonTableViewCellDelegate {
             /*RequestQueue queue = Volley.newRequestQueue(NewPMVisitActivity.this);
              String ApplicationURL = S_Pref.getString("ApplicationURL", "");
              String store_customer_location_url = ApplicationURL + "" +
-                     "?customer_id="+customer_id+
-                     "&lat="+current_latitude+
-                     "&long="+current_longitude+
-                     "&store_customer_location=x";
-
+             "?customer_id="+customer_id+
+             "&lat="+current_latitude+
+             "&long="+current_longitude+
+             "&store_customer_location=x";
+             
              StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, store_customer_location_url, storeCustomerLocationResponseListener, ErrorListener);
              queue.add(stringRequest);*/
             print(location)
@@ -200,12 +274,88 @@ extension AddViewController: ButtonTableViewCellDelegate {
 extension AddViewController: AddNextVisitDelegate {
     func nextVisitTime(date: String) {
         print("Success Date: ", date)
+        self.planNextVisitDate = date
     }
 }
 
-//MARK: - AddSend
+//MARK: - AddSendRequestVisitDelegate
 extension AddViewController: AddSendRequestVisitDelegate {
     func addDoubleVisitRequest(manager: Manager, message: String) {
         print("Manager: ",manager ,"-", message)
+        self.planManager = manager
+        self.planMessage = message
+    }
+}
+
+//MARK: - DoctorTableViewDelegate
+extension AddViewController: DoctorTableViewDelegate {
+    func getCustomer(customer: Customer) {
+        print("Doctor ", customer)
+        self.customer = customer
+    }
+}
+
+//MARK: - AccountTableViewDelegate
+extension AddViewController: AccountTableViewDelegate {
+    func getAccount(account: Account) {
+        print("Account ", account)
+        self.account = account
+    }
+}
+
+//MARK: - CommentTableViewDelegate
+extension AddViewController: CommentTableViewDelegate {
+    func getComment(comment: String) {
+        print("Comment, ", comment)
+        self.comment = comment
+    }
+}
+
+//MARK: - CommentTableViewDelegate
+extension AddViewController: DoubleVisitTableViewDelegate {
+    func getManagerDoubleVisit(manager: Manager) {
+        print("Manager, ", manager)
+        self.manager = manager
+    }
+}
+
+//MARK: - KeyPersonsTableViewDelegate
+extension AddViewController: KeyPersonsTableViewDelegate {
+    func getKeyPersons(keyPersons: Keys,comments: [String]) {
+        print("KeyPersons, ", keyPersons)
+        self.keyPersons = keyPersons
+        self.keyPersonsComments = comments
+    }
+}
+
+//MARK: - PharmaciesTableViewDelegate
+extension AddViewController: PharmaciesTableViewDelegate {
+    func getPharmacies(pharmacies: Pharmacies,comments: [String]) {
+        print("Pharmacies, ", pharmacies)
+        self.pharmacies = pharmacies
+        self.pharmacyComments = comments
+    }
+}
+
+//MARK: - ProductsTableViewDelegate
+extension AddViewController: ProductsTableViewDelegate {
+    func getFirstProduct(product: Product) {
+        print("First Product, ", product)
+        self.product_1 = product
+    }
+    
+    func getSecondProduct(product: Product) {
+        print("Second Product, ", product)
+        self.product_2 = product
+    }
+    
+    func getThirdProduct(product: Product) {
+        print("Third Product, ", product)
+        self.product_3 = product
+    }
+    
+    func getFourthProduct(product: Product) {
+        print("Fourth Product, ", product)
+        self.product_4 = product
     }
 }

@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol KeyPersonsTableViewDelegate: AnyObject {
+    func getKeyPersons(keyPersons: Keys,comments: [String])
+}
 class KeyPersonsTableViewCell: UITableViewCell {
 
     
@@ -14,7 +17,8 @@ class KeyPersonsTableViewCell: UITableViewCell {
     @IBOutlet weak var tableView: UITableView!
     private var keyPersons: Keys = []
     private var navigationController: UINavigationController?
-    
+    public weak var delegate: KeyPersonsTableViewDelegate?
+    private var comments: [String] = []
     override func awakeFromNib() {
         super.awakeFromNib()
         addKeyPersonButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
@@ -47,9 +51,11 @@ class KeyPersonsTableViewCell: UITableViewCell {
         navigationController?.present(vc, animated: true)
         
     }
-    private func addKeyPerson(keyPerson: Key) {
+    private func addKeyPerson(keyPerson: Key,comment: String) {
         self.keyPersons.append(keyPerson)
+        self.comments.append(comment)
         tableView.reloadData()
+        delegate?.getKeyPersons(keyPersons: self.keyPersons,comments: comments)
     }
     
 }
@@ -57,7 +63,7 @@ class KeyPersonsTableViewCell: UITableViewCell {
 //MARK: - AddPharmacyViewDelegate
 extension KeyPersonsTableViewCell : AddKeyPersonViewrDelegate {
     func addKeyPersonObject(keyPerson: Key, comment: String) {
-        addKeyPerson(keyPerson: keyPerson)
+        addKeyPerson(keyPerson: keyPerson,comment: comment)
     }
 }
 

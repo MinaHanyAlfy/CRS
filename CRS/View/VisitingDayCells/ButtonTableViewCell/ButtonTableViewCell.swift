@@ -59,7 +59,8 @@ class ButtonTableViewCell: UITableViewCell {
          if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() ==  .authorizedAlways {
              currentLocation = locManager.location
-             delegate?.reportAction(location: currentLocation)
+             delegate?.reportAction()
+//             delegate?.reportAction(location: currentLocation)
          }else {
              delegate?.reportAction()
          }

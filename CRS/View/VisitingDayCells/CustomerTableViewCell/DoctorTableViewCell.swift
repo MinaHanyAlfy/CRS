@@ -7,17 +7,20 @@
 
 import UIKit
 
+protocol DoctorTableViewDelegate: AnyObject {
+    func getCustomer(customer: Customer)
+}
 class DoctorTableViewCell: UITableViewCell {
-    
     
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var rxPotLabel: UILabel!
     @IBOutlet weak var potLabel: UILabel!
     @IBOutlet weak var spLabel: UILabel!
     @IBOutlet weak var doctorTextField: UITextField!
-    
+    public weak var delegate: DoctorTableViewDelegate?
     private var customer: Customer?
     private var customers: Customers = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         doctorTextField.delegate = self
@@ -33,6 +36,7 @@ class DoctorTableViewCell: UITableViewCell {
     @objc private func mapAction (){
         guard let customer = customer else { return }
         openGoogleMap(long: customer.customerLongitude ?? "0.0", lat: customer.customerLatitude ?? "0.0")
+        
     }
     func openGoogleMap(long: String,lat: String) {
         if long != "0.0" && lat != "0.0"{
@@ -54,6 +58,7 @@ class DoctorTableViewCell: UITableViewCell {
         spLabel.text = customer.specialityName
         potLabel.text = customer.customerPotential
         rxPotLabel.text = customer.customerPrescription
+        delegate?.getCustomer(customer: customer)
     }
 }
 
@@ -88,7 +93,4 @@ extension DoctorTableViewCell: UITextFieldDelegate{
             handleCellView()
             return true
     }
-    
-    
-    
 }

@@ -36,7 +36,9 @@ class AddNextVisitViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let date: String = dateFormatter.string(from: datePickerView.date)
+        
         print("Next Visit ", date)
         delegate?.nextVisitTime(date: date)
         self.dismiss(animated: true, completion: nil)

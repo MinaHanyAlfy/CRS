@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol PharmaciesTableViewDelegate: AnyObject {
+    func getPharmacies(pharmacies: Pharmacies,comments: [String])
+}
 class PharmaciesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addPharmacyButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     private var pharmacies: Pharmacies = []
+    private var comments: [String] = []
     private var navigationController: UINavigationController?
+    public weak var delegate: PharmaciesTableViewDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         addPharmacyButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
@@ -44,16 +50,19 @@ class PharmaciesTableViewCell: UITableViewCell {
         navigationController?.present(vc, animated: true)
         
     }
-    private func addPharmacy(pharmacy: Pharmacy) {
+    private func addPharmacy(pharmacy: Pharmacy,comment: String) {
         self.pharmacies.append(pharmacy)
+        self.comments.append(comment)
         tableView.reloadData()
+        delegate?.getPharmacies(pharmacies: pharmacies, comments: comments)
     }
 }
 
 //MARK: - AddPharmacyViewDelegate
 extension PharmaciesTableViewCell : AddPharmacyViewDelegate {
     func addPharmacyObject(pharmacy: Pharmacy, comment: String) {
-        addPharmacy(pharmacy: pharmacy)
+        addPharmacy(pharmacy: pharmacy,comment: comment)
+        
     }
 }
 

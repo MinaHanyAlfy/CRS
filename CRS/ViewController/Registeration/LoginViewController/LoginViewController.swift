@@ -105,6 +105,7 @@ class LoginViewController: UIViewController {
             switch response {
             case .success(let data):
                 self.userId = data
+                print("USER ID: ", self.userId)
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
 
@@ -249,6 +250,7 @@ extension LoginViewController {
         
         dispatchGroup.notify(queue: .main){ [self] in
             guard let company = company?.first else { return }
+           
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                       
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
@@ -257,7 +259,12 @@ extension LoginViewController {
             let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
             navigationController.modalPresentationStyle = .fullScreen
             navigationController.pushViewController(initialViewController, animated: false)
-            CoreDataManager.shared.saveUserInfo(user: User(name: self.username,id: userId, company: CompanyElement(serial: company.serial, name: company.name, pass: company.pass, title: company.title, address: company.address, latitude: company.latitude, longitude: company.longitude, tel: company.tel, retrospectiveReport: company.retrospectiveReport)))
+            var decodedString = ""
+            
+            if let decodedData = Data(base64Encoded: userId ?? "") {
+                decodedString = String(data: decodedData, encoding: .utf8)!
+            }
+            CoreDataManager.shared.saveUserInfo(user: User(name: self.username, idEncoded: userId, company: CompanyElement(serial: company.serial, name: company.name, pass: company.pass, title: company.title, address: company.address, latitude: company.latitude, longitude: company.longitude, tel: company.tel, retrospectiveReport: company.retrospectiveReport), level: levelName, idDecoded: decodedString))
             self.present(navigationController, animated: true)
         }
     }

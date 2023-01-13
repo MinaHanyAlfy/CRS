@@ -7,9 +7,12 @@
 
 import UIKit
 
+protocol AccountTableViewDelegate: AnyObject {
+    func getAccount(account: Account)
+}
 class AccountTableViewCell: UITableViewCell {
 
-    
+    public weak var delegate: AccountTableViewDelegate?
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var rxPotLabel: UILabel!
     @IBOutlet weak var potLabel: UILabel!
@@ -36,6 +39,7 @@ class AccountTableViewCell: UITableViewCell {
     @objc private func mapAction (){
         guard let account = account else { return }
         openGoogleMap(long: account.accountLongitude ?? "0.0", lat: account.accountLatitude ?? "0.0")
+        
     }
     
     func openGoogleMap(long: String,lat: String) {
@@ -59,6 +63,7 @@ class AccountTableViewCell: UITableViewCell {
         spLabel.text = account.specialityName
         potLabel.text = account.accountPotential
         rxPotLabel.text = account.accountPrescription
+        delegate?.getAccount(account: account)
     }
 }
 //MARK: - UITextFieldDelegate
@@ -79,6 +84,7 @@ extension AccountTableViewCell: UITextFieldDelegate{
                 if (matches.count > 0) {
                     textField.text = matches[0].accountName
                     account = matches[0]
+                    
                     if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
                         textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
                         return true
@@ -90,6 +96,7 @@ extension AccountTableViewCell: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
             handleCellView()
+        
             return true
     }
     

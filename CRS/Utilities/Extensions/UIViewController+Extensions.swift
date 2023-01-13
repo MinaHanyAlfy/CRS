@@ -23,4 +23,12 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         self.present(alert, animated: true)
     }
+    
+    func alertSuccessAndDismissViewController(message: String) {
+        let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { alert in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true)
+    }
 }
