@@ -53,7 +53,7 @@ extension CommentTableViewCell: UITextViewDelegate {
              commentTextView.textColor = UIColor(named: "bluePrimary")
          } else {
              let comment: String = commentTextView.text
-             delegate?.getComment(comment: comment)
+             delegate?.getComment(comment: comment.toBase64())
          }
            
     }

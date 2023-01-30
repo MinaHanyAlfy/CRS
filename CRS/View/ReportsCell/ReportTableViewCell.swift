@@ -22,4 +22,8 @@ class ReportTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func cellConfig(report: Report) {
+        firstLabel.text = report.serial
+        secondLabel.text = report.accountName
+    }
 }

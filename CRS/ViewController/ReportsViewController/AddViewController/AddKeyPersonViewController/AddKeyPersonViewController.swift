@@ -52,14 +52,18 @@ class AddKeyPersonViewController: UIViewController {
         
         if let keyPerson = keyPerson {
             let comment = commentTextField.text ?? ""
+            print("comment Decoded: ", comment.toBase64())
             delegate?.addKeyPersonObject(keyPerson: keyPerson, comment: comment)
             self.dismiss(animated: true, completion: nil)
         } else {
             if ( keyPersonNameTextField.text != nil && keyPersonNameTextField.text != "" ) &&
                 ( phoneTextField.text != nil && phoneTextField.text != "" ) &&
                 ( specTextField.text != nil && specTextField.text != "" ) {
-                let keyPerson = Key(keyPersonID: "", keyPersonName: keyPersonNameTextField.text, specialityName: specTextField.text, mobile: phoneTextField.text, accountID: "")
+                let keyPersonName = keyPersonNameTextField.text
+                let keyPersonSpec = specTextField.text
+                let keyPersonPhone = phoneTextField.text
                 let comment = commentTextField.text ?? ""
+                let keyPerson = Key(keyPersonID: "", keyPersonName: keyPersonName, specialityName: keyPersonSpec, mobile: keyPersonPhone, accountID: "")
                 delegate?.addKeyPersonObject(keyPerson: keyPerson, comment: comment)
                 self.dismiss(animated: true, completion: nil)
             }

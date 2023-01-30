@@ -14,8 +14,63 @@ class SideMenuTableViewCell: UITableViewCell {
     
     private let labelsArray = ["Home","AM Reports","PM Reports","Accounts","Customers","Prospection Tool","Refresh"]
     private let imagesArray = ["house.fill","sun.max.fill","moon.stars.fill","building.2.fill","person.3.fill","wifi.exclamationmark","repeat"]
-    let cdManager = CoreDataManager.shared
+    let coreData = CoreDataManager.shared
+    let network = NetworkService.shared
     
+    private var products : Products?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let products = products else { return }
+                coreData.saveProducts(products: products)
+            }
+        }
+    }
+    private var managers: Managers?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let managers = managers else { return }
+                coreData.saveManagers(managers: managers)
+            }
+        }
+    }
+    private var customers: Customers?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let customers = customers else { return }
+                coreData.saveCustomers(customers: customers)
+            }
+        }
+    }
+    private var accounts: Accounts?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let accounts = accounts else { return }
+                coreData.saveAccounts(accounts: accounts)
+            }
+        }
+    }
+    private var keys: Keys?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let keys = keys else { return }
+                coreData.saveKeys(keys: keys)
+            }
+        }
+    }
+    private var pharmacies: Pharmacies?{
+        didSet {
+            DispatchQueue.main.async {
+                [self] in
+                guard let pharmacies = pharmacies else { return }
+                coreData.savePharmacy(pharmacies: pharmacies)
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         sideMenuImageView.tintColor = UIColor(named: "bluePrimary")
@@ -63,16 +118,104 @@ class SideMenuTableViewCell: UITableViewCell {
                 let proToolVc = ProspectionToolViewController()
                 navigationController.pushViewController(proToolVc, animated: true)
             default:
-                let refreshVc = RefreshViewController()
-                navigationController.pushViewController(refreshVc, animated: true)
+                coreData.clearAllWithoutUserInfo()
+                callingAPI(navigationController: navigationController,viewController: viewController)
+                //                let refreshVc = RefreshViewController()
+//                navigationController.pushViewController(refreshVc, animated: true)
             }
         } else {
             let logOutVc = AuthenticationViewController()
-            cdManager.clearAll()
+            coreData.clearAll()
             logOutVc.modalPresentationStyle = .fullScreen
             viewController.present(logOutVc, animated: true)
         }
         
     }
     
+}
+
+extension SideMenuTableViewCell {
+    func callingAPI(navigationController: UINavigationController,viewController: UIViewController){
+        let user = coreData.getUserInfo()
+        guard let level = user.level else {return}
+        guard let id = user.idEncoded else {return}
+        //Sameh Comapny
+        let dispatchGroup = DispatchGroup()
+        //To get products
+        dispatchGroup.enter()
+        NetworkService.shared.getResults(APICase: .getProducts(level: level, userId: id), decodingModel: Products.self) { response in
+            switch response {
+            case .success(let data):
+                self.products = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                viewController.alertIssues(message: error.localizedDescription)
+            }
+        }
+        //To get managers
+        dispatchGroup.enter()
+        NetworkService.shared.getResults(APICase: .getManagers(level: level, userId: id), decodingModel: Managers.self) { response in
+            switch response {
+            case .success(let data):
+                self.managers = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                viewController.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        //To get Customers
+        dispatchGroup.enter()
+        NetworkService.shared.getResults(APICase: .getCustomers(level: level, userId: id), decodingModel: Customers.self) { response in
+            switch response {
+            case .success(let data):
+                self.customers = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                viewController.alertIssues(message: error.localizedDescription)
+            }
+        }
+        //To get Accounts
+        dispatchGroup.enter()
+        NetworkService.shared.getResults(APICase: .getAccounts(level: level, userId: id), decodingModel: Accounts.self) { response in
+            switch response {
+            case .success(let data):
+                self.accounts = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                viewController.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        //To get Keys
+        dispatchGroup.enter()
+        NetworkService.shared.getResults(APICase: .getKeys(level: level, userId: id), decodingModel: Keys.self) { response in
+            switch response {
+            case .success(let data):
+                self.keys = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                viewController.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        //To get Pharmacies
+        dispatchGroup.enter()
+        NetworkService.shared.getResults(APICase: .getPharmacies(level: level, userId: id), decodingModel: Pharmacies.self) { response in
+            switch response {
+            case .success(let data):
+                self.pharmacies = data
+                dispatchGroup.leave()
+            case .failure(let error):
+                viewController.alertIssues(message: error.localizedDescription)
+            }
+        }
+        
+        
+        dispatchGroup.notify(queue: .main){ [self] in
+            print("All Data received successfully!")
+            viewController.alertSuccessAndDismissViewController(message: "Your data loaded successfully!")
+
+        }
+    }
 }

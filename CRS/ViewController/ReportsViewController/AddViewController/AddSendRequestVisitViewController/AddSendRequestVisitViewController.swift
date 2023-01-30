@@ -65,10 +65,10 @@ class AddSendRequestVisitViewController: UIViewController {
             return
         }
         if msgTextView.text == "Write your message." {
-        delegate?.addDoubleVisitRequest(manager: manager, message: "")
+            delegate?.addDoubleVisitRequest(manager: manager, message: "".toBase64())
         } else {
             let message = msgTextView.text ?? ""
-            delegate?.addDoubleVisitRequest(manager: manager, message: message)
+            delegate?.addDoubleVisitRequest(manager: manager, message: message.toBase64())
         }
         self.dismiss(animated: true, completion: nil)
     }

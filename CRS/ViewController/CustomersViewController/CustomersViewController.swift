@@ -43,6 +43,9 @@ class CustomersViewController: UIViewController {
     private func fetchCustomers () {
         let coreData = CoreDataManager.shared
         customers = coreData.getCustomers()
+        if customers?.count == 0 {
+            tableView.setEmptyView(title: "You don't have any customer.", message: "Refresh to add Customers.")
+        }
     }
     
     override func viewDidLayoutSubviews() {

@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
         self.password = password
         
         //To get ID
-        NetworkServiceMock.shared.getResultsStrings(APICase: .userLoginID(name: username, password: password, level: levelName), decodingModel: ResponseString.self) { response in
+        NetworkService.shared.getResultsStrings(APICase: .userLoginID(name: username, password: password, level: levelName), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let data):
                 self.userId = data
@@ -163,11 +163,11 @@ extension LoginViewController: UITextFieldDelegate {
 
 //MARK: - Calling API NETWORK AFTER LOGIN
 extension LoginViewController {
-    private func callingAPI(username: String,password: String,level: String){
+    func callingAPI(username: String,password: String,level: String){
         //Sameh Comapny
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        NetworkServiceMock.shared.getResults(APICase: .companyAuth(company: username, password: password, level: level), decodingModel: Company.self, completed: { response in
+        NetworkService.shared.getResults(APICase: .companyAuth(company: username, password: password, level: level), decodingModel: Company.self, completed: { response in
             switch response {
             case .success(let data):
                 self.company = data
@@ -179,7 +179,7 @@ extension LoginViewController {
         //To get products
         dispatchGroup.enter()
         guard let id = userId else { return }
-        NetworkServiceMock.shared.getResults(APICase: .getProducts(level: level, userId: id), decodingModel: Products.self) { response in
+        NetworkService.shared.getResults(APICase: .getProducts(level: level, userId: id), decodingModel: Products.self) { response in
             switch response {
             case .success(let data):
                 self.products = data
@@ -190,7 +190,7 @@ extension LoginViewController {
         }
         //To get managers
         dispatchGroup.enter()
-        NetworkServiceMock.shared.getResults(APICase: .getManagers(level: level, userId: id), decodingModel: Managers.self) { response in
+        NetworkService.shared.getResults(APICase: .getManagers(level: level, userId: id), decodingModel: Managers.self) { response in
             switch response {
             case .success(let data):
                 self.managers = data
@@ -202,7 +202,7 @@ extension LoginViewController {
         
         //To get Customers
         dispatchGroup.enter()
-        NetworkServiceMock.shared.getResults(APICase: .getCustomers(level: level, userId: id), decodingModel: Customers.self) { response in
+        NetworkService.shared.getResults(APICase: .getCustomers(level: level, userId: id), decodingModel: Customers.self) { response in
             switch response {
             case .success(let data):
                 self.customers = data
@@ -213,7 +213,7 @@ extension LoginViewController {
         }
         //To get Accounts
         dispatchGroup.enter()
-        NetworkServiceMock.shared.getResults(APICase: .getAccounts(level: level, userId: id), decodingModel: Accounts.self) { response in
+        NetworkService.shared.getResults(APICase: .getAccounts(level: level, userId: id), decodingModel: Accounts.self) { response in
             switch response {
             case .success(let data):
                 self.accounts = data
@@ -225,7 +225,7 @@ extension LoginViewController {
         
         //To get Keys
         dispatchGroup.enter()
-        NetworkServiceMock.shared.getResults(APICase: .getKeys(level: level, userId: id), decodingModel: Keys.self) { response in
+        NetworkService.shared.getResults(APICase: .getKeys(level: level, userId: id), decodingModel: Keys.self) { response in
             switch response {
             case .success(let data):
                 self.keys = data
@@ -237,7 +237,7 @@ extension LoginViewController {
         
         //To get Pharmacies
         dispatchGroup.enter()
-        NetworkServiceMock.shared.getResults(APICase: .getPharmacies(level: level, userId: id), decodingModel: Pharmacies.self) { response in
+        NetworkService.shared.getResults(APICase: .getPharmacies(level: level, userId: id), decodingModel: Pharmacies.self) { response in
             switch response {
             case .success(let data):
                 self.pharmacies = data
@@ -268,9 +268,5 @@ extension LoginViewController {
             self.present(navigationController, animated: true)
         }
     }
-    
-    
-    
-    
 }
 

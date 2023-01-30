@@ -1,9 +1,10 @@
 PODS:
   - Alamofire (5.6.4)
-  - GoogleMaps (5.2.0):
-    - GoogleMaps/Maps (= 5.2.0)
-  - GoogleMaps/Base (5.2.0)
-  - GoogleMaps/Maps (5.2.0):
+  - EmptyStateKit (1.1.0)
+  - GoogleMaps (7.2.0):
+    - GoogleMaps/Maps (= 7.2.0)
+  - GoogleMaps/Base (7.2.0)
+  - GoogleMaps/Maps (7.2.0):
     - GoogleMaps/Base
   - IQKeyboardManager (6.5.10)
   - KDCircularProgress (1.5.4)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.6.4)
+  - EmptyStateKit (~> 1.1.0)
   - GoogleMaps
   - IQKeyboardManager (~> 6.5.10)
   - KDCircularProgress (~> 1.5.4)
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - EmptyStateKit
     - GoogleMaps
     - IQKeyboardManager
     - KDCircularProgress
@@ -26,11 +29,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  GoogleMaps: 025272d5876d3b32604e5c080dc25eaf68764693
+  EmptyStateKit: dc41e9ce5c6089f67a49d063bce73ade9f2ba73f
+  GoogleMaps: 65ce5426e2398bb81433c8076f2ab6419c2c5537
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
   KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 281837bf04b66ca5f1a98ed24aa7e8e0fc6cf688
+PODFILE CHECKSUM: e3e94860c736872f073cbb1ddb99710e3baf9a3c
 
 COCOAPODS: 1.11.3

@@ -67,6 +67,9 @@ class AccountsViewController: UIViewController {
     private func fetchAccounts () {
         let coreData = CoreDataManager.shared
         accounts = coreData.getAccounts()
+        if accounts?.count == 0 {
+            tableView.setEmptyView(title: "You don't have any account.", message: "Refresh to add Accounts.")
+        }
     }
 }
 //MARK: - UISearchResultsUpdating

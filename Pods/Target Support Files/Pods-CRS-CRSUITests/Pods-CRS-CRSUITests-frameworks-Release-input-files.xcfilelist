@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/EmptyStateKit/EmptyStateKit.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/KDCircularProgress/KDCircularProgress.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework

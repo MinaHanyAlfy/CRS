@@ -9,9 +9,9 @@ import Foundation
 import Alamofire
 
 
-class NetworkServiceMock {
+class NetworkService {
     
-    static let shared = NetworkServiceMock()
+    static let shared = NetworkService()
     
    func getResultsStrings<M: Codable>(APICase: API,decodingModel: M.Type, completed: @escaping (Result<String,ErorrMessage> ) -> Void) {
         var request : URLRequest = APICase.request

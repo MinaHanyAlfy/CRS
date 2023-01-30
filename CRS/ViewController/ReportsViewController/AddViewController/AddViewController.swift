@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 class AddViewController: UIViewController {
-    let network = NetworkServiceMock.shared
+    let network = NetworkService.shared
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.estimatedRowHeight = 200
@@ -35,15 +35,19 @@ class AddViewController: UIViewController {
     private var customer: Customer?
     private var account: Account?
     private var keyPersons: Keys = []
+    private var encodedKeyPersons: Keys = []
     private var pharmacies: Pharmacies = []
+    private var encodedPharmacies: Pharmacies = []
     private var manager: Manager?
     private var product_1: Product?
     private var product_2: Product?
     private var product_3: Product?
     private var product_4: Product?
     private var comment: String = ""
+    
     private var pharmacyComments: [String] = []
     private var keyPersonsComments: [String] = []
+    
     private var buttons = ["Next Visit","Send Request","Report","Cancel"]
     var isPm: Bool = false
     
@@ -57,6 +61,14 @@ class AddViewController: UIViewController {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isPm {
+            title = "PM Visiting Day"
+        } else {
+            title = "AM Visiting Day"
+        }
+    }
     
     private func setupNavigation() {
         title = "Adding New Visit"
@@ -69,6 +81,14 @@ class AddViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+    }
+    
+    private func todayDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: Date())
     }
 }
 
@@ -103,11 +123,11 @@ extension AddViewController: UITableViewDataSource {
             }
         case 1:
             let cell = tableView.dequeue(tableViewCell: DoubleVisitTableViewCell.self , forIndexPath: indexPath)
-                cell.delegate = self
+            cell.delegate = self
             return cell
         case 2:
             let cell = tableView.dequeue(tableViewCell: ProductsTableViewCell.self , forIndexPath: indexPath)
-                cell.delegate = self
+            cell.delegate = self
             return cell
         case 3:
             
@@ -166,75 +186,21 @@ extension AddViewController: ButtonTableViewCellDelegate {
         print("Send request")
     }
     func reportAction() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.none
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date: String = dateFormatter.string(from: Date())
-        print("Next Visit ", date)
+        let date: String = todayDate()
+        print("Success Date ", date)
         let user = CoreDataManager.shared.getUserInfo()
         print("user ID: ", user.idDecoded, user.level)
-        if isPm {
-            
-            let pharmacyIDs: String = pharmacies.map { $0.pharmacyID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
-            let pharmacyNames: String = pharmacies.map { $0.pharmacyName ?? "Unavalible Pharmacy" } .joined(separator: " | ")
-            let pharmacyPhones: String = pharmacies.map { $0.phone ?? "Unavalible Phone" } .joined(separator: " | ")
-            let pharmacyAddresses: String = pharmacies.map { $0.address ?? "Unavalible Address" } .joined(separator: " | ")
-            guard let customer = self.customer else {
-                alertIssues(message: "Please update Customer field.")
-                return
+        if manager?.id != nil {
+            if planNextVisitDate == "" {
+                alertIssues(message: "Please choose the next visiting day ")
             }
-            guard let product = self.product_1 else {
-                alertIssues(message: "Please check at least 1 product.")
-                return
-            }
-            
-            
-            let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
-            network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idDecoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: date, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
-                switch response {
-                case .success(let message):
-                    DispatchQueue.main.async {
-                        if message == "Added" {
-                            self.alertSuccessAndDismissViewController(message: "Report added successfully")
-                        }
-                    }
-                    print("Response: ",message)
-                case .failure(let error):
-                    self.alertIssues(message: error.localizedDescription)
-                }
-           
-            }
-        } else {
-            guard let account = self.account else {
-                alertIssues(message: "Please update Account field.")
-                return
-            }
-            guard let product = self.product_1 else {
-                alertIssues(message: "Please check at least 1 product.")
-                return
-            }
-            let keyPerIDs: String = keyPersons.map { $0.keyPersonID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
-            let keyPerNames: String = keyPersons.map { $0.keyPersonName ?? "Unavalible Pharmacy" } .joined(separator: " | ")
-            let keyPerMobiles: String = keyPersons.map { $0.mobile ?? "Unavalible Phone" } .joined(separator: " | ")
-            let keyPerSpecial: String = keyPersons.map { $0.specialityName ?? "Unavalible Address" } .joined(separator: " | ")
-            let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
-            
-            network.getResultsStrings(APICase: .addAMVisit(level: user.level!, userId: user.idDecoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, account_id: account.accountID, lat: account.accountLatitude, long: account.accountLongitude, comment: comment, plan_date: date, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, k_ids: keyPerIDs, k_names: keyPerNames , k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { response in
-                switch response {
-                case .success(let message):
-                    print("Response: ",message)
-                    if message == "Added" {
-                        self.alertSuccessAndDismissViewController(message: "Report added successfully")
-                    }
-                case .failure(let error):
-                    self.alertIssues(message: error.localizedDescription)
-                }
-           
-            }
-            
         }
-            
+        if isPm {
+            sendPMReports(user: user,sendingDate: date)
+        } else {
+            sendAMReports(user: user, sendingDate: date)
+        }
+        
         
         print("Report")
     }
@@ -269,6 +235,68 @@ extension AddViewController: ButtonTableViewCellDelegate {
         self.navigationController?.popViewController(animated: true)
     }
 }
+//MARK: - SendingReports
+extension AddViewController {
+    private func sendPMReports(user: User,sendingDate: String) {
+        let pharmacyIDs: String = pharmacies.map { $0.pharmacyID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let pharmacyNames: String = pharmacies.map { $0.pharmacyName?.toBase64() ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let pharmacyPhones: String = pharmacies.map { $0.phone?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
+        let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
+        guard let customer = self.customer else {
+            alertIssues(message: "Please update Customer field.")
+            return
+        }
+        guard let product = self.product_1 else {
+            alertIssues(message: "Please check at least 1 product.")
+            return
+        }
+        
+        
+        let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
+        network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: sendingDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
+            switch response {
+            case .success(let message):
+                DispatchQueue.main.async {
+                    if message == "Added" {
+                        self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                    }
+                }
+                print("Response: ",message)
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func sendAMReports(user: User,sendingDate: String) {
+        guard let account = self.account else {
+            alertIssues(message: "Please update Account field.")
+            return
+        }
+        guard let product = self.product_1 else {
+            alertIssues(message: "Please check at least 1 product.")
+            return
+        }
+        let keyPerIDs: String = keyPersons.map { $0.keyPersonID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let keyPerNames: String = keyPersons.map { $0.keyPersonName?.toBase64() ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let keyPerMobiles: String = keyPersons.map { $0.mobile?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
+        let keyPerSpecial: String = keyPersons.map { $0.specialityName?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
+        let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
+        
+        network.getResultsStrings(APICase: .addAMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "0", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, account_id: account.accountID, lat: account.accountLatitude, long: account.accountLongitude, comment: comment, plan_date: sendingDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, k_ids: keyPerIDs, k_names: keyPerNames , k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { response in
+            switch response {
+            case .success(let message):
+                print("Response: ",message)
+                if message == "Added" {
+                    self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                }
+            case .failure(let error):
+                self.alertIssues(message: error.localizedDescription)
+            }
+        }
+    }
+}
+
 
 //MARK: - AddNextVisitDelegate
 extension AddViewController: AddNextVisitDelegate {

@@ -6,18 +6,31 @@
 //
 
 import UIKit
+import EmptyStateKit
 
 class ReportsViewController: UIViewController {
 
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     @IBOutlet weak var timeVisitsLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     private var comments : [String] = []
+    private var reports: Reports = []{
+        didSet {
+            DispatchQueue.main.async { [self] in
+                if reports.count > 0 && reports[0].serial != "NONE"  {
+                    tableView.reloadData()
+                } else {
+                    tableView.setEmptyView(title: "You don't have any Visit.", message: "Check to add visit.")
+                }
+            }
+        }
+    }
     var isPM: Bool = false
     var timeVisit : String?{
         didSet{
@@ -26,26 +39,83 @@ class ReportsViewController: UIViewController {
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         buttonsAction()
         setupTableView()
-        tableView.registerCell(tableViewCell: ReportTableViewCell.self)
-        // Do any additional setup after loading the view.
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setUpViews()
+    }
     private func setupTableView() {
+        tableView.registerCell(tableViewCell: ReportTableViewCell.self)
+        if reports.count == 0 {
+            tableView.setEmptyView(title: "You don't have any Visit.", message: "Check to add visit.")
+        }
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableView.automaticDimension
     }
+    
+    private func setUpViews() {
+        datePicker.backgroundColor = .white
+        datePicker.clipsToBounds = true
+        datePicker.layer.cornerRadius = 12
+        if isPM {
+           title = "PM Reports"
+        } else {
+            title = "AM Reports"
+        }
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationItem.titleView?.tintColor = .white
+        let appearance = UINavigationBarAppearance()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .white
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+//        let appearance = UINavigationBarAppearance()
+//        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+//        navigationItem.standardAppearance = appearance
+        
+    }
+    
      private func buttonsAction() {
          sendButton.addTarget(self, action: #selector(sendAction), for: .touchUpInside)
          addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
-        
     }
-
-
+    
+    private func loadData() {
+        let coredata = CoreDataManager.shared
+        let user = coredata.getUserInfo()
+        let date = "".todayDate
+        if isPM {
+            NetworkService.shared.getResultsStrings(APICase: .readPMVisits(level: user.level ?? "" , userId: coredata.getUserInfo().idEncoded ?? "" , reportDate: date), decodingModel: Reports.self) { response in
+                switch response {
+                case .success(let reports):
+                    print("Reports: ",reports)
+                case .failure(let error):
+                    print("error: ",error)
+                }
+            }
+        } else {
+        
+        NetworkService.shared.getResultsStrings(APICase: .readPMVisits(level: user.level ?? "" , userId: coredata.getUserInfo().idEncoded ?? "", reportDate: date), decodingModel: Reports.self) { response in
+                switch response {
+                case .success(let reports):
+                    print("Reports: ",reports)
+                case .failure(let error):
+                    print("error: ",error)
+                }
+            }
+        }
+    }
+    
+    
 }
 
 //MARK: - Actions
@@ -63,9 +133,6 @@ extension ReportsViewController {
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
 }
 
 
@@ -92,4 +159,3 @@ extension ReportsViewController: UITableViewDelegate {
         print("Index: ", indexPath.row)
     }
 }
-

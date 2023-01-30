@@ -33,6 +33,15 @@ class CoreDataManager {
         clearProducts()
         clearCustomers()
     }
+    
+    func clearAllWithoutUserInfo() {
+        clearKeys()
+        clearAccounts()
+        clearManagers()
+        clearPharmacy()
+        clearProducts()
+        clearCustomers()
+    }
 }
 
 
@@ -76,6 +85,7 @@ extension CoreDataManager {
         return user
     }
     func isLogin() -> Bool {
-        return userDef.value(forKey: "id") != nil
+        return userDef.value(forKey: "idEncoded") != nil
+        
     }
 }

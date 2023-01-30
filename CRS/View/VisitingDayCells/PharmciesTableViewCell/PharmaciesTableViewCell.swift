@@ -61,6 +61,7 @@ class PharmaciesTableViewCell: UITableViewCell {
 //MARK: - AddPharmacyViewDelegate
 extension PharmaciesTableViewCell : AddPharmacyViewDelegate {
     func addPharmacyObject(pharmacy: Pharmacy, comment: String) {
+        
         addPharmacy(pharmacy: pharmacy,comment: comment)
         
     }

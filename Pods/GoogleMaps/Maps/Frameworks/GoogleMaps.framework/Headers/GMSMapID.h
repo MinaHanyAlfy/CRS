@@ -1,5 +1,5 @@
 //
-//  GMSMapID+Premium.h
+//  GMSMapID.h
 //  Google Maps SDK for iOS
 //
 //  Copyright 2019 Google LLC

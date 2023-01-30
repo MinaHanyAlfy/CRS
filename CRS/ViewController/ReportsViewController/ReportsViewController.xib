@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="addButton" destination="8dz-0f-IXE" id="ofy-oS-AQ0"/>
                 <outlet property="commentTextField" destination="WxW-MX-9Pb" id="Fuo-id-fG6"/>
-                <outlet property="dateLabel" destination="RYj-3o-zce" id="h1e-AM-hPc"/>
+                <outlet property="datePicker" destination="V5g-90-97G" id="KGM-hI-5s4"/>
                 <outlet property="reportButton" destination="Ejy-28-dE6" id="tvN-T7-5Pm"/>
                 <outlet property="sendButton" destination="ujd-ok-2f1" id="LSr-tE-47s"/>
                 <outlet property="tableView" destination="XNA-Lz-1Pz" id="AHG-x5-6fF"/>
@@ -28,19 +28,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="npd-u3-vDb">
-                    <rect key="frame" x="16" y="76" width="382" height="134.5"/>
+                    <rect key="frame" x="16" y="80" width="382" height="134.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qk1-d4-mG9">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="59"/>
                             <subviews>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ejy-28-dE6">
-                                    <rect key="frame" x="0.0" y="0.0" width="156" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="232.5" height="59"/>
                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="REPORT" cornerStyle="medium"/>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dz-0f-IXE">
-                                    <rect key="frame" x="164" y="0.0" width="57" height="59"/>
+                                    <rect key="frame" x="240.5" y="0.0" width="57" height="59"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="plus" catalog="system"/>
@@ -51,26 +51,24 @@
                                     </buttonConfiguration>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o5K-gN-orr">
-                                    <rect key="frame" x="229" y="0.0" width="153" height="59"/>
+                                    <rect key="frame" x="305.5" y="0.0" width="76.5" height="59"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM Visits" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sHK-1G-JsR">
-                                            <rect key="frame" x="0.0" y="0.0" width="153" height="25.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PM Visits" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="sHK-1G-JsR">
+                                            <rect key="frame" x="0.0" y="0.0" width="76.5" height="25.5"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19 - 02 - 2022" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="RYj-3o-zce">
-                                            <rect key="frame" x="0.0" y="33.5" width="153" height="25.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <datePicker contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="V5g-90-97G">
+                                            <rect key="frame" x="0.0" y="33.5" width="76.5" height="25.5"/>
+                                            <color key="backgroundColor" systemColor="tintColor"/>
+                                        </datePicker>
                                     </subviews>
                                 </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="o5K-gN-orr" firstAttribute="width" secondItem="qk1-d4-mG9" secondAttribute="width" multiplier="0.4" id="1RL-sT-E46"/>
+                                <constraint firstItem="o5K-gN-orr" firstAttribute="width" secondItem="qk1-d4-mG9" secondAttribute="width" multiplier="0.2" id="1RL-sT-E46"/>
                                 <constraint firstItem="8dz-0f-IXE" firstAttribute="width" secondItem="qk1-d4-mG9" secondAttribute="width" multiplier="0.15" id="ba5-uN-t3n"/>
                             </constraints>
                         </stackView>
@@ -100,7 +98,7 @@
                     </subviews>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XNA-Lz-1Pz">
-                    <rect key="frame" x="0.0" y="226.5" width="414" height="669.5"/>
+                    <rect key="frame" x="0.0" y="230.5" width="414" height="665.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="ldf-4r-yCi"/>
@@ -120,7 +118,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="npd-u3-vDb" secondAttribute="trailing" constant="16" id="Zs7-Zg-0c5"/>
                 <constraint firstItem="npd-u3-vDb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="jae-9Q-Hxe"/>
             </constraints>
-            <point key="canvasLocation" x="-57.251908396946561" y="19.718309859154932"/>
+            <point key="canvasLocation" x="-104" y="-125"/>
         </view>
     </objects>
     <resources>
@@ -131,6 +129,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

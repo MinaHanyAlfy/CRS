@@ -25,10 +25,13 @@ extension UIViewController {
     }
     
     func alertSuccessAndDismissViewController(message: String) {
-        let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { alert in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { alert in
+                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.dismiss(animated: true)
+            }))
+            self.present(alert, animated: true)
+        }
     }
 }

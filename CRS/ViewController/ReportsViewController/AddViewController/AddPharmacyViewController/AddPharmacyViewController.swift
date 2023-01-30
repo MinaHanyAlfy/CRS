@@ -63,8 +63,12 @@ class AddPharmacyViewController: UIViewController {
             if ( pharmacyNameTextField.text != nil && pharmacyNameTextField.text != "" ) &&
                 ( phoneTextField.text != nil && phoneTextField.text != "" ) &&
                 ( specTextField.text != nil && specTextField.text != "" ) {
-                 let pharmacy = Pharmacy(pharmacyID: "", pharmacyName: pharmacyNameTextField.text, address: specTextField.text , phone: phoneTextField.text, customerID: "")
+                let pharmacyName = pharmacyNameTextField.text
+                let pharmacyAddress = specTextField.text
+                let pharmacyPhone = phoneTextField.text
                 let comment = commentTextField.text ?? ""
+                 let pharmacy = Pharmacy(pharmacyID: "", pharmacyName: pharmacyName, address: pharmacyAddress , phone: pharmacyPhone, customerID: "")
+
                 delegate?.addPharmacyObject(pharmacy: pharmacy,comment: comment)
                 self.dismiss(animated: true, completion: nil)
             }

@@ -28,7 +28,7 @@ extension CoreDataManager {
     
     func clearManagers() {
         let context = context()
-        let fetchRequest: NSFetchRequest<KeyCD> = KeyCD.fetchRequest()
+        let fetchRequest: NSFetchRequest<ManagerCD> = ManagerCD.fetchRequest()
         let objects = try! context.fetch(fetchRequest)
         for obj in objects {
             context.delete(obj)
