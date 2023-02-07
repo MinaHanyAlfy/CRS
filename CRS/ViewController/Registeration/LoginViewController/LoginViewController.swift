@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import SideMenu
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -99,15 +100,17 @@ class LoginViewController: UIViewController {
         }
         self.username = username
         self.password = password
-        
+        SVProgressHUD.show()
         //To get ID
         NetworkService.shared.getResultsStrings(APICase: .userLoginID(name: username, password: password, level: levelName), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let data):
                 self.userId = data
+                SVProgressHUD.dismiss()
                 print("USER ID: ", self.userId)
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
 
             }
         }
@@ -164,6 +167,7 @@ extension LoginViewController: UITextFieldDelegate {
 //MARK: - Calling API NETWORK AFTER LOGIN
 extension LoginViewController {
     func callingAPI(username: String,password: String,level: String){
+        SVProgressHUD.show()
         //Sameh Comapny
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
@@ -174,6 +178,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         })
         //To get products
@@ -186,6 +191,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         }
         //To get managers
@@ -197,6 +203,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         }
         
@@ -209,6 +216,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         }
         //To get Accounts
@@ -220,6 +228,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         }
         
@@ -232,6 +241,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         }
         
@@ -244,6 +254,7 @@ extension LoginViewController {
                 dispatchGroup.leave()
             case .failure(let error):
                 self.alertIssues(message: error.localizedDescription)
+                SVProgressHUD.dismiss()
             }
         }
         
@@ -255,6 +266,7 @@ extension LoginViewController {
                       
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
             initialViewController.company = company
+            
             print("All Data received successfully!")
             let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
             navigationController.modalPresentationStyle = .fullScreen
@@ -265,6 +277,7 @@ extension LoginViewController {
                 decodedString = String(data: decodedData, encoding: .utf8)!
             }
             CoreDataManager.shared.saveUserInfo(user: User(name: self.username, idEncoded: userId, company: CompanyElement(serial: company.serial, name: company.name, pass: company.pass, title: company.title, address: company.address, latitude: company.latitude, longitude: company.longitude, tel: company.tel, retrospectiveReport: company.retrospectiveReport), level: levelName, idDecoded: decodedString))
+            SVProgressHUD.dismiss()
             self.present(navigationController, animated: true)
         }
     }

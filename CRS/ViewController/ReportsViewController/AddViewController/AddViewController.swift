@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreLocation
+import SVProgressHUD
+
 
 class AddViewController: UIViewController {
     let network = NetworkService.shared
@@ -31,7 +33,6 @@ class AddViewController: UIViewController {
     private var planNextVisitDate: String = ""
     private var planManager: Manager?
     private var planMessage: String = ""
-    
     private var customer: Customer?
     private var account: Account?
     private var keyPersons: Keys = []
@@ -44,42 +45,50 @@ class AddViewController: UIViewController {
     private var product_3: Product?
     private var product_4: Product?
     private var comment: String = ""
-    
+    private var date: String = ""
+    private let user = CoreDataManager.shared.getUserInfo()
     private var pharmacyComments: [String] = []
     private var keyPersonsComments: [String] = []
-    
-    private var buttons = ["Next Visit","Send Request","Report","Cancel"]
+    var reportAM: ReportAM?
+    var reportPM: ReportPM?
     var isPm: Bool = false
     
+    private var buttons = ["Next Visit","Send Request","Report","Cancel"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        // Do any additional setup after loading the view.
+        date = todayDate()
+        setupNavigation()
+        self.hideKeyboardWhenTappedAround()
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isPm {
-            title = "PM Visiting Day"
-        } else {
-            title = "AM Visiting Day"
-        }
+        sendDataToAddVisitingDayToUpdate()
     }
     
     private func setupNavigation() {
-        title = "Adding New Visit"
+        if isPm {
+            title = "Adding New PM Visit"
+        } else {
+            title = "Adding New AM Visit"
+        }
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.barTintColor = .black
     }
     
     private func setupTableView() {
-        tableView.delegate = self
+        //        tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .white
         view.addSubview(tableView)
     }
     
@@ -87,12 +96,13 @@ class AddViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: Date())
     }
 }
 
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 extension AddViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -163,13 +173,13 @@ extension AddViewController: UITableViewDataSource {
     
 }
 
-//MARK: - UITableViewDelegate
-extension AddViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Index: ", indexPath.row)
-    }
-}
-
+////MARK: - UITableViewDelegate -
+//extension AddViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("Index: ", indexPath.row)
+//    }
+//}
+//MARK: - ButtonTableViewCellDelegate -
 extension AddViewController: ButtonTableViewCellDelegate {
     func nextVisitAction() {
         print("NextVisit")
@@ -186,48 +196,71 @@ extension AddViewController: ButtonTableViewCellDelegate {
         print("Send request")
     }
     func reportAction() {
-        let date: String = todayDate()
-        print("Success Date ", date)
-        let user = CoreDataManager.shared.getUserInfo()
-        print("user ID: ", user.idDecoded, user.level)
         if manager?.id != nil {
             if planNextVisitDate == "" {
                 alertIssues(message: "Please choose the next visiting day ")
             }
         }
+        
         if isPm {
             sendPMReports(user: user,sendingDate: date)
         } else {
             sendAMReports(user: user, sendingDate: date)
         }
         
-        
         print("Report")
     }
+    
     func reportAction(location: CLLocation) {
         print("Report")
-        let alert = UIAlertController(title: "Location", message: "Set this location for this customer ?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes",style: .default, handler: { action in
-            //Send Location to update it in JAVA
-            /*RequestQueue queue = Volley.newRequestQueue(NewPMVisitActivity.this);
-             String ApplicationURL = S_Pref.getString("ApplicationURL", "");
-             String store_customer_location_url = ApplicationURL + "" +
-             "?customer_id="+customer_id+
-             "&lat="+current_latitude+
-             "&long="+current_longitude+
-             "&store_customer_location=x";
-             
-             StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, store_customer_location_url, storeCustomerLocationResponseListener, ErrorListener);
-             queue.add(stringRequest);*/
-            print(location)
-        }))
-        alert.addAction(UIAlertAction(title: "No",style: .default, handler: { action in
-            //Dismiss it
-            self.dismiss(animated: true)
-        }))
-        
-        present(alert, animated: true)
-        //Save Visit
+        print("Success Date ", date)
+        if isPm {
+            guard let customer = customer else { return }
+            if manager?.id != nil {
+                if planNextVisitDate == "" {
+                    alertIssues(message: "Please choose the next visiting day ")
+                }
+            }
+            if customer.customerLongitude == "" || customer.customerLongitude == nil || customer.customerLatitude == "" || customer.customerLatitude == nil {
+                    let alert = UIAlertController(title: "Location", message: "Set this location for this customer ?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Yes",style: .default, handler: { action in
+                        self.saveCustomerLocation(customer: customer, long: "\(location.coordinate.longitude)", lat: "\(location.coordinate.latitude)")
+                        print(location)
+                    }))
+                    alert.addAction(UIAlertAction(title: "No",style: .default, handler: { action in
+                        self.sendPMReports(user: self.user, sendingDate: self.date)
+                        self.dismiss(animated: true)
+                    }))
+                    present(alert, animated: true)
+            } else {
+                self.sendPMReports(user: user, sendingDate: date)
+            }
+            
+            
+        } else {
+            guard let account = account else { return }
+            if manager?.id != nil {
+                if planNextVisitDate == "" {
+                    alertIssues(message: "Please choose the next visiting day ")
+                }
+            }
+            if account.accountLongitude == "" || account.accountLongitude == nil || account.accountLatitude == "" || account.accountLatitude == nil {
+                DispatchQueue.main.async { [self] in
+                    let alert = UIAlertController(title: "Location", message: "Set this location for this Account ?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Yes",style: .default, handler: { action in
+                        self.saveAccountLocation(account: account, long: "\(location.coordinate.longitude)", lat: "\(location.coordinate.latitude)")
+                        print(location)
+                    }))
+                    alert.addAction(UIAlertAction(title: "No",style: .default, handler: { action in
+                        self.sendAMReports(user: self.user, sendingDate: self.date)
+                        self.dismiss(animated: true)
+                    }))
+                    present(alert, animated: true)
+                }
+            } else {
+                self.sendAMReports(user: user, sendingDate: date)
+            }
+        }
     }
     
     func cancelAction() {
@@ -235,13 +268,71 @@ extension AddViewController: ButtonTableViewCellDelegate {
         self.navigationController?.popViewController(animated: true)
     }
 }
-//MARK: - SendingReports
+//MARK: - SendingReports & Store Locations -
 extension AddViewController {
-    private func sendPMReports(user: User,sendingDate: String) {
-        let pharmacyIDs: String = pharmacies.map { $0.pharmacyID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
-        let pharmacyNames: String = pharmacies.map { $0.pharmacyName?.toBase64() ?? "Unavalible Pharmacy" } .joined(separator: " | ")
-        let pharmacyPhones: String = pharmacies.map { $0.phone?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
-        let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
+    private func saveCustomerLocation(customer: Customer, long: String, lat: String) {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+        
+        NetworkService.shared.getResultsStrings(APICase: .storeCustomerLocation(customerId: customer.customerID ?? "", lat: lat, long: long), decodingModel: ResponseString.self) { resp in
+            switch resp {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                self.handleStoreLocationResponse(response: response, long: long, lat: lat)
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: "\(error)")
+                }
+            }
+        }
+    }
+    
+    private func saveAccountLocation(account: Account, long: String, lat: String) {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+        
+        NetworkService.shared.getResultsStrings(APICase: .storeAccountLocation(accountId: account.accountID ?? "", lat: lat, long: long), decodingModel: ResponseString.self) { resp in
+            switch resp {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                self.handleStoreLocationResponse(response: response, long: long, lat: lat)
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: "\(error)")
+                }
+            }
+        }
+    }
+    
+    private func handleStoreLocationResponse(response: String,long: String, lat: String) {
+        if response == "Location_Stored" {
+            DispatchQueue.main.async {
+                self.alertIssues(message: "Location stored successfully")
+            }
+            if isPm {
+                sendPMReports(user: user, sendingDate: date)
+            } else {
+                sendAMReports(user: user, sendingDate: date)
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.alertIssues(message: "Try again")
+            }
+        }
+    }
+    
+    private func sendPMReports(user: User,sendingDate: String,long: String? = "",lat: String? = "") {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         guard let customer = self.customer else {
             alertIssues(message: "Please update Customer field.")
             return
@@ -250,25 +341,42 @@ extension AddViewController {
             alertIssues(message: "Please check at least 1 product.")
             return
         }
-        
-        
+        let pharmacyIDs: String = pharmacies.map { $0.pharmacyID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let pharmacyNames: String = pharmacies.map { $0.pharmacyName?.toBase64() ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let pharmacyPhones: String = pharmacies.map { $0.phone?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
+        let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
+        
         network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: sendingDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let message):
                 DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
                     if message == "Added" {
                         self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                    } else if message == "Reported_Day" {
+                        self.alertIssues(message: "Reporting day already submitted and cannot be modified")
+                    } else if message == "Reported_Visit" {
+                        self.alertIssues(message: "Report for the same customer in the same day already reported")
+                    } else {
+                        self.alertIssues(message: message)
                     }
                 }
                 print("Response: ",message)
             case .failure(let error):
-                self.alertIssues(message: error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.alertIssues(message: error.localizedDescription)
+                    SVProgressHUD.dismiss()
+                }
             }
         }
     }
     
-    private func sendAMReports(user: User,sendingDate: String) {
+    private func sendAMReports(user: User,sendingDate: String,long: String? = "",lat: String? = "") {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+
         guard let account = self.account else {
             alertIssues(message: "Please update Account field.")
             return
@@ -287,11 +395,23 @@ extension AddViewController {
             switch response {
             case .success(let message):
                 print("Response: ",message)
-                if message == "Added" {
-                    self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    if message == "Added" {
+                        self.alertSuccessAndDismissViewController(message: "Report added successfully")
+                    } else if message == "Reported_Day" {
+                        self.alertIssues(message: "Reporting day already submitted and cannot be modified")
+                    } else if message == "Reported_Visit" {
+                        self.alertIssues(message: "Report for the same account in the same day already reported")
+                    } else {
+                        self.alertIssues(message: message)
+                    }
                 }
             case .failure(let error):
-                self.alertIssues(message: error.localizedDescription)
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: error.localizedDescription)
+                }
             }
         }
     }
@@ -385,5 +505,59 @@ extension AddViewController: ProductsTableViewDelegate {
     func getFourthProduct(product: Product) {
         print("Fourth Product, ", product)
         self.product_4 = product
+    }
+}
+
+//MARK: - Update Data -
+extension AddViewController {
+    func sendDataToAddVisitingDayToUpdate () {
+        if isPm {
+            guard reportPM != nil else { return }
+            UserDefaults.standard.set(reportPM?.visitComment, forKey: "visitComment")
+            UserDefaults.standard.set(reportPM?.hManagerDv, forKey: "hManagerDv")
+            UserDefaults.standard.set(reportPM?.mManagerDv, forKey: "mManagerDv")
+            UserDefaults.standard.set(reportPM?.fManagerDv, forKey: "fManagerDv")
+            UserDefaults.standard.set(reportPM?.visitingDayDate, forKey: "visitingDayDate")
+            UserDefaults.standard.set(reportPM?.product1_ID, forKey: "product1_ID")
+            UserDefaults.standard.set(reportPM?.product2_ID, forKey: "product2_ID")
+            UserDefaults.standard.set(reportPM?.product3_ID, forKey: "product3_ID")
+            UserDefaults.standard.set(reportPM?.product4_ID, forKey: "product4_ID")
+            UserDefaults.standard.set(reportPM?.customerName, forKey: "customerName")
+            UserDefaults.standard.set(reportPM?.customerID, forKey: "customerID")
+            UserDefaults.standard.set(reportPM?.serial, forKey: "serial")
+            UserDefaults.standard.set(reportPM?.customerPotential, forKey: "customerPotential")
+            UserDefaults.standard.set(reportPM?.customerPrescription, forKey: "customerPrescription")
+            UserDefaults.standard.set(reportPM?.dvReport, forKey: "dvReport")
+            UserDefaults.standard.set(reportPM?.pIDS, forKey: "pIDS")
+            UserDefaults.standard.set(reportPM?.pNames, forKey: "pNames")
+            UserDefaults.standard.set(reportPM?.pMobiles, forKey: "pMobiles")
+            UserDefaults.standard.set(reportPM?.pSpecialities, forKey: "pSpecialities")
+            UserDefaults.standard.set(reportPM?.pComments, forKey: "pComments")
+            UserDefaults.standard.set(reportPM?.specialityName, forKey: "specialityName")
+            
+        } else {
+            guard reportAM != nil else { return }
+            UserDefaults.standard.set(reportAM?.visitComment, forKey: "visitComment")
+            UserDefaults.standard.set(reportAM?.hManagerDv, forKey: "hManagerDv")
+            UserDefaults.standard.set(reportAM?.mManagerDv, forKey: "mManagerDv")
+            UserDefaults.standard.set(reportAM?.fManagerDv, forKey: "fManagerDv")
+            UserDefaults.standard.set(reportAM?.visitingDayDate, forKey: "visitingDayDate")
+            UserDefaults.standard.set(reportAM?.product1_ID, forKey: "product1_ID")
+            UserDefaults.standard.set(reportAM?.product2_ID, forKey: "product2_ID")
+            UserDefaults.standard.set(reportAM?.product3_ID, forKey: "product3_ID")
+            UserDefaults.standard.set(reportAM?.product4_ID, forKey: "product4_ID")
+            UserDefaults.standard.set(reportAM?.serial, forKey: "serial")
+            UserDefaults.standard.set(reportAM?.accountName, forKey: "accountName")
+            UserDefaults.standard.set(reportAM?.accountID, forKey: "accountID")
+            UserDefaults.standard.set(reportAM?.accountPotential, forKey: "accountPotential")
+            UserDefaults.standard.set(reportAM?.accountPrescription, forKey: "accountPrescription")
+            UserDefaults.standard.set(reportAM?.dvReport, forKey: "dvReport")
+            UserDefaults.standard.set(reportAM?.kIDS, forKey: "kIDS")
+            UserDefaults.standard.set(reportAM?.kNames, forKey: "kNames")
+            UserDefaults.standard.set(reportAM?.kMobiles, forKey: "kMobiles")
+            UserDefaults.standard.set(reportAM?.kSpecialities, forKey: "kSpecialities")
+            UserDefaults.standard.set(reportAM?.kComments, forKey: "kComments")
+            UserDefaults.standard.set(reportAM?.specialityName, forKey: "specialityName")
+        }
     }
 }

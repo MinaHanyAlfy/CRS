@@ -43,6 +43,7 @@
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="ZXz-2Y-n53" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="5Cp-NN-Hoe"/>
                     <constraint firstAttribute="trailing" secondItem="ZXz-2Y-n53" secondAttribute="trailing" constant="8" id="XkR-mG-01v"/>
@@ -51,6 +52,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="clearKeyPersonButton" destination="eH2-Ns-GQ2" id="Df8-r9-oPU"/>
                 <outlet property="keyPersonNameLabel" destination="CjQ-ZZ-dBh" id="Uy7-Fn-vwo"/>

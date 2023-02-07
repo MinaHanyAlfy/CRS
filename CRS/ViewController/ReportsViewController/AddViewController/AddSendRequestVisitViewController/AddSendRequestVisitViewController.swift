@@ -35,6 +35,7 @@ class AddSendRequestVisitViewController: UIViewController {
         pickerViewHandle()
         buttonHandle()
         textViewHandle()
+        self.hideKeyboardWhenTappedAround()
     }
     
     private func buttonHandle() {

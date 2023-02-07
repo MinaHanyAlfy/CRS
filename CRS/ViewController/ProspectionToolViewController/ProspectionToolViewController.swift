@@ -42,7 +42,7 @@ class ProspectionToolViewController: UIViewController {
     private func setupView() {
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 16
-        
+        tableView.backgroundColor = .white
     }
     private func setupNavigation() {
         title = "Prospection Tool"
@@ -58,6 +58,7 @@ class ProspectionToolViewController: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
         tableView.registerCell(tableViewCell: ProspectionTableViewCell.self)
+        tableView.backgroundColor = .white
     }
     
     @objc private func sumbitAction() {

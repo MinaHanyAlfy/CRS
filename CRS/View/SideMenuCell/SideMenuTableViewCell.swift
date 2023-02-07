@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class SideMenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var sideMenuLabel: UILabel!
@@ -136,6 +136,7 @@ class SideMenuTableViewCell: UITableViewCell {
 
 extension SideMenuTableViewCell {
     func callingAPI(navigationController: UINavigationController,viewController: UIViewController){
+        SVProgressHUD.show()
         let user = coreData.getUserInfo()
         guard let level = user.level else {return}
         guard let id = user.idEncoded else {return}
@@ -149,7 +150,9 @@ extension SideMenuTableViewCell {
                 self.products = data
                 dispatchGroup.leave()
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 viewController.alertIssues(message: error.localizedDescription)
+                
             }
         }
         //To get managers
@@ -160,6 +163,7 @@ extension SideMenuTableViewCell {
                 self.managers = data
                 dispatchGroup.leave()
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 viewController.alertIssues(message: error.localizedDescription)
             }
         }
@@ -172,6 +176,7 @@ extension SideMenuTableViewCell {
                 self.customers = data
                 dispatchGroup.leave()
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 viewController.alertIssues(message: error.localizedDescription)
             }
         }
@@ -183,6 +188,7 @@ extension SideMenuTableViewCell {
                 self.accounts = data
                 dispatchGroup.leave()
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 viewController.alertIssues(message: error.localizedDescription)
             }
         }
@@ -195,6 +201,7 @@ extension SideMenuTableViewCell {
                 self.keys = data
                 dispatchGroup.leave()
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 viewController.alertIssues(message: error.localizedDescription)
             }
         }
@@ -207,6 +214,7 @@ extension SideMenuTableViewCell {
                 self.pharmacies = data
                 dispatchGroup.leave()
             case .failure(let error):
+                SVProgressHUD.dismiss()
                 viewController.alertIssues(message: error.localizedDescription)
             }
         }
@@ -214,8 +222,8 @@ extension SideMenuTableViewCell {
         
         dispatchGroup.notify(queue: .main){ [self] in
             print("All Data received successfully!")
+            SVProgressHUD.dismiss()
             viewController.alertSuccessAndDismissViewController(message: "Your data loaded successfully!")
-
         }
     }
 }

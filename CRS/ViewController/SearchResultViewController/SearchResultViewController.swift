@@ -32,6 +32,7 @@ class SearchResultViewController: UIViewController {
     private func setUpTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .white
         view.addSubview(tableView)
     }
     

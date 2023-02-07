@@ -6,6 +6,8 @@
 //
 
 import Foundation
+
+fileprivate let requestTimeOut: Double = 60
 enum HTTPMethod: String{
     case get = "GET"
     case post = "POST"
@@ -30,7 +32,7 @@ extension EndPoint {
     
     var request: URLRequest {
         let url = urlComponents.url!
-        var request =  URLRequest(url: url)
+        var request =  URLRequest(url: url,timeoutInterval: requestTimeOut)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         return request

@@ -37,6 +37,7 @@ class AddPharmacyViewController: UIViewController {
         super.viewDidLoad()
         pharmacyNameTextField.delegate = self
         handleViewController()
+        self.hideKeyboardWhenTappedAround()
         pharmacies = CoreDataManager.shared.getPharmacy()
     }
     

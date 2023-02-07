@@ -10,7 +10,10 @@ pod 'KDCircularProgress', '~> 1.5.4'
 pod 'IQKeyboardManager', '~> 6.5.10'
 pod 'Alamofire', '~> 5.6.4'
 pod 'SideMenu', '~> 6.5.0'
-pod 'EmptyStateKit', '~> 1.1.0'
+pod 'DZNEmptyDataSet', '~> 1.8.1'
+pod 'SDWebImage', '~> 5.0'
+pod 'SVProgressHUD', '~> 2.2.5'
+
   # Pods for CRS
 
   target 'CRSTests' do

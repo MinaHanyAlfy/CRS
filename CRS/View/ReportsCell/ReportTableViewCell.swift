@@ -9,21 +9,51 @@ import UIKit
 
 class ReportTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    
+    let user = CoreDataManager.shared.getUserInfo()
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+//        stackView.frame = stackView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func cellConfig(report: Report) {
-        firstLabel.text = report.serial
-        secondLabel.text = report.accountName
+    func cellConfig(report: ReportAM) {
+        firstLabel.text = report.accountName
+        secondLabel.text = report.fManagerDv
+        commentLabel.text = report.serial
+        
+        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
+            stackView.layer.borderWidth = 1
+            stackView.layer.cornerRadius = 8
+            stackView.layer.borderColor = UIColor.red.cgColor
+//        }  else if  {}
+        } else {
+            stackView.layer.borderWidth = 1
+            stackView.layer.cornerRadius = 8
+        }
+        
+    }
+    
+    func cellConfig(report: ReportPM) {
+        firstLabel.text = report.customerName
+        secondLabel.text = report.fManagerDv
+        commentLabel.text = report.serial
+        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
+            stackView.layer.borderWidth = 1
+            stackView.layer.cornerRadius = 8
+            stackView.layer.borderColor = UIColor.red.cgColor
+//        }  else if  {}
+        } else {
+            stackView.layer.borderWidth = 1
+            stackView.layer.cornerRadius = 8
+        }
+        
     }
 }

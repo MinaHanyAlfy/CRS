@@ -7,7 +7,7 @@
 
 import UIKit
 import GoogleMaps
-//import MapKit
+import SVProgressHUD
 
 class HomeViewController: UIViewController {
 
@@ -24,14 +24,17 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         guard let company = company else {
              return
         }
-
+        if (companyNameLabel.text == nil) == (company.name != nil) {
+            SVProgressHUD.show()
+        }
         DispatchQueue.main.async {
             [self] in
             self.companyNameLabel.text = company.name
@@ -44,6 +47,7 @@ class HomeViewController: UIViewController {
             self.numberLabel.text = company.tel
             print("Camera :", long , lat)
             self.mapView.camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 18)
+            SVProgressHUD.dismiss()
         }
     }
     

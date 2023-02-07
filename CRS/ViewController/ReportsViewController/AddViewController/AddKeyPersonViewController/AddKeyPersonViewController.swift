@@ -34,6 +34,7 @@ class AddKeyPersonViewController: UIViewController {
         super.viewDidLoad()
         keyPersonNameTextField.delegate = self
         handleViewController()
+        self.hideKeyboardWhenTappedAround()
         keyPersons = CoreDataManager.shared.getKeys()
     }
     

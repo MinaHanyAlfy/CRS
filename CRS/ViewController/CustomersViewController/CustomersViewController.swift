@@ -6,13 +6,14 @@
 //
 
 import UIKit
-
+import DZNEmptyDataSet
 class CustomersViewController: UIViewController {
   
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.registerCell(tableViewCell: CustomerTableViewCell.self)
         tableView.allowsSelection = false
+
         return tableView
     }()
     private let searchController : UISearchController = {
@@ -23,6 +24,7 @@ class CustomersViewController: UIViewController {
         return controller
     }()
 
+    private let coreData = CoreDataManager.shared
     private var customers: Customers?{
         didSet {
             DispatchQueue.main.async {
@@ -33,7 +35,6 @@ class CustomersViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigation()
         setupTableView()
         view.addSubview(tableView)
@@ -41,11 +42,7 @@ class CustomersViewController: UIViewController {
         searchController.searchResultsUpdater = self
     }
     private func fetchCustomers () {
-        let coreData = CoreDataManager.shared
         customers = coreData.getCustomers()
-        if customers?.count == 0 {
-            tableView.setEmptyView(title: "You don't have any customer.", message: "Refresh to add Customers.")
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,9 +51,7 @@ class CustomersViewController: UIViewController {
     }
     
     private func setupNavigation() {
-//        title =
         navigationItem.title = "Customers"
-//        navigationItem.titleView?.tintColor = UIColor(named: "bluePrimary")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationItem.searchController = searchController
@@ -68,12 +63,13 @@ class CustomersViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.emptyDataSetSource = self
     }
 }
 
 //MARK: - UISearchResultsUpdating
 extension CustomersViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
@@ -111,4 +107,18 @@ extension CustomersViewController: UITableViewDelegate {
         // DidSelect
     }
 }
+
+//MARK: - DZNEmptyDataSetSource -
+extension CustomersViewController: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(systemName: "bell.fill")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let quote = "You don't have any Customers."
+        let attributedQuote = NSMutableAttributedString(string: quote)
+        return attributedQuote
+    }
+}
+
 

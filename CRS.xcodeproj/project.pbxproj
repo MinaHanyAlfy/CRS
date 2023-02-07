@@ -51,8 +51,6 @@
 		7F7EA3FE293E942200E72E49 /* ReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA3FC293E942200E72E49 /* ReportsViewController.xib */; };
 		7F7EA401293E94BB00E72E49 /* ProspectionToolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA3FF293E94BB00E72E49 /* ProspectionToolViewController.swift */; };
 		7F7EA402293E94BB00E72E49 /* ProspectionToolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA400293E94BB00E72E49 /* ProspectionToolViewController.xib */; };
-		7F7EA406293E959400E72E49 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA404293E959400E72E49 /* RefreshViewController.swift */; };
-		7F7EA407293E959400E72E49 /* RefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA405293E959400E72E49 /* RefreshViewController.xib */; };
 		7F7EA409293E9A0500E72E49 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA408293E9A0500E72E49 /* CoreDataManager.swift */; };
 		7F7EA40D293EB34300E72E49 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA40B293EB34300E72E49 /* SearchResultViewController.swift */; };
 		7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA40C293EB34300E72E49 /* SearchResultViewController.xib */; };
@@ -70,7 +68,6 @@
 		7FBA39B4295A4E2500770209 /* AddPharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA39B2295A4E2500770209 /* AddPharmacyViewController.swift */; };
 		7FBA39B5295A4E2500770209 /* AddPharmacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FBA39B3295A4E2500770209 /* AddPharmacyViewController.xib */; };
 		7FC5CADB292A0B07000D228A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CADA292A0B07000D228A /* AppDelegate.swift */; };
-		7FC5CADF292A0B07000D228A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CADE292A0B07000D228A /* ViewController.swift */; };
 		7FC5CAE2292A0B07000D228A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5CAE0292A0B07000D228A /* Main.storyboard */; };
 		7FC5CAE5292A0B07000D228A /* CRS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5CAE3292A0B07000D228A /* CRS.xcdatamodeld */; };
 		7FC5CAE7292A0B08000D228A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5CAE6292A0B08000D228A /* Assets.xcassets */; };
@@ -98,8 +95,6 @@
 		7FD739A82954888C00261488 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739A62954888C00261488 /* ButtonTableViewCell.xib */; };
 		7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739AB295488D900261488 /* RequestTableViewCell.swift */; };
 		7FD739AE295488D900261488 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739AC295488D900261488 /* RequestTableViewCell.xib */; };
-		7FD739B22954893700261488 /* VisitingDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739B02954893700261488 /* VisitingDayViewController.swift */; };
-		7FD739B32954893700261488 /* VisitingDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739B12954893700261488 /* VisitingDayViewController.xib */; };
 		7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */; };
 		7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */; };
 		7FDC0F5C293FD5880025D3DC /* PharmacyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */; };
@@ -185,8 +180,6 @@
 		7F7EA3FC293E942200E72E49 /* ReportsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportsViewController.xib; sourceTree = "<group>"; };
 		7F7EA3FF293E94BB00E72E49 /* ProspectionToolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectionToolViewController.swift; sourceTree = "<group>"; };
 		7F7EA400293E94BB00E72E49 /* ProspectionToolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProspectionToolViewController.xib; sourceTree = "<group>"; };
-		7F7EA404293E959400E72E49 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
-		7F7EA405293E959400E72E49 /* RefreshViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshViewController.xib; sourceTree = "<group>"; };
 		7F7EA408293E9A0500E72E49 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7F7EA40B293EB34300E72E49 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		7F7EA40C293EB34300E72E49 /* SearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultViewController.xib; sourceTree = "<group>"; };
@@ -205,7 +198,6 @@
 		7FBA39B3295A4E2500770209 /* AddPharmacyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPharmacyViewController.xib; sourceTree = "<group>"; };
 		7FC5CAD7292A0B07000D228A /* CRS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC5CADA292A0B07000D228A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7FC5CADE292A0B07000D228A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7FC5CAE1292A0B07000D228A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FC5CAE4292A0B07000D228A /* CRS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CRS.xcdatamodel; sourceTree = "<group>"; };
 		7FC5CAE6292A0B08000D228A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -236,8 +228,6 @@
 		7FD739A62954888C00261488 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		7FD739AB295488D900261488 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		7FD739AC295488D900261488 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
-		7FD739B02954893700261488 /* VisitingDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitingDayViewController.swift; sourceTree = "<group>"; };
-		7FD739B12954893700261488 /* VisitingDayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitingDayViewController.xib; sourceTree = "<group>"; };
 		7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagerCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PharmacyCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -402,15 +392,6 @@
 			path = ProspectionToolViewController;
 			sourceTree = "<group>";
 		};
-		7F7EA403293E958300E72E49 /* RefreshViewController */ = {
-			isa = PBXGroup;
-			children = (
-				7F7EA404293E959400E72E49 /* RefreshViewController.swift */,
-				7F7EA405293E959400E72E49 /* RefreshViewController.xib */,
-			);
-			path = RefreshViewController;
-			sourceTree = "<group>";
-		};
 		7F7EA40A293EB32500E72E49 /* SearchResultViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,13 +545,9 @@
 		7FC5CB11292A0E0A000D228A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7FC5CADE292A0B07000D228A /* ViewController.swift */,
 				7F7EA40A293EB32500E72E49 /* SearchResultViewController */,
-				7FD739AF2954890E00261488 /* VisitingDayViewController */,
-				7F7EA403293E958300E72E49 /* RefreshViewController */,
 				7F15F39A2930CBD0009BD8D0 /* Registeration */,
 				7F7EA3FA293E93FD00E72E49 /* ProspectionToolViewController */,
-				7FC5CB17292A0E7F000D228A /* ProductsViewController */,
 				7FC5CB16292A0E5A000D228A /* AccountsViewController */,
 				7FC5CB15292A0E4C000D228A /* CustomersViewController */,
 				7FC5CB14292A0E3D000D228A /* ReportsViewController */,
@@ -622,13 +599,6 @@
 				7F7EA3F7293E933700E72E49 /* AccountsViewController.xib */,
 			);
 			path = AccountsViewController;
-			sourceTree = "<group>";
-		};
-		7FC5CB17292A0E7F000D228A /* ProductsViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProductsViewController;
 			sourceTree = "<group>";
 		};
 		7FC5CB18292A0F69000D228A /* View */ = {
@@ -761,15 +731,6 @@
 				7FD739AC295488D900261488 /* RequestTableViewCell.xib */,
 			);
 			path = SendRequestTableViewCell;
-			sourceTree = "<group>";
-		};
-		7FD739AF2954890E00261488 /* VisitingDayViewController */ = {
-			isa = PBXGroup;
-			children = (
-				7FD739B02954893700261488 /* VisitingDayViewController.swift */,
-				7FD739B12954893700261488 /* VisitingDayViewController.xib */,
-			);
-			path = VisitingDayViewController;
 			sourceTree = "<group>";
 		};
 		7FDC0EDA293FCD4F0025D3DC /* CoreDataModels */ = {
@@ -984,7 +945,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F7EA407293E959400E72E49 /* RefreshViewController.xib in Resources */,
 				7F5C421B295E11E700ECE925 /* KeyPersonsTableViewCell.xib in Resources */,
 				7FA939CE294678C200AF3A33 /* AddViewController.xib in Resources */,
 				7FD739A82954888C00261488 /* ButtonTableViewCell.xib in Resources */,
@@ -1006,7 +966,6 @@
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
 				7F5C4220295E125900ECE925 /* KeyPersonTableViewCell.xib in Resources */,
 				7FBA39A92959DD6900770209 /* NextVisitTableViewCell.xib in Resources */,
-				7FD739B32954893700261488 /* VisitingDayViewController.xib in Resources */,
 				7F5C4226295E16D100ECE925 /* AddKeyPersonViewController.xib in Resources */,
 				7FBA39AF295A2B9900770209 /* CustomersTableViewCell.xib in Resources */,
 				7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */,
@@ -1229,18 +1188,15 @@
 				7FDC0F61293FD5880025D3DC /* CustomerCD+CoreDataClass.swift in Sources */,
 				7F5C4225295E16D100ECE925 /* AddKeyPersonViewController.swift in Sources */,
 				7F5C4216295E0EE000ECE925 /* AccountTableViewCell.swift in Sources */,
-				7FC5CADF292A0B07000D228A /* ViewController.swift in Sources */,
 				7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */,
 				7FD607F0295B28AC00A1D5AA /* AddSendRequestVisitViewController.swift in Sources */,
 				7FD7399D2954884400261488 /* PharmaciesTableViewCell.swift in Sources */,
 				7FC5CADB292A0B07000D228A /* AppDelegate.swift in Sources */,
 				7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */,
 				7F0AAACD293A24FF00454371 /* Key.swift in Sources */,
-				7F7EA406293E959400E72E49 /* RefreshViewController.swift in Sources */,
 				7F5C421F295E125900ECE925 /* KeyPersonTableViewCell.swift in Sources */,
 				7F418265293290120055DC7B /* User.swift in Sources */,
 				7FA939C82946698900AF3A33 /* ReportTableViewCell.swift in Sources */,
-				7FD739B22954893700261488 /* VisitingDayViewController.swift in Sources */,
 				7F427633293FE990006B063C /* AccountsCD+CoreDataClass.swift in Sources */,
 				7FDC0F6B293FDC730025D3DC /* CustomerCoreDataManager.swift in Sources */,
 				7FD739A22954886800261488 /* CommentTableViewCell.swift in Sources */,

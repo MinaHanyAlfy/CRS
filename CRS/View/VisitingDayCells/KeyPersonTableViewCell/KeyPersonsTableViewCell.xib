@@ -46,12 +46,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="140" id="Y13-sM-c6K"/>
                             <constraint firstItem="7yy-7E-HuP" firstAttribute="height" secondItem="FSv-ux-gyB" secondAttribute="height" multiplier="0.8" id="umO-La-uqQ"/>
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="FSv-ux-gyB" secondAttribute="bottom" constant="8" id="EoP-hS-UAM"/>
                     <constraint firstAttribute="trailing" secondItem="FSv-ux-gyB" secondAttribute="trailing" constant="8" id="QpX-Bj-Yx6"/>
@@ -60,6 +62,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="addKeyPersonButton" destination="VvY-5s-iaZ" id="c3k-qo-er6"/>
                 <outlet property="tableView" destination="7yy-7E-HuP" id="lNU-66-QcU"/>

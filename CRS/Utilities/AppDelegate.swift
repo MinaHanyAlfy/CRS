@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyBMrrPRP9xqAmZKArzyfd6bs8gzKF0H7XI")
 //        GMSPlacesClient.provideAPIKey("AIzaSyBYFetiZjmJJBmPlY5O-15anl1m8_AFTxc")
 
-        
+        window?.overrideUserInterfaceStyle = .light
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         if cdManager.isLogin() {

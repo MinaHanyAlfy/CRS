@@ -23,7 +23,6 @@ class ButtonTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,7 +44,6 @@ class ButtonTableViewCell: UITableViewCell {
         
     }
     
-    
     @objc private func nextVisitTap() {
         delegate?.nextVisitAction()
     }
@@ -59,8 +57,7 @@ class ButtonTableViewCell: UITableViewCell {
          if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() ==  .authorizedAlways {
              currentLocation = locManager.location
-             delegate?.reportAction()
-//             delegate?.reportAction(location: currentLocation)
+             delegate?.reportAction(location: currentLocation)
          }else {
              delegate?.reportAction()
          }

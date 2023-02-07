@@ -58,6 +58,7 @@
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Xt9-Ns-2KR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="B1m-C3-PMk"/>
                     <constraint firstAttribute="trailing" secondItem="Xt9-Ns-2KR" secondAttribute="trailing" constant="8" id="HmS-md-MC5"/>

@@ -24,6 +24,7 @@ class SideMenuViewController: UIViewController {
     
     private func setupTableView() {
         tableView.registerCell(tableViewCell: SideMenuTableViewCell.self)
+        
     }
 }
 

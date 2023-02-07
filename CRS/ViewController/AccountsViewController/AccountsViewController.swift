@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
+import DZNEmptyDataSet
 class AccountsViewController: UIViewController {
-
+    private let coreData = CoreDataManager.shared
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.registerCell(tableViewCell: CustomerTableViewCell.self)
@@ -22,7 +22,6 @@ class AccountsViewController: UIViewController {
         controller.searchBar.searchBarStyle = .minimal
         return controller
     }()
-    
     private var accounts: Accounts?{
         didSet {
             DispatchQueue.main.async {
@@ -54,7 +53,6 @@ class AccountsViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationItem.searchController = searchController
         navigationController?.navigationBar.tintColor = .black
-        
     }
     
     private func setupTableView() {
@@ -62,14 +60,12 @@ class AccountsViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.emptyDataSetSource = self
     }
     
     private func fetchAccounts () {
-        let coreData = CoreDataManager.shared
         accounts = coreData.getAccounts()
-        if accounts?.count == 0 {
-            tableView.setEmptyView(title: "You don't have any account.", message: "Refresh to add Accounts.")
-        }
     }
 }
 //MARK: - UISearchResultsUpdating
@@ -111,3 +107,15 @@ extension AccountsViewController: UITableViewDelegate {
     }
 }
 
+//MARK: - DZNEmptyDataSetSource -
+extension AccountsViewController: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(systemName: "bell.fill")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let quote = "You don't have any Accounts."
+        let attributedQuote = NSMutableAttributedString(string: quote)
+        return attributedQuote
+    }
+}

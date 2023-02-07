@@ -27,6 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="PJK-is-80H" secondAttribute="trailing" constant="8" id="FNK-sZ-bWt"/>
                     <constraint firstItem="PJK-is-80H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YUp-s1-yPi"/>
@@ -35,6 +36,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="customerLabel" destination="PJK-is-80H" id="HzU-xh-2z0"/>
             </connections>

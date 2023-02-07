@@ -31,7 +31,6 @@ class AuthenticationViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.hideKeyboardWhenTappedAround()
     } 
     
@@ -39,17 +38,6 @@ class AuthenticationViewController: UIViewController {
         guard let password = passwordTextField.text else { return }
         print(companyName, password)
         self.callResponse = "verified"
-//        NetworkServiceMock.shared.getResultsStrings(APICase: .companyLogin(company_log_in: companyName, password: password), decodingModel: ResponseString.self) { result in
-//            switch result {
-//            case .success(let response):
-//                print("Response: ",response)
-//                self.callResponse = response
-//            case .failure(let error):
-//                print("Error: ",error.localizedDescription)
-//            }
-//
-//
-//        }
     }
     
 }
@@ -63,9 +51,6 @@ extension AuthenticationViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("Selected")
         companyName = companies[row].lowercased()
-//        self.pickerView.isHidden = true
-        
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -88,9 +73,6 @@ extension AuthenticationViewController: UIPickerViewDataSource {
 extension AuthenticationViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
            if textField == self.passwordTextField {
-//               self.pickerView.isHidden = false
-               //if you don't want the users to se the keyboard type:
-
                textField.endEditing(true)
            }
        }

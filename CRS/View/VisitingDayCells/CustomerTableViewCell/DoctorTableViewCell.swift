@@ -18,14 +18,28 @@ class DoctorTableViewCell: UITableViewCell {
     @IBOutlet weak var spLabel: UILabel!
     @IBOutlet weak var doctorTextField: UITextField!
     public weak var delegate: DoctorTableViewDelegate?
-    private var customer: Customer?
+    private var customer: Customer? {
+        didSet {
+            DispatchQueue.main.async { [self] in
+               handleCellView()
+            }
+        }
+    }
     private var customers: Customers = []
+    var iSOpenToUpdate: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         doctorTextField.delegate = self
         mapButton.addTarget(self, action: #selector(mapAction), for: .touchUpInside)
         customers = CoreDataManager.shared.getCustomers()
+        if iSOpenToUpdate {
+            var id = UserDefaults.standard.value(forKey: "customerID") as? String
+            if id != nil {
+                customer = customers.filter { $0.customerID == id }[0]
+            }
+        }
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -94,3 +108,4 @@ extension DoctorTableViewCell: UITextFieldDelegate{
             return true
     }
 }
+

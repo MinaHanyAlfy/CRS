@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.6.4)
-  - EmptyStateKit (1.1.0)
+  - DZNEmptyDataSet (1.8.1)
   - GoogleMaps (7.2.0):
     - GoogleMaps/Maps (= 7.2.0)
   - GoogleMaps/Base (7.2.0)
@@ -8,33 +8,43 @@ PODS:
     - GoogleMaps/Base
   - IQKeyboardManager (6.5.10)
   - KDCircularProgress (1.5.4)
+  - SDWebImage (5.14.2):
+    - SDWebImage/Core (= 5.14.2)
+  - SDWebImage/Core (5.14.2)
   - SideMenu (6.5.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.6.4)
-  - EmptyStateKit (~> 1.1.0)
+  - DZNEmptyDataSet (~> 1.8.1)
   - GoogleMaps
   - IQKeyboardManager (~> 6.5.10)
   - KDCircularProgress (~> 1.5.4)
+  - SDWebImage (~> 5.0)
   - SideMenu (~> 6.5.0)
+  - SVProgressHUD (~> 2.2.5)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - EmptyStateKit
+    - DZNEmptyDataSet
     - GoogleMaps
     - IQKeyboardManager
     - KDCircularProgress
+    - SDWebImage
     - SideMenu
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  EmptyStateKit: dc41e9ce5c6089f67a49d063bce73ade9f2ba73f
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   GoogleMaps: 65ce5426e2398bb81433c8076f2ab6419c2c5537
   IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
   KDCircularProgress: 98200c6b8e85d22bc04eb644721d3b1e12b0686b
+  SDWebImage: b9a731e1d6307f44ca703b3976d18c24ca561e84
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: e3e94860c736872f073cbb1ddb99710e3baf9a3c
+PODFILE CHECKSUM: 6ac13dc3911db25bba8e7ad19bd510f7fd52b0f2
 
 COCOAPODS: 1.11.3

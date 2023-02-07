@@ -6,27 +6,45 @@
 //
 
 import UIKit
-import EmptyStateKit
-
+import SVProgressHUD
+import DZNEmptyDataSet
 class ReportsViewController: UIViewController {
-
+    
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
     @IBOutlet weak var timeVisitsLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    private let coredata = CoreDataManager.shared
+    private let user = CoreDataManager.shared.getUserInfo()
     private var comments : [String] = []
-    private var reports: Reports = []{
+    private var reportsAM: ReportsAM = []{
         didSet {
             DispatchQueue.main.async { [self] in
-                if reports.count > 0 && reports[0].serial != "NONE"  {
+                if reportsAM.count > 0 && reportsAM[0].serial != "NONE"  {
                     tableView.reloadData()
                 } else {
-                    tableView.setEmptyView(title: "You don't have any Visit.", message: "Check to add visit.")
+                    if reportsAM.count == 1 && reportsAM[0].serial == "NONE" {
+                        reportsAM.removeFirst()
+                        tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    private var reportsPM: ReportsPM = []{
+        didSet {
+            DispatchQueue.main.async { [self] in
+                if reportsPM.count > 0 && reportsPM[0].serial != "NONE"  {
+                    tableView.reloadData()
+                } else {
+                    if reportsPM.count == 1 && reportsPM[0].serial == "NONE" {
+                        reportsPM.removeFirst()
+                        tableView.reloadData()
+                    }
                 }
             }
         }
@@ -44,19 +62,31 @@ class ReportsViewController: UIViewController {
         super.viewDidLoad()
         buttonsAction()
         setupTableView()
+        loadData()
+//        self.hideKeyboardWhenTappedAround()
     }
-
+    
+    @IBAction func datePickerValueChanged(_ sender: Any) {
+        print(datePicker.date.updateDate)
+        let date = datePicker.date.updateDate
+        loadData(date: date)
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setUpViews()
     }
+    
     private func setupTableView() {
         tableView.registerCell(tableViewCell: ReportTableViewCell.self)
-        if reports.count == 0 {
-            tableView.setEmptyView(title: "You don't have any Visit.", message: "Check to add visit.")
-        }
-        tableView.estimatedRowHeight = 120
+        tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = .white
+        tableView.emptyDataSetSource = self
+        tableView.clipsToBounds = true
+        tableView.layer.cornerRadius = 16
+        tableView.delegate = self
+        tableView.allowsSelection = true
     }
     
     private func setUpViews() {
@@ -64,66 +94,65 @@ class ReportsViewController: UIViewController {
         datePicker.clipsToBounds = true
         datePicker.layer.cornerRadius = 12
         if isPM {
-           title = "PM Reports"
+            title = "PM Reports"
         } else {
             title = "AM Reports"
         }
+//        datePicker.locale = Locale(identifier: "en_US")
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationItem.titleView?.tintColor = .white
-        let appearance = UINavigationBarAppearance()
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = .white
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-//        let appearance = UINavigationBarAppearance()
-//        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-//        navigationItem.standardAppearance = appearance
+    }
+    
+    private func buttonsAction() {
+        sendButton.addTarget(self, action: #selector(sendAction), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
+    }
+    
+    @IBAction func reportAction(_ sender: Any) {
+        let alert = UIAlertController(title: "Report", message: "Report this day ?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default,handler: { [self] alert in
+            callingReport()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        self.present(alert, animated: true)
         
     }
-    
-     private func buttonsAction() {
-         sendButton.addTarget(self, action: #selector(sendAction), for: .touchUpInside)
-         addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
-    }
-    
-    private func loadData() {
-        let coredata = CoreDataManager.shared
-        let user = coredata.getUserInfo()
-        let date = "".todayDate
-        if isPM {
-            NetworkService.shared.getResultsStrings(APICase: .readPMVisits(level: user.level ?? "" , userId: coredata.getUserInfo().idEncoded ?? "" , reportDate: date), decodingModel: Reports.self) { response in
-                switch response {
-                case .success(let reports):
-                    print("Reports: ",reports)
-                case .failure(let error):
-                    print("error: ",error)
-                }
-            }
-        } else {
-        
-        NetworkService.shared.getResultsStrings(APICase: .readPMVisits(level: user.level ?? "" , userId: coredata.getUserInfo().idEncoded ?? "", reportDate: date), decodingModel: Reports.self) { response in
-                switch response {
-                case .success(let reports):
-                    print("Reports: ",reports)
-                case .failure(let error):
-                    print("error: ",error)
-                }
-            }
-        }
-    }
-    
-    
 }
 
 //MARK: - Actions
 extension ReportsViewController {
     @objc func sendAction() {
         guard let comment = commentTextField.text, comment.count > 3 else { return }
-        comments.append(comment)
-        tableView.reloadData()
+//        comments.append(comment)
+//        tableView.reloadData()
+        
+       
+        let date = datePicker.date.updateDate
+        if isPM {
+            SVProgressHUD.show()
+            NetworkService.shared.getResultsStrings(APICase: .updatePMVisitingDayComment(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date, comment: comment.toBase64()), decodingModel: ResponseString.self) { resp in
+                switch resp {
+                case .success(let response):
+                    self.updateCommentResponse(response: response)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: error.localizedDescription)
+                }
+            }
+        } else {
+            SVProgressHUD.show()
+            NetworkService.shared.getResultsStrings(APICase: .updateAMVisitingDayComment(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date, comment: comment.toBase64()), decodingModel: ResponseString.self) { resp in
+                switch resp {
+                case .success(let response):
+                    self.updateCommentResponse(response: response)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: error.localizedDescription)
+                }
+            }
+        }
     }
     @objc func addAction() {
         let vc = AddViewController()
@@ -135,27 +164,178 @@ extension ReportsViewController {
     }
 }
 
-
-
-
-//MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource -
 extension ReportsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return comments.count
+        if isPM {
+            return reportsPM.count
+        }
+        return reportsAM.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(tableViewCell: ReportTableViewCell.self , forIndexPath: indexPath)
-        cell.commentLabel.text = comments[indexPath.row]
+        if isPM {
+            cell.cellConfig(report: reportsPM[indexPath.row])
+        } else {
+            cell.cellConfig(report: reportsAM[indexPath.row])
+        }
         return cell
     }
-    
-    
 }
 
-//MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate -
 extension ReportsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Index: ", indexPath.row)
+        let vc = AddViewController()
+        if isPM {
+            vc.isPm = true
+            vc.reportPM = reportsPM[indexPath.row]
+        } else {
+            vc.reportAM = reportsAM[indexPath.row]
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: - DZNEmptyDataSetSource -
+extension ReportsViewController: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(systemName: "bell.fill")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let quote = "You don't have any Visit."
+        let attributedQuote = NSMutableAttributedString(string: quote)
+        return attributedQuote
+    }
+}
+
+//MARK: - Data -
+extension ReportsViewController {
+    
+    private func updateCommentResponse(response: String) {
+        if response == "Done" {
+            SVProgressHUD.dismiss()
+            self.alertIssues(message: "Comment Updated")
+        } else if response == "Reported_Day" {
+            SVProgressHUD.dismiss()
+            self.alertIssues(message: "Report already submitted and cannot be edited")
+        } else {
+            SVProgressHUD.dismiss()
+            self.alertIssues(message: response)
+        }
+    }
+    private func callingReport() {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+        let date = datePicker.date.updateDate
+        if isPM {
+            NetworkService.shared.getResultsStrings(APICase: .reportPMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ResponseString.self) { resp in
+                switch resp {
+                case .success(let response):
+                    DispatchQueue.main.async { [self] in
+                        handleResponse(response: response)
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        self.alertIssues(message: error.localizedDescription)
+                    }
+                }
+            }
+        } else {
+            NetworkService.shared.getResultsStrings(APICase: .reportAMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ResponseString.self) { resp in
+                switch resp {
+                case .success(let response):
+                    DispatchQueue.main.async { [self] in
+                        handleResponse(response: response)
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        self.alertIssues(message: error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func handleResponse(response: String) {
+        if response == "Done" {
+            SVProgressHUD.dismiss()
+            self.alertSuccessAndDismissViewController(message: "Visiting Day Reported")
+        } else if response == "No_Report" {
+            SVProgressHUD.dismiss()
+            self.alertIssues(message: "No Report Submitted")
+        } else if response == "Not_Allowed" {
+            SVProgressHUD.dismiss()
+            self.alertSuccessAndDismissViewController(message: "Can not Report that old")
+        } else {
+            SVProgressHUD.dismiss()
+            self.alertIssues(message: response)
+        }
+    }
+    
+    private func loadData(date: String) {
+        SVProgressHUD.show()
+        if isPM {
+            NetworkService.shared.getResults(APICase: .readPMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsPM.self) { response in
+                switch response {
+                case .success(let reports):
+                    SVProgressHUD.dismiss()
+                    self.reportsPM = reports
+                    print("Reports: ",reports)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
+        } else {
+            NetworkService.shared.getResults(APICase: .readAMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsAM.self) { response in
+                switch response {
+                case .success(let reports):
+                    SVProgressHUD.dismiss()
+                    self.reportsAM = reports
+                    print("Reports: ",reports)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
+        }
+    }
+    
+    private func loadData() {
+        SVProgressHUD.show()
+        let date = "".todayDate
+        if isPM {
+            NetworkService.shared.getResults(APICase: .readPMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsPM.self) { response in
+                switch response {
+                case .success(let reports):
+                    SVProgressHUD.dismiss()
+                    self.reportsPM = reports
+                    print("Reports: ",reports)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
+        } else {
+            NetworkService.shared.getResults(APICase: .readAMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsAM.self) { response in
+                switch response {
+                case .success(let reports):
+                    SVProgressHUD.dismiss()
+                    self.reportsAM = reports
+                    print("Reports: ",reports)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
+        }
     }
 }
