@@ -79,7 +79,8 @@ extension CustomersViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SearchResultViewController else {
                   return
               }
-            
+        resultsController.isPm = true
+        resultsController.customers = customers?.filter{ $0.customerName!.contains(query) } ?? []
     }
 }
 

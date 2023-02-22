@@ -19,9 +19,11 @@ extension UIViewController {
     }
     
     func alertIssues(message: String) {
-        let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-        self.present(alert, animated: true)
+        DispatchQueue.main.async { [self] in
+            let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+            self.present(alert, animated: true)
+        }
     }
     
     func alertSuccessAndDismissViewController(message: String) {

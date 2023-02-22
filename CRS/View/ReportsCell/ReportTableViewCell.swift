@@ -27,16 +27,27 @@ class ReportTableViewCell: UITableViewCell {
     func cellConfig(report: ReportAM) {
         firstLabel.text = report.accountName
         secondLabel.text = report.fManagerDv
-        commentLabel.text = report.serial
+        if report.serial == "" {
+            commentLabel.text = "Not Submitted Yet"
+        } else {
+            commentLabel.text = report.serial
+        }
         
-        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
-            stackView.layer.borderWidth = 1
+//        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
+        if report.dvReport != "" {
+            stackView.layer.borderWidth = 2
             stackView.layer.cornerRadius = 8
             stackView.layer.borderColor = UIColor.red.cgColor
 //        }  else if  {}
-        } else {
-            stackView.layer.borderWidth = 1
+        } else if report.serial != "" {
+            stackView.layer.borderWidth = 2
             stackView.layer.cornerRadius = 8
+            stackView.layer.borderColor = UIColor.green.cgColor
+        }
+        else if report.serial == "" {
+            stackView.layer.borderWidth = 2
+            stackView.layer.cornerRadius = 8
+            stackView.layer.borderColor = UIColor.yellow.cgColor
         }
         
     }
@@ -44,15 +55,25 @@ class ReportTableViewCell: UITableViewCell {
     func cellConfig(report: ReportPM) {
         firstLabel.text = report.customerName
         secondLabel.text = report.fManagerDv
-        commentLabel.text = report.serial
-        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
-            stackView.layer.borderWidth = 1
+        if report.serial == "" {
+            commentLabel.text = "Not Submitted Yet"
+        } else {
+            commentLabel.text = report.serial
+        }
+//        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
+        if report.dvReport != "" {
+            stackView.layer.borderWidth = 2
             stackView.layer.cornerRadius = 8
             stackView.layer.borderColor = UIColor.red.cgColor
 //        }  else if  {}
-        } else {
-            stackView.layer.borderWidth = 1
+        } else if report.serial != "" {
+            stackView.layer.borderWidth = 2
             stackView.layer.cornerRadius = 8
+            stackView.layer.borderColor = UIColor.green.cgColor
+        } else if report.serial == ""{
+            stackView.layer.borderWidth = 2
+            stackView.layer.cornerRadius = 8
+            stackView.layer.borderColor = UIColor.yellow.cgColor
         }
         
     }

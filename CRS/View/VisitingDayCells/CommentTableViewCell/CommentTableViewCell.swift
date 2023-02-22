@@ -14,11 +14,11 @@ class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var commentTextView: UITextView!
     public weak var delegate: CommentTableViewDelegate?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         textViewHandle()
-        
     }
 
     private func textViewHandle() {
@@ -32,6 +32,15 @@ class CommentTableViewCell: UITableViewCell {
         }
     }
     
+    func cellConfigToUpdate(isOpenToUpdate: Bool) {
+        if isOpenToUpdate {
+            let comment = UserDefaults.standard.value(forKey: "visitComment") as? String
+            if comment != nil && comment != "" {
+                commentTextView.text = comment
+                delegate?.getComment(comment: comment!)
+            }
+        }
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -61,8 +61,6 @@
 		7FA939C92946698900AF3A33 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */; };
 		7FA939CD294678C200AF3A33 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA939CB294678C200AF3A33 /* AddViewController.swift */; };
 		7FA939CE294678C200AF3A33 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA939CC294678C200AF3A33 /* AddViewController.xib */; };
-		7FBA39A82959DD6900770209 /* NextVisitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA39A62959DD6900770209 /* NextVisitTableViewCell.swift */; };
-		7FBA39A92959DD6900770209 /* NextVisitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FBA39A72959DD6900770209 /* NextVisitTableViewCell.xib */; };
 		7FBA39AE295A2B9900770209 /* CustomersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA39AC295A2B9900770209 /* CustomersTableViewCell.swift */; };
 		7FBA39AF295A2B9900770209 /* CustomersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FBA39AD295A2B9900770209 /* CustomersTableViewCell.xib */; };
 		7FBA39B4295A4E2500770209 /* AddPharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBA39B2295A4E2500770209 /* AddPharmacyViewController.swift */; };
@@ -93,8 +91,6 @@
 		7FD739A32954886800261488 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739A12954886800261488 /* CommentTableViewCell.xib */; };
 		7FD739A72954888C00261488 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739A52954888C00261488 /* ButtonTableViewCell.swift */; };
 		7FD739A82954888C00261488 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739A62954888C00261488 /* ButtonTableViewCell.xib */; };
-		7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD739AB295488D900261488 /* RequestTableViewCell.swift */; };
-		7FD739AE295488D900261488 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FD739AC295488D900261488 /* RequestTableViewCell.xib */; };
 		7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */; };
 		7FDC0F5B293FD5880025D3DC /* ProductCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */; };
 		7FDC0F5C293FD5880025D3DC /* PharmacyCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */; };
@@ -190,8 +186,6 @@
 		7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
 		7FA939CB294678C200AF3A33 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7FA939CC294678C200AF3A33 /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		7FBA39A62959DD6900770209 /* NextVisitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextVisitTableViewCell.swift; sourceTree = "<group>"; };
-		7FBA39A72959DD6900770209 /* NextVisitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextVisitTableViewCell.xib; sourceTree = "<group>"; };
 		7FBA39AC295A2B9900770209 /* CustomersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersTableViewCell.swift; sourceTree = "<group>"; };
 		7FBA39AD295A2B9900770209 /* CustomersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomersTableViewCell.xib; sourceTree = "<group>"; };
 		7FBA39B2295A4E2500770209 /* AddPharmacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPharmacyViewController.swift; sourceTree = "<group>"; };
@@ -226,8 +220,6 @@
 		7FD739A12954886800261488 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		7FD739A52954888C00261488 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		7FD739A62954888C00261488 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
-		7FD739AB295488D900261488 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
-		7FD739AC295488D900261488 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		7FDC0F50293FD5830025D3DC /* ManagerCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagerCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDC0F51293FD5840025D3DC /* ProductCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDC0F52293FD5840025D3DC /* PharmacyCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PharmacyCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -466,12 +458,16 @@
 		7FC5CAD9292A0B07000D228A /* CRS */ = {
 			isa = PBXGroup;
 			children = (
+				7FC5CAEB292A0B08000D228A /* Info.plist */,
 				7F0AAAC22939598B00454371 /* GoogleService-Info.plist */,
-				7FC5CB18292A0F69000D228A /* View */,
+				7FC5CADA292A0B07000D228A /* AppDelegate.swift */,
+				7FC5CAE6292A0B08000D228A /* Assets.xcassets */,
+				7FC5CAE0292A0B07000D228A /* Main.storyboard */,
+				7FC5CAE8292A0B08000D228A /* LaunchScreen.storyboard */,
+				7FC5CB0D292A0B18000D228A /* Utilities */,
 				7FC5CB11292A0E0A000D228A /* ViewController */,
 				7FC5CB10292A0DFF000D228A /* Model */,
-				7FC5CB0D292A0B18000D228A /* Utilities */,
-				7FC5CAEB292A0B08000D228A /* Info.plist */,
+				7FC5CB18292A0F69000D228A /* View */,
 			);
 			path = CRS;
 			sourceTree = "<group>";
@@ -497,8 +493,6 @@
 			isa = PBXGroup;
 			children = (
 				7F418261293285530055DC7B /* Extensions */,
-				7FC5CAE6292A0B08000D228A /* Assets.xcassets */,
-				7FC5CADA292A0B07000D228A /* AppDelegate.swift */,
 				7FC5CB0F292A0B36000D228A /* Core Data Manager */,
 				7FC5CB0E292A0B2A000D228A /* Network Layer */,
 			);
@@ -610,8 +604,6 @@
 				7FDD5909294380EB00EE969B /* ProspectionAnswersCell */,
 				7F7EA40F293EB4F000E72E49 /* CustomerCell */,
 				7F593794293BDC5100FFF055 /* SideMenuCell */,
-				7FC5CAE0292A0B07000D228A /* Main.storyboard */,
-				7FC5CAE8292A0B08000D228A /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -648,8 +640,6 @@
 			children = (
 				7F5C420F295E0E4D00ECE925 /* AccountTableViewCell */,
 				7F5C420E295E0E4000ECE925 /* KeyPersonTableViewCell */,
-				7FD739AA295488C300261488 /* SendRequestTableViewCell */,
-				7FD739A9295488AD00261488 /* NextVisitTableViewCell */,
 				7FD739A42954887600261488 /* ButtonTableViewCell */,
 				7FD7399F2954884F00261488 /* CommentTableViewCell */,
 				7FD7399A2954882400261488 /* PharmciesTableViewCell */,
@@ -713,24 +703,6 @@
 				7FD739A62954888C00261488 /* ButtonTableViewCell.xib */,
 			);
 			path = ButtonTableViewCell;
-			sourceTree = "<group>";
-		};
-		7FD739A9295488AD00261488 /* NextVisitTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				7FBA39A62959DD6900770209 /* NextVisitTableViewCell.swift */,
-				7FBA39A72959DD6900770209 /* NextVisitTableViewCell.xib */,
-			);
-			path = NextVisitTableViewCell;
-			sourceTree = "<group>";
-		};
-		7FD739AA295488C300261488 /* SendRequestTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				7FD739AB295488D900261488 /* RequestTableViewCell.swift */,
-				7FD739AC295488D900261488 /* RequestTableViewCell.xib */,
-			);
-			path = SendRequestTableViewCell;
 			sourceTree = "<group>";
 		};
 		7FDC0EDA293FCD4F0025D3DC /* CoreDataModels */ = {
@@ -961,11 +933,9 @@
 				7F7EA3F9293E933700E72E49 /* AccountsViewController.xib in Resources */,
 				7FD7398E295486AD00261488 /* DoctorTableViewCell.xib in Resources */,
 				7FD7399E2954884400261488 /* PharmaciesTableViewCell.xib in Resources */,
-				7FD739AE295488D900261488 /* RequestTableViewCell.xib in Resources */,
 				7FD739942954870100261488 /* DoubleVisitTableViewCell.xib in Resources */,
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
 				7F5C4220295E125900ECE925 /* KeyPersonTableViewCell.xib in Resources */,
-				7FBA39A92959DD6900770209 /* NextVisitTableViewCell.xib in Resources */,
 				7F5C4226295E16D100ECE925 /* AddKeyPersonViewController.xib in Resources */,
 				7FBA39AF295A2B9900770209 /* CustomersTableViewCell.xib in Resources */,
 				7FDD590D2943813E00EE969B /* ProspectionTableViewCell.xib in Resources */,
@@ -1178,7 +1148,6 @@
 				7F7EA409293E9A0500E72E49 /* CoreDataManager.swift in Sources */,
 				7F15F3952930CB4E009BD8D0 /* EndPoint.swift in Sources */,
 				7FD7398D295486AD00261488 /* DoctorTableViewCell.swift in Sources */,
-				7FBA39A82959DD6900770209 /* NextVisitTableViewCell.swift in Sources */,
 				7FDC0F5E293FD5880025D3DC /* KeyCD+CoreDataClass.swift in Sources */,
 				7F4182632932856E0055DC7B /* UIViewController+Extensions.swift in Sources */,
 				7FD607E6295B06F400A1D5AA /* PharmacyTableViewCell.swift in Sources */,
@@ -1188,7 +1157,6 @@
 				7FDC0F61293FD5880025D3DC /* CustomerCD+CoreDataClass.swift in Sources */,
 				7F5C4225295E16D100ECE925 /* AddKeyPersonViewController.swift in Sources */,
 				7F5C4216295E0EE000ECE925 /* AccountTableViewCell.swift in Sources */,
-				7FD739AD295488D900261488 /* RequestTableViewCell.swift in Sources */,
 				7FD607F0295B28AC00A1D5AA /* AddSendRequestVisitViewController.swift in Sources */,
 				7FD7399D2954884400261488 /* PharmaciesTableViewCell.swift in Sources */,
 				7FC5CADB292A0B07000D228A /* AppDelegate.swift in Sources */,

@@ -18,28 +18,23 @@ class DoctorTableViewCell: UITableViewCell {
     @IBOutlet weak var spLabel: UILabel!
     @IBOutlet weak var doctorTextField: UITextField!
     public weak var delegate: DoctorTableViewDelegate?
-    private var customer: Customer? {
+    private var customer: Customer?
+    private var updateCustomer: Customer? {
         didSet {
             DispatchQueue.main.async { [self] in
-               handleCellView()
+                handleCellUpdatedView()
             }
         }
     }
+    var isOpenToUpdate = false
     private var customers: Customers = []
-    var iSOpenToUpdate: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         doctorTextField.delegate = self
+        
         mapButton.addTarget(self, action: #selector(mapAction), for: .touchUpInside)
         customers = CoreDataManager.shared.getCustomers()
-        if iSOpenToUpdate {
-            var id = UserDefaults.standard.value(forKey: "customerID") as? String
-            if id != nil {
-                customer = customers.filter { $0.customerID == id }[0]
-            }
-        }
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,10 +42,23 @@ class DoctorTableViewCell: UITableViewCell {
         
     }
     
-    @objc private func mapAction (){
-        guard let customer = customer else { return }
-        openGoogleMap(long: customer.customerLongitude ?? "0.0", lat: customer.customerLatitude ?? "0.0")
-        
+    func cellConfigToUpdate(isOpenToUpdate: Bool) {
+        if isOpenToUpdate && customers.count != 0 {
+            let id = UserDefaults.standard.value(forKey: "customerID") as? String
+            if id != nil && id != "" && id != "0"{
+                updateCustomer = customers.filter { $0.customerID == id }[0]
+            }
+        }
+    }
+    
+    @objc private func mapAction() {
+        if isOpenToUpdate {
+            guard let customer = updateCustomer else { return }
+            openGoogleMap(long: customer.customerLongitude ?? "0.0", lat: customer.customerLatitude ?? "0.0")
+        } else {
+            guard let customer = customer else { return }
+            openGoogleMap(long: customer.customerLongitude ?? "0.0", lat: customer.customerLatitude ?? "0.0")
+        }
     }
     func openGoogleMap(long: String,lat: String) {
         if long != "0.0" && lat != "0.0"{
@@ -72,6 +80,17 @@ class DoctorTableViewCell: UITableViewCell {
         spLabel.text = customer.specialityName
         potLabel.text = customer.customerPotential
         rxPotLabel.text = customer.customerPrescription
+        doctorTextField.text = customer.customerName
+        delegate?.getCustomer(customer: customer)
+    }
+    
+    func handleCellUpdatedView() {
+        guard let customer = updateCustomer else { return }
+        spLabel.text = customer.specialityName
+        potLabel.text = customer.customerPotential
+        rxPotLabel.text = customer.customerPrescription
+        doctorTextField.text = customer.customerName
+        doctorTextField.isEnabled = false
         delegate?.getCustomer(customer: customer)
     }
 }
@@ -79,33 +98,33 @@ class DoctorTableViewCell: UITableViewCell {
 //MARK: - UITextFieldDelegate
 extension DoctorTableViewCell: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return !autoCompleteText( in : textField, using: string, suggestionsArray: customers)
+        return !autoCompleteText( in : textField, using: string, suggestionsArray: customers)
     }
     func autoCompleteText( in textField: UITextField, using string: String, suggestionsArray: Customers) -> Bool {
-            if !string.isEmpty,
-                let selectedTextRange = textField.selectedTextRange,
-                selectedTextRange.end == textField.endOfDocument,
-                let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
-                let text = textField.text( in : prefixRange) {
-                let prefix = text + string
-                let matches = suggestionsArray.filter {
-                    $0.customerName!.hasPrefix(prefix)
-                }
-                if (matches.count > 0) {
-                    textField.text = matches[0].customerName
-                    customer = matches[0]
-                    if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
-                        textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
-                        return true
-                    }
+        if !string.isEmpty,
+           let selectedTextRange = textField.selectedTextRange,
+           selectedTextRange.end == textField.endOfDocument,
+           let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
+           let text = textField.text( in : prefixRange) {
+            let prefix = text + string
+            let matches = suggestionsArray.filter {
+                $0.customerName!.hasPrefix(prefix)
+            }
+            if (matches.count > 0) {
+                textField.text = matches[0].customerName
+                customer = matches[0]
+                if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
+                    textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
+                    return true
                 }
             }
-            return false
         }
+        return false
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            handleCellView()
-            return true
+        textField.resignFirstResponder()
+        handleCellView()
+        return true
     }
 }
 

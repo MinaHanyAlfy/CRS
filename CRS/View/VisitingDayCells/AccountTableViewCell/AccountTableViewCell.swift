@@ -18,15 +18,30 @@ class AccountTableViewCell: UITableViewCell {
     @IBOutlet weak var potLabel: UILabel!
     @IBOutlet weak var spLabel: UILabel!
     @IBOutlet weak var accountNameTextField: UITextField!
-    
+//    let dropDown = DropDown()
     private var account: Account?
     private var accounts: Accounts = []
-    
+    var isOpenToUpdate = false 
+    private var updateAccount: Account? {
+        didSet {
+            DispatchQueue.main.async {
+                guard let account = self.updateAccount else { return }
+                self.accountNameTextField.text = account.accountName
+                self.spLabel.text = account.specialityName
+                self.potLabel.text = account.accountPotential
+                self.rxPotLabel.text = account.accountPrescription
+                self.accountNameTextField.isEnabled = false
+                self.delegate?.getAccount(account: account)
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         accountNameTextField.delegate = self
         mapButton.addTarget(self, action: #selector(mapAction), for: .touchUpInside)
         accounts = CoreDataManager.shared.getAccounts()
+//        dropDown.anchorView = accountNameTextField
+//        dropDown.dataSource = accounts.map({ $0.accountName ?? "" })
         
     }
 
@@ -35,11 +50,24 @@ class AccountTableViewCell: UITableViewCell {
 
     }
     
+    func cellConfigToUpdate(isOpenToUpdate: Bool) {
+        if isOpenToUpdate && accounts.count != 0 {
+            if let id = UserDefaults.standard.value(forKey: "accountID") as? String {
+                if id != "" && id != "0" {
+                    updateAccount = accounts.filter { $0.accountID == id }[0]
+                }
+            }
+        }
+    }
     
-    @objc private func mapAction (){
-        guard let account = account else { return }
-        openGoogleMap(long: account.accountLongitude ?? "0.0", lat: account.accountLatitude ?? "0.0")
-        
+    @objc private func mapAction() {
+        if isOpenToUpdate {
+            guard let account = updateAccount else { return }
+            openGoogleMap(long: account.accountLongitude ?? "0.0", lat: account.accountLatitude ?? "0.0")
+        } else {
+            guard let account = account else { return }
+            openGoogleMap(long: account.accountLongitude ?? "0.0", lat: account.accountLatitude ?? "0.0")
+        }
     }
     
     func openGoogleMap(long: String,lat: String) {

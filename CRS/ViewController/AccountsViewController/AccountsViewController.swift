@@ -78,8 +78,10 @@ extension AccountsViewController: UISearchResultsUpdating {
               !query.trimmingCharacters(in: .whitespaces).isEmpty,
               query.trimmingCharacters(in: .whitespaces).count >= 3,
               let resultsController = searchController.searchResultsController as? SearchResultViewController else {
-                  return
-              }
+            return
+        }
+        
+        resultsController.accounts = accounts?.filter{ $0.accountName!.contains(query) } ?? []
     }
 }
 

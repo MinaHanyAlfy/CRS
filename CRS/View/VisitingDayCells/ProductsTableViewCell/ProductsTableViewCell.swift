@@ -20,14 +20,49 @@ class ProductsTableViewCell: UITableViewCell {
     @IBOutlet weak var thirdProductTextField: UITextField!
     @IBOutlet weak var secondProductTextField: UITextField!
     @IBOutlet weak var firstProductTextField: UITextField!
-    
-    
+
     private var products: Products = []
     private var productsBack: Products = []
     private var firstPickerView = UIPickerView()
     private var secondPickerView = UIPickerView()
     private var thirdPickerView = UIPickerView()
     private var fourthPickerView = UIPickerView()
+    private var firstProd: Product? {
+        didSet {
+            DispatchQueue.main.async {
+                guard let prod = self.firstProd else { return }
+                self.firstProductTextField.text = prod.productName
+                self.delegate?.getFirstProduct(product: prod)
+            }
+        }
+    }
+    private var secondProd: Product? {
+        didSet {
+            DispatchQueue.main.async {
+                guard let prod = self.secondProd else { return }
+                self.secondProductTextField.text = prod.productName
+                self.delegate?.getSecondProduct(product: prod)
+            }
+        }
+    }
+    private var thirdProd: Product? {
+        didSet {
+            DispatchQueue.main.async {
+                guard let prod = self.thirdProd else { return }
+                self.thirdProductTextField.text = prod.productName
+                self.delegate?.getThirdProduct(product: prod)
+            }
+        }
+    }
+    private var fourthProd: Product? {
+        didSet {
+            DispatchQueue.main.async {
+                guard let prod = self.fourthProd else { return }
+                self.fourthProductTextField.text = prod.productName
+                self.delegate?.getFourthProduct(product: prod)
+            }
+        }
+    }
     public weak var delegate: ProductsTableViewDelegate?
     
     override func awakeFromNib() {
@@ -57,6 +92,31 @@ class ProductsTableViewCell: UITableViewCell {
     }
     
 
+    
+    func cellConfigToUpdate(isOpenToUpdate: Bool) {
+        if isOpenToUpdate && products.count != 0 {
+            let firstProd = UserDefaults.standard.value(forKey: "product1_ID") as? String
+            let secondProd = UserDefaults.standard.value(forKey: "product2_ID") as? String
+            let thirdProd = UserDefaults.standard.value(forKey: "product3_ID") as? String
+            let fourthProd = UserDefaults.standard.value(forKey: "product4_ID") as? String
+           
+            if firstProd != nil && firstProd != "" && firstProd != "0" {
+                self.firstProd = products.filter { $0.productID == firstProd }[0]
+            }
+            if secondProd != nil && secondProd != "" && secondProd != "0" {
+                self.secondProd = products.filter { $0.productID == secondProd }[0]
+            }
+            
+            if thirdProd != nil && thirdProd != "" && thirdProd != "0" {
+                self.thirdProd = products.filter { $0.productID == thirdProd }[0]
+            }
+            if fourthProd != nil && fourthProd != "" && fourthProd != "0" {
+                self.fourthProd = products.filter { $0.productID == fourthProd }[0]
+            }
+            
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

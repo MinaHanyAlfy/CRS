@@ -22,8 +22,8 @@ class AddViewController: UIViewController {
         tableView.registerCell(tableViewCell: DoubleVisitTableViewCell.self)
         tableView.registerCell(tableViewCell: CommentTableViewCell.self)
         tableView.registerCell(tableViewCell: ButtonTableViewCell.self)
-        tableView.registerCell(tableViewCell: NextVisitTableViewCell.self)
-        tableView.registerCell(tableViewCell: RequestTableViewCell.self)
+        //        tableView.registerCell(tableViewCell: NextVisitTableViewCell.self)
+        //        tableView.registerCell(tableViewCell: RequestTableViewCell.self)
         tableView.registerCell(tableViewCell: KeyPersonsTableViewCell.self)
         tableView.registerCell(tableViewCell: AccountTableViewCell.self)
         tableView.allowsSelection = false
@@ -52,9 +52,10 @@ class AddViewController: UIViewController {
     var reportAM: ReportAM?
     var reportPM: ReportPM?
     var isPm: Bool = false
+    var isOPenToUpdate: Bool = false
     
     private var buttons = ["Next Visit","Send Request","Report","Cancel"]
-    
+    private var buttonsForUpdate = ["Next Visit","Send Request","Update","Cancel"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -75,9 +76,17 @@ class AddViewController: UIViewController {
     
     private func setupNavigation() {
         if isPm {
-            title = "Adding New PM Visit"
+            if isOPenToUpdate {
+                title = "Update PM Visit"
+            } else {
+                title = "Adding New PM Visit"
+            }
         } else {
-            title = "Adding New AM Visit"
+            if isOPenToUpdate {
+                title = "Update AM Visit"
+            } else {
+                title = "Adding New AM Visit"
+            }
         }
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .never
@@ -124,20 +133,26 @@ extension AddViewController: UITableViewDataSource {
         case 0:
             if isPm {
                 let cell = tableView.dequeue(tableViewCell: DoctorTableViewCell.self , forIndexPath: indexPath)
+                cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
                 cell.delegate = self
+                cell.isOpenToUpdate = isOPenToUpdate
                 return cell
             } else {
                 let cell = tableView.dequeue(tableViewCell: AccountTableViewCell.self,forIndexPath: indexPath)
                 cell.delegate = self
+                cell.isOpenToUpdate = isOPenToUpdate
+                cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
                 return cell
             }
         case 1:
             let cell = tableView.dequeue(tableViewCell: DoubleVisitTableViewCell.self , forIndexPath: indexPath)
             cell.delegate = self
+            cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
             return cell
         case 2:
             let cell = tableView.dequeue(tableViewCell: ProductsTableViewCell.self , forIndexPath: indexPath)
             cell.delegate = self
+            cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
             return cell
         case 3:
             
@@ -160,11 +175,17 @@ extension AddViewController: UITableViewDataSource {
         case 4:
             let cell = tableView.dequeue(tableViewCell: CommentTableViewCell.self , forIndexPath: indexPath)
             cell.delegate = self
+            cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
             return cell
             
         default:
             let cell = tableView.dequeue(tableViewCell: ButtonTableViewCell.self , forIndexPath: indexPath)
-            cell.config(title: buttons[indexPath.row])
+            if isOPenToUpdate {
+                
+                cell.config(title: buttonsForUpdate[indexPath.row],isOpenToUpdate: isOPenToUpdate)
+            } else {
+                cell.config(title: buttons[indexPath.row],isOpenToUpdate: isOPenToUpdate)
+            }
             cell.delegate = self
             return cell
         }
@@ -181,6 +202,15 @@ extension AddViewController: UITableViewDataSource {
 //}
 //MARK: - ButtonTableViewCellDelegate -
 extension AddViewController: ButtonTableViewCellDelegate {
+    func updateAction() {
+        print("Update Action")
+        if isPm {
+            updateReportPM()
+        } else {
+            updateReportAM()
+        }
+    }
+    
     func nextVisitAction() {
         print("NextVisit")
         let vc = AddNextVisitViewController()
@@ -222,16 +252,16 @@ extension AddViewController: ButtonTableViewCellDelegate {
                 }
             }
             if customer.customerLongitude == "" || customer.customerLongitude == nil || customer.customerLatitude == "" || customer.customerLatitude == nil {
-                    let alert = UIAlertController(title: "Location", message: "Set this location for this customer ?", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Yes",style: .default, handler: { action in
-                        self.saveCustomerLocation(customer: customer, long: "\(location.coordinate.longitude)", lat: "\(location.coordinate.latitude)")
-                        print(location)
-                    }))
-                    alert.addAction(UIAlertAction(title: "No",style: .default, handler: { action in
-                        self.sendPMReports(user: self.user, sendingDate: self.date)
-                        self.dismiss(animated: true)
-                    }))
-                    present(alert, animated: true)
+                let alert = UIAlertController(title: "Location", message: "Set this location for this customer ?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes",style: .default, handler: { action in
+                    self.saveCustomerLocation(customer: customer, long: "\(location.coordinate.longitude)", lat: "\(location.coordinate.latitude)")
+                    print(location)
+                }))
+                alert.addAction(UIAlertAction(title: "No",style: .default, handler: { action in
+                    self.sendPMReports(user: self.user, sendingDate: self.date)
+                    self.dismiss(animated: true)
+                }))
+                present(alert, animated: true)
             } else {
                 self.sendPMReports(user: user, sendingDate: date)
             }
@@ -376,7 +406,7 @@ extension AddViewController {
         DispatchQueue.main.async {
             SVProgressHUD.show()
         }
-
+        
         guard let account = self.account else {
             alertIssues(message: "Please update Account field.")
             return
@@ -413,6 +443,81 @@ extension AddViewController {
                     self.alertIssues(message: error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    private func updateReportPM () {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+        guard self.customer != nil else {
+            alertIssues(message: "Please update Customer field.")
+            return
+        }
+        guard self.product_1 != nil else {
+            alertIssues(message: "Please check at least 1 product.")
+            return
+        }
+        let pharmacyIDs: String = pharmacies.map { $0.pharmacyID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let pharmacyNames: String = pharmacies.map { $0.pharmacyName?.toBase64() ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let pharmacyPhones: String = pharmacies.map { $0.phone?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
+        let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
+        let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
+        let serial = UserDefaults.standard.string(forKey: "serial")
+        network.getResultsStrings(APICase: .updatePMVisit(serial: serial ?? "",manager_level: manager?.level ?? "", managerId: manager?.id ?? "", product_1: product_1?.productID ?? "", product_2: product_2?.productID ?? "", product_3: product_3?.productID ?? "", product_4: product_4?.productID ?? "", comment: comment, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { result in
+            switch result {
+            case .success(let response):
+                self.handleUpdateResponse(response: response)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        print(serial)
+    
+    }
+    
+    private func updateReportAM () {
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
+        
+        guard self.account != nil else {
+            alertIssues(message: "Please update Account field.")
+            return
+        }
+        guard self.product_1 != nil else {
+            alertIssues(message: "Please check at least 1 product.")
+            return
+        }
+        
+        let keyPerIDs: String = keyPersons.map { $0.keyPersonID ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let keyPerNames: String = keyPersons.map { $0.keyPersonName?.toBase64() ?? "Unavalible Pharmacy" } .joined(separator: " | ")
+        let keyPerMobiles: String = keyPersons.map { $0.mobile?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
+        let keyPerSpecial: String = keyPersons.map { $0.specialityName?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
+        let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
+        let serial = UserDefaults.standard.string(forKey: "serial")
+        print(serial)
+        network.getResultsStrings(APICase: .updateAMVisit(serial: serial ?? "", manager_level: manager?.level ?? "", managerId: manager?.id ?? "", product_1: product_1?.productID ?? "", product_2: product_2?.productID ?? "", product_3: product_3?.productID ?? "", product_4: product_4?.productID ?? "", comment: comment, k_ids: keyPerIDs, k_names: keyPerNames, k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { result in
+            switch result {
+            case .success(let response):
+                self.handleUpdateResponse(response: response)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    
+    }
+    
+    private func handleUpdateResponse(response: String) {
+        DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
+        }
+        if response == "Updated" {
+            alertIssues(message: "Report updated successfully")
+        } else if response == "Reported_Day" {
+            alertIssues(message: "Report already submitted and cannot be edited")
+        } else {
+            alertIssues(message: response)
         }
     }
 }
@@ -522,18 +627,19 @@ extension AddViewController {
             UserDefaults.standard.set(reportPM?.product2_ID, forKey: "product2_ID")
             UserDefaults.standard.set(reportPM?.product3_ID, forKey: "product3_ID")
             UserDefaults.standard.set(reportPM?.product4_ID, forKey: "product4_ID")
-            UserDefaults.standard.set(reportPM?.customerName, forKey: "customerName")
+            UserDefaults.standard.set(reportPM?.dvReport, forKey: "dvReport")
+            //            UserDefaults.standard.set(reportPM?.customerName, forKey: "customerName")
             UserDefaults.standard.set(reportPM?.customerID, forKey: "customerID")
             UserDefaults.standard.set(reportPM?.serial, forKey: "serial")
-            UserDefaults.standard.set(reportPM?.customerPotential, forKey: "customerPotential")
-            UserDefaults.standard.set(reportPM?.customerPrescription, forKey: "customerPrescription")
-            UserDefaults.standard.set(reportPM?.dvReport, forKey: "dvReport")
-            UserDefaults.standard.set(reportPM?.pIDS, forKey: "pIDS")
-            UserDefaults.standard.set(reportPM?.pNames, forKey: "pNames")
-            UserDefaults.standard.set(reportPM?.pMobiles, forKey: "pMobiles")
-            UserDefaults.standard.set(reportPM?.pSpecialities, forKey: "pSpecialities")
-            UserDefaults.standard.set(reportPM?.pComments, forKey: "pComments")
-            UserDefaults.standard.set(reportPM?.specialityName, forKey: "specialityName")
+            //            UserDefaults.standard.set(reportPM?.customerPotential, forKey: "customerPotential")
+            //            UserDefaults.standard.set(reportPM?.customerPrescription, forKey: "customerPrescription")
+            
+            //            UserDefaults.standard.set(reportPM?.pIDS, forKey: "pIDS")
+            //            UserDefaults.standard.set(reportPM?.pNames, forKey: "pNames")
+            //            UserDefaults.standard.set(reportPM?.pMobiles, forKey: "pMobiles")
+            //            UserDefaults.standard.set(reportPM?.pSpecialities, forKey: "pSpecialities")
+            //            UserDefaults.standard.set(reportPM?.pComments, forKey: "pComments")
+            //            UserDefaults.standard.set(reportPM?.specialityName, forKey: "specialityName")
             
         } else {
             guard reportAM != nil else { return }
@@ -547,17 +653,17 @@ extension AddViewController {
             UserDefaults.standard.set(reportAM?.product3_ID, forKey: "product3_ID")
             UserDefaults.standard.set(reportAM?.product4_ID, forKey: "product4_ID")
             UserDefaults.standard.set(reportAM?.serial, forKey: "serial")
-            UserDefaults.standard.set(reportAM?.accountName, forKey: "accountName")
+            //            UserDefaults.standard.set(reportAM?.accountName, forKey: "accountName")
             UserDefaults.standard.set(reportAM?.accountID, forKey: "accountID")
-            UserDefaults.standard.set(reportAM?.accountPotential, forKey: "accountPotential")
-            UserDefaults.standard.set(reportAM?.accountPrescription, forKey: "accountPrescription")
-            UserDefaults.standard.set(reportAM?.dvReport, forKey: "dvReport")
-            UserDefaults.standard.set(reportAM?.kIDS, forKey: "kIDS")
-            UserDefaults.standard.set(reportAM?.kNames, forKey: "kNames")
-            UserDefaults.standard.set(reportAM?.kMobiles, forKey: "kMobiles")
-            UserDefaults.standard.set(reportAM?.kSpecialities, forKey: "kSpecialities")
-            UserDefaults.standard.set(reportAM?.kComments, forKey: "kComments")
-            UserDefaults.standard.set(reportAM?.specialityName, forKey: "specialityName")
+            //            UserDefaults.standard.set(reportAM?.accountPotential, forKey: "accountPotential")
+            //            UserDefaults.standard.set(reportAM?.accountPrescription, forKey: "accountPrescription")
+            //            UserDefaults.standard.set(reportAM?.dvReport, forKey: "dvReport")
+            //            UserDefaults.standard.set(reportAM?.kIDS, forKey: "kIDS")
+            //            UserDefaults.standard.set(reportAM?.kNames, forKey: "kNames")
+            //            UserDefaults.standard.set(reportAM?.kMobiles, forKey: "kMobiles")
+            //            UserDefaults.standard.set(reportAM?.kSpecialities, forKey: "kSpecialities")
+            //            UserDefaults.standard.set(reportAM?.kComments, forKey: "kComments")
+            //            UserDefaults.standard.set(reportAM?.specialityName, forKey: "specialityName")
         }
     }
 }

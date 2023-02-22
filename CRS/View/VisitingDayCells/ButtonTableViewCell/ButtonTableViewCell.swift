@@ -13,6 +13,7 @@ protocol ButtonTableViewCellDelegate: AnyObject {
     func reportAction(location: CLLocation)
     func reportAction()
     func sendRequestAction()
+    func updateAction()
 }
 
 class ButtonTableViewCell: UITableViewCell {
@@ -20,7 +21,7 @@ class ButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!
     public weak var delegate: ButtonTableViewCellDelegate?
     var locManager = CLLocationManager()
-    
+    var isOPenToUpdate = false
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -29,7 +30,7 @@ class ButtonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func config(title: String) {
+    func config(title: String, isOpenToUpdate: Bool? = false) {
         button.setTitle(title, for: .normal)
         if title == "Next Visit" {
             button.addTarget(self, action: #selector(nextVisitTap), for: .touchUpInside)
@@ -40,8 +41,28 @@ class ButtonTableViewCell: UITableViewCell {
             button.addTarget(self, action: #selector(reportTap), for: .touchUpInside)
         } else if title == "Cancel" {
             button.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
+        } else if title == "Update" {
+            button.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
+            configCellInUpdateView(isOpenToUpdate: isOpenToUpdate ?? false)
         }
         
+    }
+    
+    private func configCellInUpdateView(isOpenToUpdate: Bool) {
+        if isOpenToUpdate {
+            if let id = UserDefaults.standard.value(forKey: "serial") as? String {
+                if id != "" {
+                    button.setTitle("Update", for: .normal)
+                    button.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
+//                    button.isEnabled = false
+                }
+                if id == "" {
+                    button.removeTarget(self, action: #selector(updateTapped), for: .touchUpInside)
+                    button.setTitle("Report", for: .normal)
+                    button.addTarget(self, action: #selector(reportTap), for: .touchUpInside)
+                }
+            }
+        }
     }
     
     @objc private func nextVisitTap() {
@@ -66,5 +87,9 @@ class ButtonTableViewCell: UITableViewCell {
     
     @objc private func cancelTap() {
         delegate?.cancelAction()
+    }
+    
+    @objc private func updateTapped() {
+        delegate?.updateAction()
     }
 }

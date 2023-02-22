@@ -18,13 +18,19 @@ class AddNextVisitViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var datePickerView: UIDatePicker!
     public weak var delegate: AddNextVisitDelegate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.hideKeyboardWhenTappedAround()
         majorView.clipsToBounds = true
         majorView.layer.cornerRadius = 16
         buttonHandle()
+        if let date = UserDefaults.standard.value(forKey: "visitingDayDate") as? String {
+            if date != "" {
+                datePickerView.date = DateFormatter().date(from: date) ?? Date()
+                delegate?.nextVisitTime(date: date)
+            }
+        }
     }
     
     private func buttonHandle() {

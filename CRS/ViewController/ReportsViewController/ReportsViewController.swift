@@ -63,7 +63,6 @@ class ReportsViewController: UIViewController {
         buttonsAction()
         setupTableView()
         loadData()
-//        self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
@@ -87,6 +86,8 @@ class ReportsViewController: UIViewController {
         tableView.layer.cornerRadius = 16
         tableView.delegate = self
         tableView.allowsSelection = true
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressForDeleteVisit(sender:)))
+        tableView.addGestureRecognizer(longPress)
     }
     
     private func setUpViews() {
@@ -98,7 +99,6 @@ class ReportsViewController: UIViewController {
         } else {
             title = "AM Reports"
         }
-//        datePicker.locale = Locale(identifier: "en_US")
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.tintColor = .white
@@ -110,6 +110,7 @@ class ReportsViewController: UIViewController {
         addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
     }
     
+    //MARK: - For Report Day -
     @IBAction func reportAction(_ sender: Any) {
         let alert = UIAlertController(title: "Report", message: "Report this day ?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .default,handler: { [self] alert in
@@ -117,18 +118,35 @@ class ReportsViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         self.present(alert, animated: true)
-        
+    }
+    
+    //MARK: - Delete Visit -
+    @objc private func handleLongPressForDeleteVisit(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                if isPM {
+                    if reportsPM[indexPath.row].serial != "" {
+                        SVProgressHUD.show()
+                        deleteAction(serial: reportsPM[indexPath.row].serial)
+                    }
+                } else {
+                    if reportsAM[indexPath.row].serial != "" {
+                        SVProgressHUD.show()
+                        deleteAction(serial: reportsAM[indexPath.row].serial)
+                    }
+                }
+            }
+        }
     }
 }
 
 //MARK: - Actions
 extension ReportsViewController {
+    
+    //MARK: - Send Visiting Day Comment -
     @objc func sendAction() {
         guard let comment = commentTextField.text, comment.count > 3 else { return }
-//        comments.append(comment)
-//        tableView.reloadData()
-        
-       
         let date = datePicker.date.updateDate
         if isPM {
             SVProgressHUD.show()
@@ -137,8 +155,10 @@ extension ReportsViewController {
                 case .success(let response):
                     self.updateCommentResponse(response: response)
                 case .failure(let error):
-                    SVProgressHUD.dismiss()
-                    self.alertIssues(message: error.localizedDescription)
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        self.alertIssues(message: error.localizedDescription)
+                    }
                 }
             }
         } else {
@@ -148,12 +168,16 @@ extension ReportsViewController {
                 case .success(let response):
                     self.updateCommentResponse(response: response)
                 case .failure(let error):
-                    SVProgressHUD.dismiss()
-                    self.alertIssues(message: error.localizedDescription)
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        self.alertIssues(message: error.localizedDescription)
+                    }
                 }
             }
         }
     }
+    
+    //MARK: - Add Visit -
     @objc func addAction() {
         let vc = AddViewController()
         if isPM {
@@ -161,6 +185,32 @@ extension ReportsViewController {
         }
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //MARK: - Delete Visit -
+    private func deleteAction(serial: String) {
+        if isPM {
+            NetworkService.shared.getResultsStrings(APICase: .deletePMVisit(serial: serial), decodingModel: ResponseString.self) { result in
+                switch result {
+                case .success(let response):
+                    self.deleteResponse(response: response)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: error.localizedDescription)
+                }
+            }
+        } else {
+            NetworkService.shared.getResultsStrings(APICase: .deleteAMVisit(serial: serial), decodingModel: ResponseString.self) { result in
+                switch result {
+                case .success(let response):
+                    self.deleteResponse(response: response)
+                case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    self.alertIssues(message: error.localizedDescription)
+                }
+            }
+        }
+      
     }
 }
 
@@ -192,39 +242,42 @@ extension ReportsViewController: UITableViewDelegate {
         if isPM {
             vc.isPm = true
             vc.reportPM = reportsPM[indexPath.row]
+            vc.isOPenToUpdate = true
+            
         } else {
             vc.reportAM = reportsAM[indexPath.row]
+            vc.isOPenToUpdate = true
         }
         vc.modalPresentationStyle = .fullScreen
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-//MARK: - DZNEmptyDataSetSource -
-extension ReportsViewController: DZNEmptyDataSetSource {
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(systemName: "bell.fill")
-    }
-    
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let quote = "You don't have any Visit."
-        let attributedQuote = NSMutableAttributedString(string: quote)
-        return attributedQuote
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //MARK: - Data -
 extension ReportsViewController {
     
     private func updateCommentResponse(response: String) {
+        SVProgressHUD.dismiss()
         if response == "Done" {
-            SVProgressHUD.dismiss()
             self.alertIssues(message: "Comment Updated")
         } else if response == "Reported_Day" {
-            SVProgressHUD.dismiss()
             self.alertIssues(message: "Report already submitted and cannot be edited")
         } else {
-            SVProgressHUD.dismiss()
             self.alertIssues(message: response)
         }
     }
@@ -266,16 +319,24 @@ extension ReportsViewController {
     
     private func handleResponse(response: String) {
         if response == "Done" {
-            SVProgressHUD.dismiss()
             self.alertSuccessAndDismissViewController(message: "Visiting Day Reported")
         } else if response == "No_Report" {
-            SVProgressHUD.dismiss()
             self.alertIssues(message: "No Report Submitted")
         } else if response == "Not_Allowed" {
-            SVProgressHUD.dismiss()
             self.alertSuccessAndDismissViewController(message: "Can not Report that old")
         } else {
-            SVProgressHUD.dismiss()
+            self.alertIssues(message: response)
+        }
+    }
+    
+    private func deleteResponse(response: String) {
+        SVProgressHUD.dismiss()
+        if response == "Deleted" {
+            self.alertIssues(message: "Report deleted successfully")
+            
+        } else if response == "Reported_Day" {
+            self.alertIssues(message: "Report already submitted and cannot be edited")
+        } else {
             self.alertIssues(message: response)
         }
     }
@@ -337,5 +398,18 @@ extension ReportsViewController {
                 }
             }
         }
+    }
+}
+
+//MARK: - DZNEmptyDataSetSource -
+extension ReportsViewController: DZNEmptyDataSetSource {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(systemName: "bell.fill")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let quote = "You don't have any Visit."
+        let attributedQuote = NSMutableAttributedString(string: quote)
+        return attributedQuote
     }
 }

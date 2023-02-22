@@ -32,11 +32,12 @@ enum API {
     case storeCustomerLocation(customerId: String, lat: String, long: String)
     case storeAccountLocation(accountId: String,lat: String,long: String)
 
-    case updatePMVisit
-    case deletePMVisit
-    case updateAMVisit
-    case deleteAMVisit
+    case updatePMVisit(serial: String,manager_level: String,managerId: String, product_1: String, product_2: String, product_3: String, product_4: String, comment: String, p_ids: String, p_names: String, p_addresses: String, p_phones: String, p_comments: String)
     
+    case updateAMVisit(serial: String,manager_level: String,managerId: String, product_1: String, product_2: String, product_3: String, product_4: String,comment: String, k_ids: String, k_names: String, k_specialities: String, k_mobiles: String, k_comments: String)
+    
+    case deletePMVisit(serial: String)
+    case deleteAMVisit(serial: String)
     /////// ///// /////
     case mockLocation
     case logging
@@ -186,7 +187,47 @@ extension API: EndPoint{
                     URLQueryItem(name: "long", value: long),
                     URLQueryItem(name: "store_account_location", value: "x")
                 ]
-
+            
+        case .deletePMVisit(let serial):
+            return [URLQueryItem(name: "serial", value: serial), URLQueryItem(name: "delete_pm_visit", value: "x")]
+            
+        case .deleteAMVisit(let serial):
+           return [URLQueryItem(name: "serial", value: serial), URLQueryItem(name: "delete_am_visit", value: "x")]
+            
+        case .updateAMVisit(let serial, let manager_level, let managerId, let product_1, let product_2, let product_3, let product_4, let comment, let k_ids, let k_names, let k_specialities, let k_mobiles, let k_comments):
+            return [URLQueryItem(name: "update_am_visit", value: "x"),
+                    URLQueryItem(name: "serial",value: serial),
+                    URLQueryItem(name: "manager_level", value: manager_level),
+                    URLQueryItem(name: "manager_id",value: managerId),
+                    URLQueryItem(name: "product_1", value: product_1),
+                    URLQueryItem(name: "product_2", value: product_2),
+                    URLQueryItem(name: "product_3",value: product_3),
+                    URLQueryItem(name: "product_4", value: product_4),
+                    URLQueryItem(name: "comment", value: comment),
+                    URLQueryItem(name: "k_ids",value: k_ids),
+                    URLQueryItem(name: "k_names", value: k_names),
+                    URLQueryItem(name: "k_specialities", value: k_specialities),
+                    URLQueryItem(name: "k_mobiles",value: k_mobiles),
+                    URLQueryItem(name: "k_comments", value: k_comments)
+            ]
+            
+        case .updatePMVisit(let serial, let manager_level, let managerId, let product_1, let product_2, let product_3, let product_4, let comment, let p_ids, let p_names, let p_addresses, let p_phones, let p_comments):
+            return [URLQueryItem(name: "update_pm_visit", value: "x"),
+                    URLQueryItem(name: "serial",value: serial),
+                    URLQueryItem(name: "manager_level", value: manager_level),
+                    URLQueryItem(name: "manager_id",value: managerId),
+                    URLQueryItem(name: "product_1", value: product_1),
+                    URLQueryItem(name: "product_2", value: product_2),
+                    URLQueryItem(name: "product_3",value: product_3),
+                    URLQueryItem(name: "product_4", value: product_4),
+                    URLQueryItem(name: "comment", value: comment),
+                    URLQueryItem(name: "p_ids",value: p_ids),
+                    URLQueryItem(name: "p_names", value: p_names),
+                    URLQueryItem(name: "p_mobiles",value: p_phones),
+                    URLQueryItem(name: "p_addresses", value: p_addresses),
+                    URLQueryItem(name: "p_phones",value: p_phones),
+                    URLQueryItem(name: "p_comments", value: p_comments)
+            ]
         default:
             return [URLQueryItem(name: "", value: nil)]
         }
