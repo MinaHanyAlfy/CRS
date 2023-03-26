@@ -22,6 +22,21 @@ extension CoreDataManager {
         }
     }
     
+    func deleteReport(url: String) {
+        let fetchRequest: NSFetchRequest<ReportCD> = ReportCD.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "url = %@ ",url)
+        let results = try! context().fetch(fetchRequest)
+        if results.count != 0 { // Atleast one was returned
+            context().delete(results.first!)
+        }
+        do {
+            try context().save()
+        }
+        catch {
+            print("Saving Core Data Failed: \(error)")
+        }
+    }
+   
     func clearReports() {
         let context = context()
         let fetchRequest: NSFetchRequest<ReportCD> = ReportCD.fetchRequest()

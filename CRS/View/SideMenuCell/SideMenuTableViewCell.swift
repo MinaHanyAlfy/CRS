@@ -7,6 +7,8 @@
 
 import UIKit
 import SVProgressHUD
+import CoreData
+
 class SideMenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var sideMenuLabel: UILabel!
@@ -121,6 +123,7 @@ class SideMenuTableViewCell: UITableViewCell {
                 let areaLoginVc = AreaLoginViewController()
                 navigationController.pushViewController(areaLoginVc, animated: true)
             default:
+                sendLocalReports()
                 coreData.clearAllWithoutUserInfo()
                 callingAPI(navigationController: navigationController,viewController: viewController)
                 //                let refreshVc = RefreshViewController()
@@ -227,6 +230,24 @@ extension SideMenuTableViewCell {
             print("All Data received successfully!")
             SVProgressHUD.dismiss()
             viewController.alertSuccessAndDismissViewController(message: "Your data loaded successfully!")
+        }
+    }
+    private func sendLocalReports() {
+        print("Call Local Reports....")
+        let reports = coreData.getReports()
+        for report in reports {
+            network.getResultsStrings(urlStr: report, decodingModel: ResponseString.self) { result in
+                switch result {
+                case .success(let success):
+                    if success == "Added" || success == "Reported_Day" || success == "Reported_Visit" {
+                        self.coreData.deleteReport(url: report)
+                        print("Report Response .... ",success)
+
+                    }
+                case .failure(let failure):
+                    print(failure.rawValue)
+                }
+            }
         }
     }
 }

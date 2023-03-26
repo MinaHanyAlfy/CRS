@@ -25,7 +25,8 @@ class KeyPersonsTableViewCell: UITableViewCell {
         addKeyPersonButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
         handleTableView()
         
-        if UserDefaults.standard.value(forKey: "kIDS") as? String != "" || UserDefaults.standard.value(forKey: "kIDS") != nil {
+        if UserDefaults.standard.value(forKey: "kIDS") as? String != "" && UserDefaults.standard.value(forKey: "kIDS") != nil &&
+            UserDefaults.standard.value(forKey: "kNames") as? String != ""  {
             
             let ids = UserDefaults.standard.value(forKey: "kIDS") as? String ?? ""
             let names = UserDefaults.standard.value(forKey: "kNames") as? String

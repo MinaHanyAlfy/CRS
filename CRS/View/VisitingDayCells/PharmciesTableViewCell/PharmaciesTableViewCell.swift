@@ -24,7 +24,7 @@ class PharmaciesTableViewCell: UITableViewCell {
         addPharmacyButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
         handleTableView()
         
-        if UserDefaults.standard.value(forKey: "pIDS") as? String != "" || UserDefaults.standard.value(forKey: "pIDS") != nil {
+        if UserDefaults.standard.value(forKey: "pIDS") as? String != "" && UserDefaults.standard.value(forKey: "pIDS") != nil && UserDefaults.standard.value(forKey: "pNames") as? String != "" {
             let ids = UserDefaults.standard.value(forKey: "pIDS") as? String ?? ""
             let names = UserDefaults.standard.value(forKey: "pNames") as? String
             let pPhones = UserDefaults.standard.value(forKey: "pPhones") as? String
