@@ -11,7 +11,6 @@ class ReportTableViewCell: UITableViewCell {
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var firstLabel: UILabel!
-    @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     let user = CoreDataManager.shared.getUserInfo()
     override func awakeFromNib() {
@@ -26,11 +25,11 @@ class ReportTableViewCell: UITableViewCell {
     
     func cellConfig(report: ReportAM) {
         firstLabel.text = report.accountName
-        secondLabel.text = report.fManagerDv
         if report.serial == "" {
-            commentLabel.text = "Not Submitted Yet"
+            commentLabel.text = "Plan Visit"
         } else {
-            commentLabel.text = report.serial
+            commentLabel.text = "Report Visit"
+            
         }
         
 //        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
@@ -54,11 +53,10 @@ class ReportTableViewCell: UITableViewCell {
     
     func cellConfig(report: ReportPM) {
         firstLabel.text = report.customerName
-        secondLabel.text = report.fManagerDv
         if report.serial == "" {
-            commentLabel.text = "Not Submitted Yet"
+            commentLabel.text = "Plan Visit"
         } else {
-            commentLabel.text = report.serial
+            commentLabel.text = "Report Visit"
         }
 //        if report.fManagerDv == user.idDecoded || report.hManagerDv == user.idDecoded || report.mManagerDv == user.idDecoded {
         if report.dvReport != "" {

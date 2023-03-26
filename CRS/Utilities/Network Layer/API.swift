@@ -35,15 +35,10 @@ enum API {
     case updatePMVisit(serial: String,manager_level: String,managerId: String, product_1: String, product_2: String, product_3: String, product_4: String, comment: String, p_ids: String, p_names: String, p_addresses: String, p_phones: String, p_comments: String)
     
     case updateAMVisit(serial: String,manager_level: String,managerId: String, product_1: String, product_2: String, product_3: String, product_4: String,comment: String, k_ids: String, k_names: String, k_specialities: String, k_mobiles: String, k_comments: String)
-    
+    case addLogIn(level: String,userId: String,am_Or_pm: String,lat: String,long: String)
+    case getPreviousAreaLogin(level: String, userId: String, date: String)
     case deletePMVisit(serial: String)
     case deleteAMVisit(serial: String)
-    /////// ///// /////
-    case mockLocation
-    case logging
-    case addLogIn
-    case mockLocationAllowedApps
-    
 }
 
 
@@ -130,14 +125,14 @@ extension API: EndPoint{
                     URLQueryItem(name: "user_id", value: userId),
                     URLQueryItem(name: "report_date", value: reportDate),
                     URLQueryItem(name: "comment", value: comment),
-                    URLQueryItem(name: "update_am_visiting_day_comment", value: "x")
+                    URLQueryItem(name: "update_pm_visiting_day_comment", value: "x")
                 ]
         case .updateAMVisitingDayComment(let level, let userId, let reportDate, let comment):
             return [URLQueryItem(name: "level",value: level),
                     URLQueryItem(name: "user_id", value: userId),
                     URLQueryItem(name: "report_date", value: reportDate),
                     URLQueryItem(name: "comment", value: comment),
-                    URLQueryItem(name: "update_pm_visiting_day_comment", value: "x")
+                    URLQueryItem(name: "update_am_visiting_day_comment", value: "x")
                 ]
         case .readAMVisits(let level, let userId, let reportDate):
             return [URLQueryItem(name: "level",value: level),
@@ -228,6 +223,21 @@ extension API: EndPoint{
                     URLQueryItem(name: "p_phones",value: p_phones),
                     URLQueryItem(name: "p_comments", value: p_comments)
             ]
+        case .addLogIn(let level, let userId,let am_Or_pm, let lat, let long):
+            return [URLQueryItem(name: "level", value: level),
+                    URLQueryItem(name: "user_id",value: userId),
+                    URLQueryItem(name: "am_or_pm", value: am_Or_pm),
+                    URLQueryItem(name: "lat",value: lat),
+                    URLQueryItem(name: "long", value: long),
+                    URLQueryItem(name: "add_log_in", value: "x")
+            ]
+        case .getPreviousAreaLogin(let level, let userId, let date):
+            return [URLQueryItem(name: "level", value: level),
+                    URLQueryItem(name: "user_id",value: userId),
+                    URLQueryItem(name: "date", value: date),
+                    URLQueryItem(name: "logging", value: "x")
+            ]
+            
         default:
             return [URLQueryItem(name: "", value: nil)]
         }

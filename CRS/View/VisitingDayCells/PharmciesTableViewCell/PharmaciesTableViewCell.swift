@@ -23,6 +23,26 @@ class PharmaciesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         addPharmacyButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
         handleTableView()
+        
+        if UserDefaults.standard.value(forKey: "pIDS") as? String != "" || UserDefaults.standard.value(forKey: "pIDS") != nil {
+            let ids = UserDefaults.standard.value(forKey: "pIDS") as? String ?? ""
+            let names = UserDefaults.standard.value(forKey: "pNames") as? String
+            let pPhones = UserDefaults.standard.value(forKey: "pPhones") as? String
+            let pAddresses = UserDefaults.standard.value(forKey: "pAddresses") as? String
+            let specialityName = UserDefaults.standard.value(forKey: "specialityName") as? String
+            if ids.contains("|")  {
+                let arrayId: [String] = ids.split(separator: "|") as? [String] ?? []
+                let arrayNames: [String] = names?.split(separator: "|") as? [String] ?? []
+                let arraypPhones = pPhones?.split(separator: "|") as? [String] ?? []
+                let arraypAddresses = pAddresses?.split(separator: "|") as? [String] ?? []
+                let arraySpecialityName = specialityName?.split(separator: "|") as? [String] ?? []
+                for i in 0..<arrayId.count {
+                    pharmacies.append(Pharmacy(pharmacyID: arrayId[i], pharmacyName: arrayNames[i], address: arraypAddresses[i], phone: arraypPhones[i], customerID: ""))
+                }
+            } else {
+                pharmacies.append(Pharmacy(pharmacyID: ids, pharmacyName: names, address: pAddresses, phone: pPhones, customerID: ""))
+            }
+        }
     }
     
     func config(navigationController: UINavigationController) {
@@ -47,6 +67,10 @@ class PharmaciesTableViewCell: UITableViewCell {
         let vc = AddPharmacyViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .popover
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            vc.popoverPresentationController?.sourceView = self.contentView
+            vc.popoverPresentationController?.sourceRect = self.contentView.bounds
+        }
         navigationController?.present(vc, animated: true)
         
     }

@@ -74,6 +74,11 @@ class AddViewController: UIViewController {
         sendDataToAddVisitingDayToUpdate()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removingLocalReportData()
+    }
+    
     private func setupNavigation() {
         if isPm {
             if isOPenToUpdate {
@@ -211,17 +216,25 @@ extension AddViewController: ButtonTableViewCellDelegate {
         }
     }
     
-    func nextVisitAction() {
+    func nextVisitAction(button: UIButton) {
         print("NextVisit")
         let vc = AddNextVisitViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .popover
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            vc.popoverPresentationController?.sourceView = button
+            vc.popoverPresentationController?.sourceRect = button.bounds
+        }
         self.present(vc, animated: true, completion: nil)
     }
-    func sendRequestAction() {
+    func sendRequestAction(button: UIButton) {
         let vc = AddSendRequestVisitViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .popover
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            vc.popoverPresentationController?.sourceView = button
+            vc.popoverPresentationController?.sourceRect = button.bounds
+        }
         self.present(vc, animated: true, completion: nil)
         print("Send request")
     }
@@ -261,7 +274,10 @@ extension AddViewController: ButtonTableViewCellDelegate {
                     self.sendPMReports(user: self.user, sendingDate: self.date)
                     self.dismiss(animated: true)
                 }))
+                alert.popoverPresentationController?.sourceRect = self.view.bounds
+                alert.popoverPresentationController?.sourceView = self.view
                 present(alert, animated: true)
+                
             } else {
                 self.sendPMReports(user: user, sendingDate: date)
             }
@@ -285,6 +301,9 @@ extension AddViewController: ButtonTableViewCellDelegate {
                         self.sendAMReports(user: self.user, sendingDate: self.date)
                         self.dismiss(animated: true)
                     }))
+                    
+                    alert.popoverPresentationController?.sourceRect = self.view.bounds
+                    alert.popoverPresentationController?.sourceView = self.view
                     present(alert, animated: true)
                 }
             } else {
@@ -364,10 +383,12 @@ extension AddViewController {
             SVProgressHUD.show()
         }
         guard let customer = self.customer else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please update Customer field.")
             return
         }
         guard let product = self.product_1 else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please check at least 1 product.")
             return
         }
@@ -377,7 +398,7 @@ extension AddViewController {
         let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
         
-        network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: sendingDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
+        network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: planNextVisitDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: sendingDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let message):
                 DispatchQueue.main.async {
@@ -408,10 +429,12 @@ extension AddViewController {
         }
         
         guard let account = self.account else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please update Account field.")
             return
         }
         guard let product = self.product_1 else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please check at least 1 product.")
             return
         }
@@ -421,7 +444,7 @@ extension AddViewController {
         let keyPerSpecial: String = keyPersons.map { $0.specialityName?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
         
-        network.getResultsStrings(APICase: .addAMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "0", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, account_id: account.accountID, lat: account.accountLatitude, long: account.accountLongitude, comment: comment, plan_date: sendingDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: planNextVisitDate, k_ids: keyPerIDs, k_names: keyPerNames , k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { response in
+        network.getResultsStrings(APICase: .addAMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "0", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, account_id: account.accountID, lat: account.accountLatitude, long: account.accountLongitude, comment: comment, plan_date: planNextVisitDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: sendingDate, k_ids: keyPerIDs, k_names: keyPerNames , k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let message):
                 print("Response: ",message)
@@ -451,10 +474,12 @@ extension AddViewController {
             SVProgressHUD.show()
         }
         guard self.customer != nil else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please update Customer field.")
             return
         }
         guard self.product_1 != nil else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please check at least 1 product.")
             return
         }
@@ -482,10 +507,12 @@ extension AddViewController {
         }
         
         guard self.account != nil else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please update Account field.")
             return
         }
         guard self.product_1 != nil else {
+            SVProgressHUD.dismiss()
             alertIssues(message: "Please check at least 1 product.")
             return
         }
@@ -633,15 +660,15 @@ extension AddViewController {
             UserDefaults.standard.set(reportPM?.serial, forKey: "serial")
             //            UserDefaults.standard.set(reportPM?.customerPotential, forKey: "customerPotential")
             //            UserDefaults.standard.set(reportPM?.customerPrescription, forKey: "customerPrescription")
-            
-            //            UserDefaults.standard.set(reportPM?.pIDS, forKey: "pIDS")
-            //            UserDefaults.standard.set(reportPM?.pNames, forKey: "pNames")
-            //            UserDefaults.standard.set(reportPM?.pMobiles, forKey: "pMobiles")
-            //            UserDefaults.standard.set(reportPM?.pSpecialities, forKey: "pSpecialities")
-            //            UserDefaults.standard.set(reportPM?.pComments, forKey: "pComments")
-            //            UserDefaults.standard.set(reportPM?.specialityName, forKey: "specialityName")
-            
-        } else {
+            UserDefaults.standard.set(reportPM?.pIDS, forKey: "pIDS")
+            UserDefaults.standard.set(reportPM?.pNames, forKey: "pNames")
+            UserDefaults.standard.set(reportPM?.pAddresses, forKey: "pAddresses")
+            UserDefaults.standard.set(reportPM?.pPhones, forKey: "pPhones")
+            UserDefaults.standard.set(reportPM?.pComments, forKey: "pComments")
+            UserDefaults.standard.set(reportPM?.specialityName, forKey: "specialityName")
+
+            } else {
+                
             guard reportAM != nil else { return }
             UserDefaults.standard.set(reportAM?.visitComment, forKey: "visitComment")
             UserDefaults.standard.set(reportAM?.hManagerDv, forKey: "hManagerDv")
@@ -657,13 +684,64 @@ extension AddViewController {
             UserDefaults.standard.set(reportAM?.accountID, forKey: "accountID")
             //            UserDefaults.standard.set(reportAM?.accountPotential, forKey: "accountPotential")
             //            UserDefaults.standard.set(reportAM?.accountPrescription, forKey: "accountPrescription")
-            //            UserDefaults.standard.set(reportAM?.dvReport, forKey: "dvReport")
-            //            UserDefaults.standard.set(reportAM?.kIDS, forKey: "kIDS")
-            //            UserDefaults.standard.set(reportAM?.kNames, forKey: "kNames")
-            //            UserDefaults.standard.set(reportAM?.kMobiles, forKey: "kMobiles")
-            //            UserDefaults.standard.set(reportAM?.kSpecialities, forKey: "kSpecialities")
-            //            UserDefaults.standard.set(reportAM?.kComments, forKey: "kComments")
-            //            UserDefaults.standard.set(reportAM?.specialityName, forKey: "specialityName")
+            UserDefaults.standard.set(reportAM?.dvReport, forKey: "dvReport")
+            UserDefaults.standard.set(reportAM?.kIDS, forKey: "kIDS")
+            UserDefaults.standard.set(reportAM?.kNames, forKey: "kNames")
+            UserDefaults.standard.set(reportAM?.kMobiles, forKey: "kMobiles")
+            UserDefaults.standard.set(reportAM?.kSpecialities, forKey: "kSpecialities")
+            UserDefaults.standard.set(reportAM?.kComments, forKey: "kComments")
+            UserDefaults.standard.set(reportAM?.specialityName, forKey: "specialityName")
         }
     }
+    
+    private func removingLocalReportData() {
+        if isPm {
+            UserDefaults.standard.removeObject(forKey: "visitComment")
+            UserDefaults.standard.removeObject(forKey: "hManagerDv")
+            UserDefaults.standard.removeObject(forKey: "mManagerDv")
+            UserDefaults.standard.removeObject(forKey: "fManagerDv")
+            UserDefaults.standard.removeObject(forKey: "visitingDayDate")
+            UserDefaults.standard.removeObject(forKey: "product1_ID")
+            UserDefaults.standard.removeObject(forKey: "product2_ID")
+            UserDefaults.standard.removeObject(forKey: "product3_ID")
+            UserDefaults.standard.removeObject(forKey: "product4_ID")
+            UserDefaults.standard.removeObject(forKey: "dvReport")
+            //            UserDefaults.standard.removeObject(reportPM?.customerName, forKey: "customerName")
+            UserDefaults.standard.removeObject(forKey: "customerID")
+            UserDefaults.standard.removeObject(forKey: "serial")
+            //            UserDefaults.standard.removeObject(forKey: "customerPotential")
+            //            UserDefaults.standard.removeObject(forKey: "customerPrescription")
+            UserDefaults.standard.removeObject(forKey: "pIDS")
+            UserDefaults.standard.removeObject(forKey: "pNames")
+            UserDefaults.standard.removeObject(forKey: "pAddresses")
+            UserDefaults.standard.removeObject(forKey: "pPhones")
+            UserDefaults.standard.removeObject(forKey: "pComments")
+            UserDefaults.standard.removeObject(forKey: "specialityName")
+
+            } else {
+            UserDefaults.standard.removeObject(forKey: "visitComment")
+            UserDefaults.standard.removeObject(forKey: "hManagerDv")
+            UserDefaults.standard.removeObject(forKey: "mManagerDv")
+            UserDefaults.standard.removeObject(forKey: "fManagerDv")
+            UserDefaults.standard.removeObject(forKey: "visitingDayDate")
+            UserDefaults.standard.removeObject(forKey: "product1_ID")
+            UserDefaults.standard.removeObject(forKey: "product2_ID")
+            UserDefaults.standard.removeObject(forKey: "product3_ID")
+            UserDefaults.standard.removeObject(forKey: "product4_ID")
+            UserDefaults.standard.removeObject(forKey: "serial")
+            //            UserDefaults.standard.removeObject(forKey: "accountName")
+            UserDefaults.standard.removeObject(forKey: "accountID")
+            //            UserDefaults.standard.removeObject(forKey: "accountPotential")
+            //            UserDefaults.standard.removeObject(forKey: "accountPrescription")
+            UserDefaults.standard.removeObject(forKey: "dvReport")
+            UserDefaults.standard.removeObject(forKey: "kIDS")
+            UserDefaults.standard.removeObject(forKey: "kNames")
+            UserDefaults.standard.removeObject(forKey: "kMobiles")
+            UserDefaults.standard.removeObject(forKey: "kSpecialities")
+            UserDefaults.standard.removeObject(forKey: "kComments")
+            UserDefaults.standard.removeObject(forKey: "specialityName")
+        }
+    }
+
+    
 }

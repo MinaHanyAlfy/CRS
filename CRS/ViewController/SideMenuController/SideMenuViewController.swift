@@ -19,6 +19,8 @@ class SideMenuViewController: UIViewController {
         
         setupTableView()
         welcomeLabel.text = "Welcome \((cdManager.getUserInfo().name ?? "").uppercased())"
+        crsImageView.image = UIImage(named: "logo")
+        crsImageView.layer.cornerRadius = crsImageView.frame.height/2
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -43,7 +45,7 @@ extension SideMenuViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 7
+            return 8
         case 1:
             return 1
         default:

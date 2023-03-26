@@ -7,18 +7,19 @@
 
 import Foundation
 import Alamofire
-
+import Reachability
 
 class NetworkService {
-    
+    let reach = try! Reachability() 
     static let shared = NetworkService()
     
    func getResultsStrings<M: Codable>(APICase: API,decodingModel: M.Type, completed: @escaping (Result<String,ErorrMessage> ) -> Void) {
+//       if APICase.request.url?.absoluteString.contains("add_pm_visit") || APICase.request.url?.absoluteString.contains("add_am_visit") ||  APICase.request.url?.absoluteString.contains("report_pm_visiting_day") ||   APICase.request.url?.absoluteString.contains("report_am_visiting_day") {
+//       
+//   }
         var request : URLRequest = APICase.request
-
         request.httpMethod = APICase.method.rawValue
-       
-        
+//       UserDefaults.standard.set("add_am_visit", forKey: <#T##String#>)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error =  error {
                 print("❌ Error: ",error)

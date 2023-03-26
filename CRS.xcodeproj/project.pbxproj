@@ -33,6 +33,8 @@
 		7F418265293290120055DC7B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F418264293290120055DC7B /* User.swift */; };
 		7F427633293FE990006B063C /* AccountsCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F427631293FE98F006B063C /* AccountsCD+CoreDataClass.swift */; };
 		7F427634293FE990006B063C /* AccountsCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */; };
+		7F4D7C8529C79F090047964D /* AreaLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4D7C8329C79F090047964D /* AreaLoginViewController.swift */; };
+		7F4D7C8629C79F090047964D /* AreaLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F4D7C8429C79F090047964D /* AreaLoginViewController.xib */; };
 		7F593797293BDC6B00FFF055 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F593795293BDC6B00FFF055 /* SideMenuTableViewCell.swift */; };
 		7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F593796293BDC6B00FFF055 /* SideMenuTableViewCell.xib */; };
 		7F5C4216295E0EE000ECE925 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C4214295E0EE000ECE925 /* AccountTableViewCell.swift */; };
@@ -43,6 +45,13 @@
 		7F5C4220295E125900ECE925 /* KeyPersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5C421E295E125900ECE925 /* KeyPersonTableViewCell.xib */; };
 		7F5C4225295E16D100ECE925 /* AddKeyPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5C4223295E16D100ECE925 /* AddKeyPersonViewController.swift */; };
 		7F5C4226295E16D100ECE925 /* AddKeyPersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F5C4224295E16D100ECE925 /* AddKeyPersonViewController.xib */; };
+		7F76080629CDC75B00598F74 /* PreviousLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76080529CDC75B00598F74 /* PreviousLogin.swift */; };
+		7F76080A29CDCAA700598F74 /* AreaLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76080829CDCAA700598F74 /* AreaLoginTableViewCell.swift */; };
+		7F76080B29CDCAA700598F74 /* AreaLoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F76080929CDCAA700598F74 /* AreaLoginTableViewCell.xib */; };
+		7F76080E29CF56F600598F74 /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76080D29CF56F600598F74 /* ReportManager.swift */; };
+		7F76081129CF579B00598F74 /* ReportCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76080F29CF579B00598F74 /* ReportCD+CoreDataClass.swift */; };
+		7F76081229CF579B00598F74 /* ReportCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F76081029CF579B00598F74 /* ReportCD+CoreDataProperties.swift */; };
+		7F7BAC2B29D05AE000EA751A /* VisitingDayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BAC2A29D05AE000EA751A /* VisitingDayResponse.swift */; };
 		7F7EA3F4293E92F600E72E49 /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F2293E92F600E72E49 /* CustomersViewController.swift */; };
 		7F7EA3F5293E92F600E72E49 /* CustomersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F3293E92F600E72E49 /* CustomersViewController.xib */; };
 		7F7EA3F8293E933700E72E49 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA3F6293E933700E72E49 /* AccountsViewController.swift */; };
@@ -158,6 +167,8 @@
 		7F418264293290120055DC7B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7F427631293FE98F006B063C /* AccountsCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountsCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7F427632293FE990006B063C /* AccountsCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountsCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7F4D7C8329C79F090047964D /* AreaLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaLoginViewController.swift; sourceTree = "<group>"; };
+		7F4D7C8429C79F090047964D /* AreaLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AreaLoginViewController.xib; sourceTree = "<group>"; };
 		7F593795293BDC6B00FFF055 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		7F593796293BDC6B00FFF055 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		7F5C4214295E0EE000ECE925 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -168,6 +179,13 @@
 		7F5C421E295E125900ECE925 /* KeyPersonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyPersonTableViewCell.xib; sourceTree = "<group>"; };
 		7F5C4223295E16D100ECE925 /* AddKeyPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddKeyPersonViewController.swift; sourceTree = "<group>"; };
 		7F5C4224295E16D100ECE925 /* AddKeyPersonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKeyPersonViewController.xib; sourceTree = "<group>"; };
+		7F76080529CDC75B00598F74 /* PreviousLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousLogin.swift; sourceTree = "<group>"; };
+		7F76080829CDCAA700598F74 /* AreaLoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaLoginTableViewCell.swift; sourceTree = "<group>"; };
+		7F76080929CDCAA700598F74 /* AreaLoginTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AreaLoginTableViewCell.xib; sourceTree = "<group>"; };
+		7F76080D29CF56F600598F74 /* ReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
+		7F76080F29CF579B00598F74 /* ReportCD+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7F76081029CF579B00598F74 /* ReportCD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7F7BAC2A29D05AE000EA751A /* VisitingDayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitingDayResponse.swift; sourceTree = "<group>"; };
 		7F7EA3F2293E92F600E72E49 /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
 		7F7EA3F3293E92F600E72E49 /* CustomersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomersViewController.xib; sourceTree = "<group>"; };
 		7F7EA3F6293E933700E72E49 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +347,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7F4D7C8229C79EF10047964D /* AreaLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F4D7C8329C79F090047964D /* AreaLoginViewController.swift */,
+				7F4D7C8429C79F090047964D /* AreaLoginViewController.xib */,
+			);
+			path = AreaLoginViewController;
+			sourceTree = "<group>";
+		};
 		7F593794293BDC5100FFF055 /* SideMenuCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +400,25 @@
 				7F5C4224295E16D100ECE925 /* AddKeyPersonViewController.xib */,
 			);
 			path = AddKeyPersonViewController;
+			sourceTree = "<group>";
+		};
+		7F76080729CDCA8D00598F74 /* AreaLoginCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F76080829CDCAA700598F74 /* AreaLoginTableViewCell.swift */,
+				7F76080929CDCAA700598F74 /* AreaLoginTableViewCell.xib */,
+			);
+			path = AreaLoginCell;
+			sourceTree = "<group>";
+		};
+		7F76080C29CF56D900598F74 /* ReportManager */ = {
+			isa = PBXGroup;
+			children = (
+				7F76080F29CF579B00598F74 /* ReportCD+CoreDataClass.swift */,
+				7F76081029CF579B00598F74 /* ReportCD+CoreDataProperties.swift */,
+				7F76080D29CF56F600598F74 /* ReportManager.swift */,
+			);
+			path = ReportManager;
 			sourceTree = "<group>";
 		};
 		7F7EA3FA293E93FD00E72E49 /* ProspectionToolViewController */ = {
@@ -532,6 +578,8 @@
 				7F0AAACA293A244700454371 /* Account.swift */,
 				7F0AAACC293A24FF00454371 /* Key.swift */,
 				7F0AAACE293A25AA00454371 /* Pharmacy.swift */,
+				7F76080529CDC75B00598F74 /* PreviousLogin.swift */,
+				7F7BAC2A29D05AE000EA751A /* VisitingDayResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +587,7 @@
 		7FC5CB11292A0E0A000D228A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7F4D7C8229C79EF10047964D /* AreaLoginViewController */,
 				7F7EA40A293EB32500E72E49 /* SearchResultViewController */,
 				7F15F39A2930CBD0009BD8D0 /* Registeration */,
 				7F7EA3FA293E93FD00E72E49 /* ProspectionToolViewController */,
@@ -598,6 +647,7 @@
 		7FC5CB18292A0F69000D228A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7F76080729CDCA8D00598F74 /* AreaLoginCell */,
 				7FBA39AB295A2B8000770209 /* CustomersCell */,
 				7FD7398A2954866700261488 /* VisitingDayCells */,
 				7FDD59132945356D00EE969B /* ReportsCell */,
@@ -708,6 +758,7 @@
 		7FDC0EDA293FCD4F0025D3DC /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				7F76080C29CF56D900598F74 /* ReportManager */,
 				7FDC0F6C293FDE580025D3DC /* CustomerManager */,
 				7FDC0F72293FDED90025D3DC /* AccountManager */,
 				7FDC0F6D293FDE710025D3DC /* KeyManager */,
@@ -878,6 +929,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
+				ORGANIZATIONNAME = ARK;
 				TargetAttributes = {
 					7FC5CAD6292A0B07000D228A = {
 						CreatedOnToolsVersion = 14.1;
@@ -924,6 +976,7 @@
 				7F0AAAC32939598B00454371 /* GoogleService-Info.plist in Resources */,
 				7F7EA3FE293E942200E72E49 /* ReportsViewController.xib in Resources */,
 				7F7EA402293E94BB00E72E49 /* ProspectionToolViewController.xib in Resources */,
+				7F76080B29CDCAA700598F74 /* AreaLoginTableViewCell.xib in Resources */,
 				7FE7D9032934221700F52352 /* LoginViewController.xib in Resources */,
 				7F593798293BDC6B00FFF055 /* SideMenuTableViewCell.xib in Resources */,
 				7FD607E7295B06F400A1D5AA /* PharmacyTableViewCell.xib in Resources */,
@@ -946,6 +999,7 @@
 				7FD739A32954886800261488 /* CommentTableViewCell.xib in Resources */,
 				7FC5CAE7292A0B08000D228A /* Assets.xcassets in Resources */,
 				7FC5CAE2292A0B07000D228A /* Main.storyboard in Resources */,
+				7F4D7C8629C79F090047964D /* AreaLoginViewController.xib in Resources */,
 				7FBA39B5295A4E2500770209 /* AddPharmacyViewController.xib in Resources */,
 				7FD607EC295B20CA00A1D5AA /* AddNextVisitViewController.xib in Resources */,
 			);
@@ -1119,7 +1173,9 @@
 				7F7EA3FD293E942200E72E49 /* ReportsViewController.swift in Sources */,
 				7F0AAAC7293A218600454371 /* Manager.swift in Sources */,
 				7FDC0F65293FD8E70025D3DC /* AccountCoreDataManager.swift in Sources */,
+				7F4D7C8529C79F090047964D /* AreaLoginViewController.swift in Sources */,
 				7F5C421A295E11E700ECE925 /* KeyPersonsTableViewCell.swift in Sources */,
+				7F76081229CF579B00598F74 /* ReportCD+CoreDataProperties.swift in Sources */,
 				7F7EA40D293EB34300E72E49 /* SearchResultViewController.swift in Sources */,
 				7FBA39AE295A2B9900770209 /* CustomersTableViewCell.swift in Sources */,
 				7F0AAAD5293A475A00454371 /* UICollectionView+Extensions.swift in Sources */,
@@ -1129,13 +1185,16 @@
 				7F0AAAD3293A3DEF00454371 /* SideMenuViewController.swift in Sources */,
 				7FDC0F5A293FD5880025D3DC /* ManagerCD+CoreDataProperties.swift in Sources */,
 				7F7EA3F8293E933700E72E49 /* AccountsViewController.swift in Sources */,
+				7F76080E29CF56F600598F74 /* ReportManager.swift in Sources */,
 				7FDC0F69293FDB630025D3DC /* KeyCoreDataManager.swift in Sources */,
 				7F7EA412293EB51000E72E49 /* CustomerTableViewCell.swift in Sources */,
 				7F116A192933DF0F00683729 /* URLSession+Extensions.swift in Sources */,
 				7FDC0F79293FE0460025D3DC /* ManagerCoreDataManager.swift in Sources */,
+				7F76080A29CDCAA700598F74 /* AreaLoginTableViewCell.swift in Sources */,
 				7F0AAACB293A244700454371 /* Account.swift in Sources */,
 				7F0AAACF293A25AA00454371 /* Pharmacy.swift in Sources */,
 				7FDC0F5C293FD5880025D3DC /* PharmacyCD+CoreDataProperties.swift in Sources */,
+				7F7BAC2B29D05AE000EA751A /* VisitingDayResponse.swift in Sources */,
 				7FDC0F60293FD5880025D3DC /* ProductCD+CoreDataClass.swift in Sources */,
 				7FC5CAE5292A0B07000D228A /* CRS.xcdatamodeld in Sources */,
 				7F15F3972930CB54009BD8D0 /* NetworkService.swift in Sources */,
@@ -1170,9 +1229,11 @@
 				7FD739A22954886800261488 /* CommentTableViewCell.swift in Sources */,
 				7FBA39B4295A4E2500770209 /* AddPharmacyViewController.swift in Sources */,
 				7F0AAABD2939456100454371 /* Company.swift in Sources */,
+				7F76080629CDC75B00598F74 /* PreviousLogin.swift in Sources */,
 				7FDC0F5F293FD5880025D3DC /* KeyCD+CoreDataProperties.swift in Sources */,
 				7F15F3992930CB5B009BD8D0 /* API.swift in Sources */,
 				7FD739932954870100261488 /* DoubleVisitTableViewCell.swift in Sources */,
+				7F76081129CF579B00598F74 /* ReportCD+CoreDataClass.swift in Sources */,
 				7FDC0F62293FD5880025D3DC /* PharmacyCD+CoreDataClass.swift in Sources */,
 				7FDC0F77293FDF920025D3DC /* ProductCoreDataManager.swift in Sources */,
 				7FA939CD294678C200AF3A33 /* AddViewController.swift in Sources */,
@@ -1355,15 +1416,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8632GR7884;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = J7NP4MJJL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CRS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ARK-CRS";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application Need Location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application Need Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1385,15 +1451,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8632GR7884;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = J7NP4MJJL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CRS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ARK-CRS";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application Need Location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application Need Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

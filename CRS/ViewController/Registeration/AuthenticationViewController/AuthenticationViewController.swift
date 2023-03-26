@@ -22,6 +22,8 @@ class AuthenticationViewController: UIViewController {
                     
                     let vc = LoginViewController()
                     vc.modalPresentationStyle = .fullScreen
+//                    vc.popoverPresentationController?.sourceRect = self.view.bounds
+//                    vc.popoverPresentationController?.sourceView = self.view
                     self.present(vc, animated: true)
                 } else {
                     self.alertIssues(message: "Please, recheck your data.")

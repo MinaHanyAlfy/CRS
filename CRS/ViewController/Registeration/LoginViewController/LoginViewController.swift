@@ -278,6 +278,8 @@ extension LoginViewController {
             }
             CoreDataManager.shared.saveUserInfo(user: User(name: self.username, idEncoded: userId, company: CompanyElement(serial: company.serial, name: company.name, pass: company.pass, title: company.title, address: company.address, latitude: company.latitude, longitude: company.longitude, tel: company.tel, retrospectiveReport: company.retrospectiveReport), level: levelName, idDecoded: decodedString))
             SVProgressHUD.dismiss()
+            navigationController.popoverPresentationController?.sourceRect = self.view.bounds
+            navigationController.popoverPresentationController?.sourceView = self.view
             self.present(navigationController, animated: true)
         }
     }

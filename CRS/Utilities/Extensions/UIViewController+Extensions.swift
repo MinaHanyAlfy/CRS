@@ -22,6 +22,8 @@ extension UIViewController {
         DispatchQueue.main.async { [self] in
             let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+            alert.popoverPresentationController?.sourceRect = self.view.bounds
+            alert.popoverPresentationController?.sourceView = self.view
             self.present(alert, animated: true)
         }
     }
@@ -33,6 +35,8 @@ extension UIViewController {
                 self.navigationController?.popViewController(animated: true)
                 self.navigationController?.dismiss(animated: true)
             }))
+            alert.popoverPresentationController?.sourceRect = self.view.bounds
+            alert.popoverPresentationController?.sourceView = self.view
             self.present(alert, animated: true)
         }
     }

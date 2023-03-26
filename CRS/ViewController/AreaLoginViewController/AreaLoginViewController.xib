@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AreaLoginViewController" customModule="CRS" customModuleProvider="target">
+            <connections>
+                <outlet property="datePicker" destination="TJV-XB-Scu" id="ZEL-3h-s2O"/>
+                <outlet property="loginButton" destination="GQR-aH-pl8" id="d8r-gZ-9wF"/>
+                <outlet property="tableView" destination="lyY-9e-lSL" id="8qI-jL-PWc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yD-0M-UWt">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="255.66666666666666"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQR-aH-pl8">
+                            <rect key="frame" x="78.666666666666671" y="152" width="235.66666666666663" height="44"/>
+                            <gestureRecognizers/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Login">
+                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="baseBackgroundColor" red="0.72495065930000002" green="0.3814068424" blue="0.96042402069999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="loginAction:" destination="-1" eventType="touchUpInside" id="IOz-ho-BVF"/>
+                            </connections>
+                        </button>
+                        <datePicker contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="TJV-XB-Scu">
+                            <rect key="frame" x="78.666666666666671" y="100" width="235.66666666666663" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="h34-YJ-VkC"/>
+                            </constraints>
+                            <locale key="locale" localeIdentifier="en_US"/>
+                            <connections>
+                                <action selector="dateValueChanged:" destination="-1" eventType="valueChanged" id="iFZ-fL-scY"/>
+                            </connections>
+                        </datePicker>
+                    </subviews>
+                    <color key="backgroundColor" name="bluePrimary"/>
+                    <constraints>
+                        <constraint firstItem="GQR-aH-pl8" firstAttribute="centerX" secondItem="TJV-XB-Scu" secondAttribute="centerX" id="6Ec-T4-trF"/>
+                        <constraint firstItem="TJV-XB-Scu" firstAttribute="top" secondItem="3yD-0M-UWt" secondAttribute="top" constant="100" id="SnU-dR-zNu"/>
+                        <constraint firstItem="GQR-aH-pl8" firstAttribute="height" secondItem="TJV-XB-Scu" secondAttribute="height" id="ebs-YO-3n9"/>
+                        <constraint firstItem="TJV-XB-Scu" firstAttribute="width" secondItem="3yD-0M-UWt" secondAttribute="width" multiplier="0.6" id="fZ4-UM-eQM"/>
+                        <constraint firstItem="GQR-aH-pl8" firstAttribute="width" secondItem="TJV-XB-Scu" secondAttribute="width" id="joH-YS-bkK"/>
+                        <constraint firstItem="TJV-XB-Scu" firstAttribute="centerX" secondItem="3yD-0M-UWt" secondAttribute="centerX" id="p9Y-fT-ftP"/>
+                        <constraint firstItem="GQR-aH-pl8" firstAttribute="top" secondItem="TJV-XB-Scu" secondAttribute="bottom" constant="8" id="yHf-dP-c4R"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lyY-9e-lSL">
+                    <rect key="frame" x="32" y="287.66666666666669" width="329" height="532.33333333333326"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="NhE-Ie-uT5"/>
+                        <outlet property="delegate" destination="-1" id="dWe-g4-6aR"/>
+                        <outlet property="emptyDataSetSource" destination="-1" id="UVJ-k8-of6"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="lyY-9e-lSL" firstAttribute="top" secondItem="3yD-0M-UWt" secondAttribute="bottom" constant="32" id="0hu-Ln-PP6"/>
+                <constraint firstItem="3yD-0M-UWt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2Xm-Tb-keB"/>
+                <constraint firstItem="lyY-9e-lSL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="DJQ-Je-D07"/>
+                <constraint firstAttribute="bottom" secondItem="lyY-9e-lSL" secondAttribute="bottom" constant="32" id="Dgl-7Q-ott"/>
+                <constraint firstItem="3yD-0M-UWt" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="Qgb-V9-3Od"/>
+                <constraint firstAttribute="trailing" secondItem="3yD-0M-UWt" secondAttribute="trailing" id="d2L-o9-feS"/>
+                <constraint firstAttribute="trailing" secondItem="lyY-9e-lSL" secondAttribute="trailing" constant="32" id="dIc-9K-xbH"/>
+                <constraint firstItem="3yD-0M-UWt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="g5A-bQ-n5E"/>
+            </constraints>
+            <point key="canvasLocation" x="-544.27480916030527" y="3.5211267605633805"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="bluePrimary">
+            <color red="0.067000001668930054" green="0.14100000262260437" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

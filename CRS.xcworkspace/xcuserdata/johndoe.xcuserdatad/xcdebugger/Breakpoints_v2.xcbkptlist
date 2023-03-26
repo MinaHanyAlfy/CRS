@@ -14,8 +14,8 @@
             filePath = "CRS/View/VisitingDayCells/PharmciesTableViewCell/PharmaciesTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "addPharmacyObject(pharmacy:comment:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "reportAction(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "reportAction(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,13 +62,13 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "reportAction(location:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "5A1ADAFE-899C-4408-B02A-AE0150BBFD2A - a8aad13a03ca48d6"
+                  uuid = "5A1ADAFE-899C-4408-B02A-AE0150BBFD2A - a8aad13a03ca4ea7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -78,12 +78,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "3694">
+                  startingLineNumber = "287"
+                  endingLineNumber = "287"
+                  offsetFromSymbolStart = "4427">
                </Location>
                <Location
-                  uuid = "5A1ADAFE-899C-4408-B02A-AE0150BBFD2A - a8aad13a03ca48d6"
+                  uuid = "5A1ADAFE-899C-4408-B02A-AE0150BBFD2A - a8aad13a03ca4ea7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -93,9 +93,9 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "3746">
+                  startingLineNumber = "287"
+                  endingLineNumber = "287"
+                  offsetFromSymbolStart = "4479">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -110,25 +110,9 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "handleStoreLocationResponse(response:long:lat:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9C372459-DB43-4ADA-A824-81FD6E5FD99D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,8 +126,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +142,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "622"
-            endingLineNumber = "622"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
             landmarkName = "sendDataToAddVisitingDayToUpdate()"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +158,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "649"
-            endingLineNumber = "649"
+            startingLineNumber = "676"
+            endingLineNumber = "676"
             landmarkName = "sendDataToAddVisitingDayToUpdate()"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +174,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "621"
-            endingLineNumber = "621"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
             landmarkName = "sendDataToAddVisitingDayToUpdate()"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,13 +238,13 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "sendAMReports(user:sendingDate:long:lat:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "AB013EF0-D70B-4560-BA61-9427F83013BD - a246d808ff19276d"
+                  uuid = "AB013EF0-D70B-4560-BA61-9427F83013BD - a246d808ff19da75"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -270,12 +254,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "423"
-                  endingLineNumber = "423"
+                  startingLineNumber = "447"
+                  endingLineNumber = "447"
                   offsetFromSymbolStart = "2426">
                </Location>
                <Location
-                  uuid = "AB013EF0-D70B-4560-BA61-9427F83013BD - 66d420ed2e1769f7"
+                  uuid = "AB013EF0-D70B-4560-BA61-9427F83013BD - 66d420ed2e17949f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -285,8 +269,8 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "425"
-                  endingLineNumber = "425"
+                  startingLineNumber = "449"
+                  endingLineNumber = "449"
                   offsetFromSymbolStart = "291">
                </Location>
             </Locations>
@@ -302,13 +286,13 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "updateReportAM()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "55990328-C756-4AF1-812B-2451984FA473 - 32bec9f786f77862"
+                  uuid = "55990328-C756-4AF1-812B-2451984FA473 - 32bec9f786f77d9e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -318,12 +302,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "499"
-                  endingLineNumber = "499"
+                  startingLineNumber = "527"
+                  endingLineNumber = "527"
                   offsetFromSymbolStart = "2864">
                </Location>
                <Location
-                  uuid = "55990328-C756-4AF1-812B-2451984FA473 - d6d226285626ee26"
+                  uuid = "55990328-C756-4AF1-812B-2451984FA473 - d6d226285626ea42"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -333,8 +317,8 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "501"
-                  endingLineNumber = "501"
+                  startingLineNumber = "529"
+                  endingLineNumber = "529"
                   offsetFromSymbolStart = "149">
                </Location>
             </Locations>
@@ -366,8 +350,8 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +366,8 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -398,8 +382,8 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,13 +398,13 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2 - 2091944983b9f4e8"
+                  uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2 - 2091944983b9f4c9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -430,12 +414,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/Utilities/Network%20Layer/NetworkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
                   offsetFromSymbolStart = "1134">
                </Location>
                <Location
-                  uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2 - 2091944983b9f4e8"
+                  uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2 - 2091944983b9f4c9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -445,8 +429,8 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/Utilities/Network%20Layer/NetworkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
                   offsetFromSymbolStart = "1329">
                </Location>
             </Locations>
@@ -462,8 +446,8 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -478,13 +462,13 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4 - c295dfc6d093903d"
+                  uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4 - c295dfc6d093901e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -494,12 +478,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/Utilities/Network%20Layer/NetworkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
                   offsetFromSymbolStart = "1368">
                </Location>
                <Location
-                  uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4 - 2091944983b9f25e"
+                  uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4 - 2091944983b9f23f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -509,8 +493,8 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/Utilities/Network%20Layer/NetworkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "216">
                </Location>
             </Locations>
@@ -526,13 +510,13 @@
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "getResultsStrings(APICase:decodingModel:completed:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797 - 2091944983b9f25e"
+                  uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797 - 2091944983b9f23f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -542,12 +526,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/Utilities/Network%20Layer/NetworkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "216">
                </Location>
                <Location
-                  uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797 - 2091944983b9f25e"
+                  uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797 - 2091944983b9f23f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -557,11 +541,187 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/Utilities/Network%20Layer/NetworkService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
                   offsetFromSymbolStart = "250">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DEF8A06B-02A6-41F6-86F2-6ABAD1B9C68C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fc9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.KeyPersonsTableViewCell.awakeFromNib() -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "2040">
+               </Location>
+               <Location
+                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fc9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.KeyPersonsTableViewCell.awakeFromNib() -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "2371">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E51C2048-F98C-4814-9382-1574B7FFCC96"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "nextVisitAction(button:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6536E7E9-8152-4044-B3C7-6A6476F6D6A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "sendRequestAction(button:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED - 2d5d526b513718b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.ReportsViewController.loadData() -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/ReportsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "432"
+                  endingLineNumber = "432"
+                  offsetFromSymbolStart = "1820">
+               </Location>
+               <Location
+                  uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED - 1c7d53ecd7ce14a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;CRS.VisitingDayResponseElement&gt;, CRS.ErorrMessage&gt;) -&gt; () in CRS.ReportsViewController.loadData() -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/ReportsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "434"
+                  endingLineNumber = "434"
+                  offsetFromSymbolStart = "131">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F74C13EE-A188-48F6-910B-FBC28F17D433"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95092944-DFEA-4521-89E3-9C86380B8FAD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "visitingDay"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

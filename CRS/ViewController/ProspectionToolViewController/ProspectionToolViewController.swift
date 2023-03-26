@@ -87,6 +87,8 @@ class ProspectionToolViewController: UIViewController {
             
             let alert = UIAlertController(title: "Score", message: "Your answers indicate \(potString) potentiality & \(prepString) prescription level.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            alert.popoverPresentationController?.sourceRect = self.submitButton.bounds
+            alert.popoverPresentationController?.sourceView = self.submitButton
             present(alert, animated: true, completion: nil)
             print("all answers submit")
             //Send answers

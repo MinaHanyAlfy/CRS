@@ -47,7 +47,7 @@
                 <outlet property="answerLabel" destination="HQe-kb-IZO" id="Xjw-tc-zIi"/>
                 <outlet property="radioImageView" destination="tOL-65-HSe" id="7sh-ch-cnb"/>
             </connections>
-            <point key="canvasLocation" x="33.587786259541986" y="42.605633802816904"/>
+            <point key="canvasLocation" x="256" y="-2"/>
         </tableViewCell>
     </objects>
     <resources>

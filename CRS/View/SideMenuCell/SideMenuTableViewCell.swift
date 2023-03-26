@@ -12,8 +12,8 @@ class SideMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var sideMenuLabel: UILabel!
     @IBOutlet weak var sideMenuImageView: UIImageView!
     
-    private let labelsArray = ["Home","AM Reports","PM Reports","Accounts","Customers","Prospection Tool","Refresh"]
-    private let imagesArray = ["house.fill","sun.max.fill","moon.stars.fill","building.2.fill","person.3.fill","wifi.exclamationmark","repeat"]
+    private let labelsArray = ["Home","AM Reports","PM Reports","Accounts","Customers","Prospection Tool","Area Login","Refresh"]
+    private let imagesArray = ["house.fill","sun.max.fill","moon.stars.fill","building.2.fill","person.3.fill","wifi.exclamationmark","mappin.circle.fill","repeat"]
     let coreData = CoreDataManager.shared
     let network = NetworkService.shared
     
@@ -117,6 +117,9 @@ class SideMenuTableViewCell: UITableViewCell {
             case 5:
                 let proToolVc = ProspectionToolViewController()
                 navigationController.pushViewController(proToolVc, animated: true)
+            case 6:
+                let areaLoginVc = AreaLoginViewController()
+                navigationController.pushViewController(areaLoginVc, animated: true)
             default:
                 coreData.clearAllWithoutUserInfo()
                 callingAPI(navigationController: navigationController,viewController: viewController)

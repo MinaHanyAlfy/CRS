@@ -9,10 +9,10 @@ import UIKit
 import CoreLocation
 protocol ButtonTableViewCellDelegate: AnyObject {
     func cancelAction()
-    func nextVisitAction()
+    func nextVisitAction(button: UIButton)
     func reportAction(location: CLLocation)
     func reportAction()
-    func sendRequestAction()
+    func sendRequestAction(button: UIButton)
     func updateAction()
 }
 
@@ -66,11 +66,11 @@ class ButtonTableViewCell: UITableViewCell {
     }
     
     @objc private func nextVisitTap() {
-        delegate?.nextVisitAction()
+        delegate?.nextVisitAction(button: button)
     }
     
     @objc private func sendRequestTap() {
-        delegate?.sendRequestAction()
+        delegate?.sendRequestAction(button: button)
     }
     
     @objc private func reportTap() {
@@ -82,7 +82,6 @@ class ButtonTableViewCell: UITableViewCell {
          }else {
              delegate?.reportAction()
          }
-        
     }
     
     @objc private func cancelTap() {

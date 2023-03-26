@@ -20,6 +20,7 @@ class ReportsViewController: UIViewController {
     
     private let coredata = CoreDataManager.shared
     private let user = CoreDataManager.shared.getUserInfo()
+    private let network = NetworkService.shared
     private var comments : [String] = []
     private var reportsAM: ReportsAM = []{
         didSet {
@@ -49,6 +50,30 @@ class ReportsViewController: UIViewController {
             }
         }
     }
+    private var visitingDay: VisitingDayResponse? {
+        didSet {
+            DispatchQueue.main.async {
+                if self.visitingDay?[0].visitingDayStatus != "NONE" {
+                    if self.visitingDay?[0].visitingDayComment != nil {
+                        self.commentTextField.text = self.visitingDay?[0].visitingDayComment
+                    }
+                    if self.visitingDay?[0].visitingDayStatus == "reported" {
+                        self.reportButton.backgroundColor = .gray
+                        self.reportButton.setTitle("Sent", for: .normal)
+                        self.reportButton.isEnabled = false
+                    } else {
+                        self.reportButton.backgroundColor = .systemPurple
+                        self.reportButton.setTitle("Report", for: .normal)
+                        self.reportButton.isEnabled = true
+                    }
+                } else {
+                    self.reportButton.backgroundColor = .systemPurple
+                    self.reportButton.setTitle("Report", for: .normal)
+                    self.reportButton.isEnabled = true
+                }
+            }
+        }
+    }
     var isPM: Bool = false
     var timeVisit : String?{
         didSet{
@@ -63,6 +88,9 @@ class ReportsViewController: UIViewController {
         buttonsAction()
         setupTableView()
         loadData()
+        datePicker.backgroundColor = .white
+        datePicker.contentVerticalAlignment = .center
+        datePicker.contentHorizontalAlignment = .center
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
@@ -75,6 +103,8 @@ class ReportsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         setUpViews()
     }
+    
+    
     
     private func setupTableView() {
         tableView.registerCell(tableViewCell: ReportTableViewCell.self)
@@ -117,6 +147,8 @@ class ReportsViewController: UIViewController {
             callingReport()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.popoverPresentationController?.sourceRect = self.reportButton.bounds
+        alert.popoverPresentationController?.sourceView = self.reportButton
         self.present(alert, animated: true)
     }
     
@@ -128,7 +160,7 @@ class ReportsViewController: UIViewController {
                 if isPM {
                     if reportsPM[indexPath.row].serial != "" {
                         SVProgressHUD.show()
-                        deleteAction(serial: reportsPM[indexPath.row].serial)
+                        deleteAction(serial: reportsPM[indexPath.row].serial ?? "")
                     }
                 } else {
                     if reportsAM[indexPath.row].serial != "" {
@@ -150,7 +182,7 @@ extension ReportsViewController {
         let date = datePicker.date.updateDate
         if isPM {
             SVProgressHUD.show()
-            NetworkService.shared.getResultsStrings(APICase: .updatePMVisitingDayComment(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date, comment: comment.toBase64()), decodingModel: ResponseString.self) { resp in
+            network.getResultsStrings(APICase: .updatePMVisitingDayComment(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date, comment: comment.toBase64()), decodingModel: ResponseString.self) { resp in
                 switch resp {
                 case .success(let response):
                     self.updateCommentResponse(response: response)
@@ -163,7 +195,7 @@ extension ReportsViewController {
             }
         } else {
             SVProgressHUD.show()
-            NetworkService.shared.getResultsStrings(APICase: .updateAMVisitingDayComment(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date, comment: comment.toBase64()), decodingModel: ResponseString.self) { resp in
+            network.getResultsStrings(APICase: .updateAMVisitingDayComment(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date, comment: comment.toBase64()), decodingModel: ResponseString.self) { resp in
                 switch resp {
                 case .success(let response):
                     self.updateCommentResponse(response: response)
@@ -190,7 +222,7 @@ extension ReportsViewController {
     //MARK: - Delete Visit -
     private func deleteAction(serial: String) {
         if isPM {
-            NetworkService.shared.getResultsStrings(APICase: .deletePMVisit(serial: serial), decodingModel: ResponseString.self) { result in
+            network.getResultsStrings(APICase: .deletePMVisit(serial: serial), decodingModel: ResponseString.self) { result in
                 switch result {
                 case .success(let response):
                     self.deleteResponse(response: response)
@@ -200,7 +232,7 @@ extension ReportsViewController {
                 }
             }
         } else {
-            NetworkService.shared.getResultsStrings(APICase: .deleteAMVisit(serial: serial), decodingModel: ResponseString.self) { result in
+            network.getResultsStrings(APICase: .deleteAMVisit(serial: serial), decodingModel: ResponseString.self) { result in
                 switch result {
                 case .success(let response):
                     self.deleteResponse(response: response)
@@ -254,23 +286,8 @@ extension ReportsViewController: UITableViewDelegate {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //MARK: - Data -
 extension ReportsViewController {
-    
     private func updateCommentResponse(response: String) {
         SVProgressHUD.dismiss()
         if response == "Done" {
@@ -287,7 +304,7 @@ extension ReportsViewController {
         }
         let date = datePicker.date.updateDate
         if isPM {
-            NetworkService.shared.getResultsStrings(APICase: .reportPMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ResponseString.self) { resp in
+            network.getResultsStrings(APICase: .reportPMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ResponseString.self) { resp in
                 switch resp {
                 case .success(let response):
                     DispatchQueue.main.async { [self] in
@@ -301,7 +318,7 @@ extension ReportsViewController {
                 }
             }
         } else {
-            NetworkService.shared.getResultsStrings(APICase: .reportAMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ResponseString.self) { resp in
+            network.getResultsStrings(APICase: .reportAMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ResponseString.self) { resp in
                 switch resp {
                 case .success(let response):
                     DispatchQueue.main.async { [self] in
@@ -318,6 +335,7 @@ extension ReportsViewController {
     }
     
     private func handleResponse(response: String) {
+        SVProgressHUD.dismiss()
         if response == "Done" {
             self.alertSuccessAndDismissViewController(message: "Visiting Day Reported")
         } else if response == "No_Report" {
@@ -344,7 +362,7 @@ extension ReportsViewController {
     private func loadData(date: String) {
         SVProgressHUD.show()
         if isPM {
-            NetworkService.shared.getResults(APICase: .readPMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsPM.self) { response in
+            network.getResults(APICase: .readPMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsPM.self) { response in
                 switch response {
                 case .success(let reports):
                     SVProgressHUD.dismiss()
@@ -355,14 +373,40 @@ extension ReportsViewController {
                     print("error: ",error)
                 }
             }
+            network.getResults(APICase: .readPMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: VisitingDayResponse.self) { result in
+                switch result {
+                case .success(let response):
+                    if response[0].visitingDayComment != nil {
+                        self.visitingDay = response
+                    }
+                    
+                case .failure(let error):
+                    
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
         } else {
-            NetworkService.shared.getResults(APICase: .readAMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsAM.self) { response in
+            network.getResults(APICase: .readAMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsAM.self) { response in
                 switch response {
                 case .success(let reports):
                     SVProgressHUD.dismiss()
                     self.reportsAM = reports
                     print("Reports: ",reports)
                 case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
+            network.getResults(APICase: .readAMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: VisitingDayResponse.self) { result in
+                switch result {
+                case .success(let response):
+                    if response[0].visitingDayComment != nil {
+                        self.visitingDay = response
+                    }
+                    
+                case .failure(let error):
+                    
                     SVProgressHUD.dismiss()
                     print("error: ",error)
                 }
@@ -374,7 +418,7 @@ extension ReportsViewController {
         SVProgressHUD.show()
         let date = "".todayDate
         if isPM {
-            NetworkService.shared.getResults(APICase: .readPMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsPM.self) { response in
+            network.getResults(APICase: .readPMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsPM.self) { response in
                 switch response {
                 case .success(let reports):
                     SVProgressHUD.dismiss()
@@ -385,14 +429,40 @@ extension ReportsViewController {
                     print("error: ",error)
                 }
             }
+            network.getResults(APICase: .readPMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: VisitingDayResponse.self) { result in
+                switch result {
+                case .success(let response):
+                    if response[0].visitingDayComment != nil {
+                        self.visitingDay = response
+                    }
+                    
+                case .failure(let error):
+                    
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
         } else {
-            NetworkService.shared.getResults(APICase: .readAMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsAM.self) { response in
+            network.getResults(APICase: .readAMVisits(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: ReportsAM.self) { response in
                 switch response {
                 case .success(let reports):
                     SVProgressHUD.dismiss()
                     self.reportsAM = reports
                     print("Reports: ",reports)
                 case .failure(let error):
+                    SVProgressHUD.dismiss()
+                    print("error: ",error)
+                }
+            }
+            network.getResults(APICase: .readAMVisitingDay(level: user.level ?? "", userId: user.idEncoded ?? "", reportDate: date), decodingModel: VisitingDayResponse.self) { result in
+                switch result {
+                case .success(let response):
+                    if response[0].visitingDayComment != nil {
+                        self.visitingDay = response
+                    }
+                    
+                case .failure(let error):
+                    
                     SVProgressHUD.dismiss()
                     print("error: ",error)
                 }

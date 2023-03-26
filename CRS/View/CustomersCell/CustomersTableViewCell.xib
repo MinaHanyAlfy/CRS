@@ -40,7 +40,7 @@
             <connections>
                 <outlet property="customerLabel" destination="PJK-is-80H" id="HzU-xh-2z0"/>
             </connections>
-            <point key="canvasLocation" x="51.908396946564885" y="30.985915492957748"/>
+            <point key="canvasLocation" x="334" y="6"/>
         </tableViewCell>
     </objects>
 </document>

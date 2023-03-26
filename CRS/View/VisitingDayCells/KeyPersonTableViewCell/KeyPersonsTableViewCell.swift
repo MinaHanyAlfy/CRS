@@ -19,17 +19,39 @@ class KeyPersonsTableViewCell: UITableViewCell {
     private var navigationController: UINavigationController?
     public weak var delegate: KeyPersonsTableViewDelegate?
     private var comments: [String] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         addKeyPersonButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
         handleTableView()
-        // Initialization code
+        
+        if UserDefaults.standard.value(forKey: "kIDS") as? String != "" || UserDefaults.standard.value(forKey: "kIDS") != nil {
+            
+            let ids = UserDefaults.standard.value(forKey: "kIDS") as? String ?? ""
+            let names = UserDefaults.standard.value(forKey: "kNames") as? String
+            let mobiles = UserDefaults.standard.value(forKey: "kMobiles") as? String
+            let specialities = UserDefaults.standard.value(forKey: "kSpecialities") as? String
+            let specialityName = UserDefaults.standard.value(forKey: "specialityName") as? String
+            if ids.contains("|")  {
+                let arrayId: [String] = ids.split(separator: "|") as? [String] ?? []
+                let arrayNames: [String] = names?.split(separator: "|") as? [String] ?? []
+                let arrayMobiles = mobiles?.split(separator: "|") as? [String] ?? []
+                let arraySpecialities = specialities?.split(separator: "|") as? [String] ?? []
+                let arraySpecialityName = specialityName?.split(separator: "|") as? [String] ?? []
+                
+                
+                for i in 0..<arrayId.count {
+                    keyPersons.append(Key(keyPersonID: arrayId[i], keyPersonName: arrayNames[i], specialityName: arraySpecialityName[i], mobile: arrayMobiles[i], accountID: ""))
+                }
+            } else {
+                keyPersons.append(Key(keyPersonID: ids, keyPersonName: names, specialityName: specialityName, mobile: mobiles, accountID: ""))
+            }
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     func config(navigationController: UINavigationController) {
@@ -48,6 +70,10 @@ class KeyPersonsTableViewCell: UITableViewCell {
         let vc = AddKeyPersonViewController()
         vc.delegate = self
         vc.modalPresentationStyle = .popover
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            vc.popoverPresentationController?.sourceView = self.contentView
+            vc.popoverPresentationController?.sourceRect = self.contentView.bounds
+        }
         navigationController?.present(vc, animated: true)
         
     }

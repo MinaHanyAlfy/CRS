@@ -45,17 +45,7 @@
         <attribute name="productID" optional="YES" attributeType="String"/>
         <attribute name="productName" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ReportAMCD" representedClassName="ReportAMCD" syncable="YES" codeGenerationType="class">
-        <attribute name="attribute" optional="YES"/>
-        <attribute name="attribute1" optional="YES"/>
-        <attribute name="attribute2" optional="YES"/>
-        <attribute name="attribute3" optional="YES"/>
-        <attribute name="attribute4" optional="YES"/>
-        <attribute name="attribute5" optional="YES"/>
-        <attribute name="attribute6" optional="YES"/>
-        <attribute name="attribute7" optional="YES"/>
-        <attribute name="attribute8" optional="YES"/>
-        <attribute name="attribute9" optional="YES"/>
+    <entity name="ReportCD" representedClassName=".ReportCD" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ReportPMCD" representedClassName="ReportPMCD" syncable="YES" codeGenerationType="class"/>
 </model>
