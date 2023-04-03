@@ -24,6 +24,7 @@ class ButtonTableViewCell: UITableViewCell {
     var isOPenToUpdate = false
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

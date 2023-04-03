@@ -11,7 +11,7 @@ import Foundation
 struct Account: Codable {
     var accountID, accountName, accountPotential, accountPrescription: String?
     var keyPerson, accountLatitude, accountLongitude, specialityName: String?
-    var zoneName: String? = "No Address"
+    var zoneName: String? = "No Zone"
 
     enum CodingKeys: String, CodingKey {
         case accountID = "account_id"

@@ -16,5 +16,13 @@
 	<false/>
 	<key>face</key>
 	<string></string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>I want </string>
+
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Description</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Description</string>
 </dict>
 </plist>

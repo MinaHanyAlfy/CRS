@@ -14,8 +14,8 @@
             filePath = "CRS/View/VisitingDayCells/PharmciesTableViewCell/PharmaciesTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "addPharmacyObject(pharmacy:comment:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "CRS/View/VisitingDayCells/ButtonTableViewCell/ButtonTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "config(title:isOpenToUpdate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "CRS/View/VisitingDayCells/ButtonTableViewCell/ButtonTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "configCellInUpdateView(isOpenToUpdate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "CRS/View/VisitingDayCells/ButtonTableViewCell/ButtonTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "config(title:isOpenToUpdate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,8 +334,8 @@
             filePath = "CRS/View/VisitingDayCells/ButtonTableViewCell/ButtonTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "config(title:isOpenToUpdate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -416,7 +416,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "1134">
+                  offsetFromSymbolStart = "1092">
                </Location>
                <Location
                   uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2 - 34da8abad06080bd"
@@ -431,7 +431,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "1329">
+                  offsetFromSymbolStart = "1332">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -480,7 +480,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
                   endingLineNumber = "40"
-                  offsetFromSymbolStart = "1713">
+                  offsetFromSymbolStart = "1032">
                </Location>
                <Location
                   uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4 - 34da8abad06083e7"
@@ -495,7 +495,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "216">
+                  offsetFromSymbolStart = "232">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -528,7 +528,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "216">
+                  offsetFromSymbolStart = "232">
                </Location>
                <Location
                   uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797 - 34da8abad06083e7"
@@ -543,7 +543,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "250">
+                  offsetFromSymbolStart = "260">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -580,7 +580,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fc9f"
+                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fcbc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -590,12 +590,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "2040">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "2344">
                </Location>
                <Location
-                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fc9f"
+                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fcbc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -605,9 +605,9 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "2371">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "2616">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -672,7 +672,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "432"
                   endingLineNumber = "432"
-                  offsetFromSymbolStart = "1820">
+                  offsetFromSymbolStart = "1084">
                </Location>
                <Location
                   uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED - 1c7d53ecd7ce14a6"
@@ -687,7 +687,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "434"
                   endingLineNumber = "434"
-                  offsetFromSymbolStart = "131">
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -816,7 +816,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "1434">
+                  offsetFromSymbolStart = "828">
                </Location>
                <Location
                   uuid = "AB189A67-287C-4EB5-8B2B-50E16367D31F - 65085f9dd20e6e99"
@@ -831,7 +831,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
                   endingLineNumber = "21"
-                  offsetFromSymbolStart = "315">
+                  offsetFromSymbolStart = "372">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -850,6 +850,38 @@
             endingLineNumber = "239"
             landmarkName = "sendLocalReports()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9FCADBFE-CC56-43BB-80CE-2E9C1AA24915 - 9479cf5d516343dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.SideMenuTableViewCell.sendLocalReports() -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/SideMenuCell/SideMenuTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "239"
+                  endingLineNumber = "239"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "9FCADBFE-CC56-43BB-80CE-2E9C1AA24915 - c529f2c4c712485c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, CRS.ErorrMessage&gt;) -&gt; () in CRS.SideMenuTableViewCell.sendLocalReports() -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/SideMenuCell/SideMenuTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -865,6 +897,166 @@
             startingLineNumber = "242"
             endingLineNumber = "242"
             landmarkName = "sendLocalReports()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD5016A4-074F-4162-8DC7-9C66BD0A5A70"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "makeLogin(isPM:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DD5016A4-074F-4162-8DC7-9C66BD0A5A70 - f6117b938e8b9d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.AreaLoginViewController.makeLogin(isPM: Swift.Bool) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "DD5016A4-074F-4162-8DC7-9C66BD0A5A70 - b33915a2526f628d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, CRS.ErorrMessage&gt;) -&gt; () in CRS.AreaLoginViewController.makeLogin(isPM: Swift.Bool) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "300">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93850028-2286-4E41-90D6-B85678639514"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "makeLogin(isPM:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "93850028-2286-4E41-90D6-B85678639514 - f6117b938e8bb87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.AreaLoginViewController.makeLogin(isPM: Swift.Bool) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "2256">
+               </Location>
+               <Location
+                  uuid = "93850028-2286-4E41-90D6-B85678639514 - 3fed2cd9f71dcd59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Result&lt;Swift.String, CRS.ErorrMessage&gt;) -&gt; () in CRS.AreaLoginViewController.makeLogin(isPM: Swift.Bool) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "300">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFC844D7-5C67-429E-8A90-3C4FB05EC062"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "loginAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5512DAA-A8B7-455B-8A59-C69A30570156"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "loginAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "26684DFE-B86E-4F5B-891E-E5774687872B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "loginAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "707A4AA8-DEFA-4647-9F9B-35D6D131C153"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/AreaLoginViewController/AreaLoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "makeLogin(isPM:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

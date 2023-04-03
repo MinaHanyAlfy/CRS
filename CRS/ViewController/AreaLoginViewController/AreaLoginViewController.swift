@@ -44,6 +44,7 @@ class AreaLoginViewController: UIViewController {
         datePicker.clipsToBounds = true
         datePicker.layer.cornerRadius = 12
         tableView.registerCell(tableViewCell: AreaLoginTableViewCell.self)
+        locManager.requestAlwaysAuthorization()
     }
 
     @IBAction func dateValueChanged(_ sender: Any) {

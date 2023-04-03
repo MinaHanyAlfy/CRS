@@ -44,7 +44,6 @@ class PharmaciesTableViewCell: UITableViewCell {
             }
         }
     }
-    
     func config(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
