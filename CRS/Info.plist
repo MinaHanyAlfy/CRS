@@ -17,12 +17,11 @@
 	<key>face</key>
 	<string></string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>I want </string>
+    <string>I want to use the location to check for your report visit and match them.</string>
 
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Description</string>
-
+    I want to use the location to check for your report visit and match them.
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>Description</string>
+    <string>I want to use the location to check for your report visit and match them.</string>
 </dict>
 </plist>
