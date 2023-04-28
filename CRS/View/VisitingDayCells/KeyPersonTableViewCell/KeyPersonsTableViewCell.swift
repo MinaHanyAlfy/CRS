@@ -9,6 +9,7 @@ import UIKit
 
 protocol KeyPersonsTableViewDelegate: AnyObject {
     func getKeyPersons(keyPersons: Keys,comments: [String])
+    func selectedAccount() -> String
 }
 class KeyPersonsTableViewCell: UITableViewCell {
 
@@ -19,7 +20,8 @@ class KeyPersonsTableViewCell: UITableViewCell {
     private var navigationController: UINavigationController?
     public weak var delegate: KeyPersonsTableViewDelegate?
     private var comments: [String] = []
-    
+    var clientId: String? = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         addKeyPersonButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
@@ -68,15 +70,17 @@ class KeyPersonsTableViewCell: UITableViewCell {
     }
     @objc private func addAction() {
         print("addd")
-        let vc = AddKeyPersonViewController()
-        vc.delegate = self
-        vc.modalPresentationStyle = .popover
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            vc.popoverPresentationController?.sourceView = self.contentView
-            vc.popoverPresentationController?.sourceRect = self.contentView.bounds
+        if delegate?.selectedAccount() != "" {
+            let vc = AddKeyPersonViewController()
+            vc.delegate = self
+            vc.accountId = delegate?.selectedAccount()
+            vc.modalPresentationStyle = .popover
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                vc.popoverPresentationController?.sourceView = self.contentView
+                vc.popoverPresentationController?.sourceRect = self.contentView.bounds
+            }
+            navigationController?.present(vc, animated: true)
         }
-        navigationController?.present(vc, animated: true)
-        
     }
     private func addKeyPerson(keyPerson: Key,comment: String) {
         self.keyPersons.append(keyPerson)

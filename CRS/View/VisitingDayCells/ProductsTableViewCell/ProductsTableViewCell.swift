@@ -79,7 +79,6 @@ class ProductsTableViewCell: UITableViewCell {
         
         firstPickerView.delegate = self
         firstPickerView.dataSource = self
-        
         secondPickerView.delegate = self
         secondPickerView.dataSource = self
         
@@ -89,6 +88,19 @@ class ProductsTableViewCell: UITableViewCell {
         fourthPickerView.delegate = self
         fourthPickerView.dataSource = self
         
+        var toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let clearButton = UIBarButtonItem(title: "Clear Product 1", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.clearPicker))
+        toolBar.setItems([clearButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        firstProductTextField.inputAccessoryView = toolBar
+        secondProductTextField.inputAccessoryView = toolBar
+        thirdProductTextField.inputAccessoryView = toolBar
+        fourthProductTextField.inputAccessoryView = toolBar
     }
     
 
@@ -123,6 +135,25 @@ class ProductsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @objc func clearPicker() {
+        if firstProductTextField.isEditing {
+            firstProductTextField.text = ""
+            firstProductTextField.placeholder = "Product 1"
+            delegate?.getFirstProduct(product: Product())
+        } else if secondProductTextField.isEditing {
+            secondProductTextField.text = ""
+            secondProductTextField.placeholder = "Product 2"
+            delegate?.getSecondProduct(product: Product())
+        } else if thirdProductTextField.isEditing {
+            thirdProductTextField.text = ""
+            thirdProductTextField.placeholder = "Product 3"
+            delegate?.getThirdProduct(product: Product())
+        } else if fourthProductTextField.isEditing {
+            fourthProductTextField.text = ""
+            fourthProductTextField.placeholder = "Product 4"
+            delegate?.getFourthProduct(product: Product())
+        }
+    }
 }
 
     

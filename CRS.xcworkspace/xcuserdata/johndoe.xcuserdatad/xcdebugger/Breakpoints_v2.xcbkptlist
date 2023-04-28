@@ -14,8 +14,8 @@
             filePath = "CRS/View/VisitingDayCells/PharmciesTableViewCell/PharmaciesTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "addPharmacyObject(pharmacy:comment:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "reportAction(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "reportAction(location:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "reportAction(location:)"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
             landmarkName = "handleStoreLocationResponse(response:long:lat:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "649"
-            endingLineNumber = "649"
+            startingLineNumber = "690"
+            endingLineNumber = "690"
             landmarkName = "sendDataToAddVisitingDayToUpdate()"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "676"
-            endingLineNumber = "676"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
             landmarkName = "sendDataToAddVisitingDayToUpdate()"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "648"
-            endingLineNumber = "648"
+            startingLineNumber = "689"
+            endingLineNumber = "689"
             landmarkName = "sendDataToAddVisitingDayToUpdate()"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,8 +238,8 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "sendAMReports(user:sendingDate:long:lat:)"
             landmarkType = "7">
             <Locations>
@@ -272,54 +272,6 @@
                   startingLineNumber = "449"
                   endingLineNumber = "449"
                   offsetFromSymbolStart = "291">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "55990328-C756-4AF1-812B-2451984FA473"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
-            landmarkName = "updateReportAM()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "55990328-C756-4AF1-812B-2451984FA473 - 32bec9f786f77d9e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CRS.AddViewController.updateReportAM() -&gt; ()"
-                  moduleName = "CRS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "527"
-                  endingLineNumber = "527"
-                  offsetFromSymbolStart = "2864">
-               </Location>
-               <Location
-                  uuid = "55990328-C756-4AF1-812B-2451984FA473 - d6d226285626ea42"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #7 (Swift.Result&lt;Swift.String, CRS.ErorrMessage&gt;) -&gt; () in CRS.AddViewController.updateReportAM() -&gt; ()"
-                  moduleName = "CRS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "529"
-                  endingLineNumber = "529"
-                  offsetFromSymbolStart = "149">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -376,7 +328,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FCCCFDBF-5FAE-40D1-95A0-189C82683984"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
@@ -392,7 +344,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
@@ -416,7 +368,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "1092">
+                  offsetFromSymbolStart = "1134">
                </Location>
                <Location
                   uuid = "B1E6D28F-C641-4ED9-82DB-68D321FE7BE2 - 34da8abad06080bd"
@@ -431,7 +383,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "1332">
+                  offsetFromSymbolStart = "1329">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -440,7 +392,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7C3EFE8A-0C30-48BE-8AD7-EE9FF919A4E8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
@@ -456,7 +408,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
@@ -480,7 +432,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
                   endingLineNumber = "40"
-                  offsetFromSymbolStart = "1032">
+                  offsetFromSymbolStart = "1713">
                </Location>
                <Location
                   uuid = "338A57ED-B800-43C4-B4E0-444B9D9D9CB4 - 34da8abad06083e7"
@@ -495,7 +447,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "232">
+                  offsetFromSymbolStart = "216">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -504,7 +456,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CRS/Utilities/Network Layer/NetworkService.swift"
@@ -528,7 +480,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "232">
+                  offsetFromSymbolStart = "216">
                </Location>
                <Location
                   uuid = "69BCB9F7-36C4-492A-80CD-77CDF1589797 - 34da8abad06083e7"
@@ -543,44 +495,28 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "260">
+                  offsetFromSymbolStart = "250">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DEF8A06B-02A6-41F6-86F2-6ABAD1B9C68C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "ReportsViewController"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fcbc"
+                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fc5d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -590,12 +526,12 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "2344">
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "3094">
                </Location>
                <Location
-                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fcbc"
+                  uuid = "228A40C6-F6AF-450F-B591-3AAFD69DFB1B - 6f5abe850411fc5d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -605,27 +541,11 @@
                   urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/KeyPersonTableViewCell/KeyPersonsTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "2616">
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "3425">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E51C2048-F98C-4814-9382-1574B7FFCC96"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "nextVisitAction(button:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -638,73 +558,9 @@
             filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "sendRequestAction(button:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
-            landmarkName = "loadData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED - 2d5d526b513718b3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CRS.ReportsViewController.loadData() -&gt; ()"
-                  moduleName = "CRS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/ReportsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "432"
-                  endingLineNumber = "432"
-                  offsetFromSymbolStart = "1084">
-               </Location>
-               <Location
-                  uuid = "D3F3DB35-F14D-4A20-A08F-0E8BACB322ED - 1c7d53ecd7ce14a6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Result&lt;Swift.Array&lt;CRS.VisitingDayResponseElement&gt;, CRS.ErorrMessage&gt;) -&gt; () in CRS.ReportsViewController.loadData() -&gt; ()"
-                  moduleName = "CRS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/ReportsViewController/ReportsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "434"
-                  endingLineNumber = "434"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F74C13EE-A188-48F6-910B-FBC28F17D433"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CRS/ViewController/ReportsViewController/ReportsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
-            landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -816,7 +672,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "828">
+                  offsetFromSymbolStart = "1434">
                </Location>
                <Location
                   uuid = "AB189A67-287C-4EB5-8B2B-50E16367D31F - 65085f9dd20e6e99"
@@ -831,7 +687,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
                   endingLineNumber = "21"
-                  offsetFromSymbolStart = "372">
+                  offsetFromSymbolStart = "315">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -864,7 +720,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "239"
                   endingLineNumber = "239"
-                  offsetFromSymbolStart = "460">
+                  offsetFromSymbolStart = "544">
                </Location>
                <Location
                   uuid = "9FCADBFE-CC56-43BB-80CE-2E9C1AA24915 - c529f2c4c712485c"
@@ -879,7 +735,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "241"
                   endingLineNumber = "241"
-                  offsetFromSymbolStart = "156">
+                  offsetFromSymbolStart = "195">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -928,7 +784,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
                   endingLineNumber = "79"
-                  offsetFromSymbolStart = "568">
+                  offsetFromSymbolStart = "721">
                </Location>
                <Location
                   uuid = "DD5016A4-074F-4162-8DC7-9C66BD0A5A70 - b33915a2526f628d"
@@ -943,7 +799,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
                   endingLineNumber = "81"
-                  offsetFromSymbolStart = "300">
+                  offsetFromSymbolStart = "291">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -976,7 +832,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "97"
                   endingLineNumber = "97"
-                  offsetFromSymbolStart = "2256">
+                  offsetFromSymbolStart = "3232">
                </Location>
                <Location
                   uuid = "93850028-2286-4E41-90D6-B85678639514 - 3fed2cd9f71dcd59"
@@ -991,7 +847,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
                   endingLineNumber = "99"
-                  offsetFromSymbolStart = "300">
+                  offsetFromSymbolStart = "291">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1057,6 +913,230 @@
             startingLineNumber = "73"
             endingLineNumber = "73"
             landmarkName = "makeLogin(isPM:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40D4556A-E0B6-4F22-B9C7-AB6FEBC9F52F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/HomeViewController/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "mobileNumberTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D00A2930-1A54-488B-A284-7DFE3AD3BA54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/CustomersViewController/CustomersViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D00A2930-1A54-488B-A284-7DFE3AD3BA54 - be24777c53e2693c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.CustomersViewController.updateSearchResults(for: __C.UISearchController) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/CustomersViewController/CustomersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  uuid = "D00A2930-1A54-488B-A284-7DFE3AD3BA54 - be24777c53e2693c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.CustomersViewController.updateSearchResults(for: __C.UISearchController) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/ViewController/CustomersViewController/CustomersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "243">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF479232-1628-4975-8D54-F2491CA0CE54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/CustomersViewController/CustomersViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4167CE8-273D-4304-ACE8-36524BABF7CF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/Utilities/ActionSheetViewController/ActionSheetViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50C580D0-3546-4603-9861-7A3597DF2408"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/Utilities/ActionSheetViewController/ActionSheetViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "getObject(searchObject:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "56170AC5-6AF4-4007-A30E-2322FE5DBAF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/ViewController/ReportsViewController/AddViewController/AddViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76D8A907-7FF7-4C23-9166-327E08E43023"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/View/VisitingDayCells/ProductsTableViewCell/ProductsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "clearPicker1()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "76D8A907-7FF7-4C23-9166-327E08E43023 - e89bcb3459f551c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CRS.ProductsTableViewCell.cellConfigToUpdate(isOpenToUpdate: Swift.Bool) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/ProductsTableViewCell/ProductsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "8408">
+               </Location>
+               <Location
+                  uuid = "76D8A907-7FF7-4C23-9166-327E08E43023 - b4e454c4056168fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (CRS.Product) -&gt; Swift.Bool in CRS.ProductsTableViewCell.cellConfigToUpdate(isOpenToUpdate: Swift.Bool) -&gt; ()"
+                  moduleName = "CRS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johndoe/Documents/iOS/CRS/CRS/View/VisitingDayCells/ProductsTableViewCell/ProductsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "87">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BB89643-5CB1-4059-861B-5543D66DE1EE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/View/VisitingDayCells/ProductsTableViewCell/ProductsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "clearPicker1()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0970D8B7-A920-44B5-B338-2A9A75238835"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/View/VisitingDayCells/ProductsTableViewCell/ProductsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "clearPicker1()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A55D992C-5FE1-4E18-BE1A-3938B5788E16"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CRS/View/VisitingDayCells/ProductsTableViewCell/ProductsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "clearPicker1()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

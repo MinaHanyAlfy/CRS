@@ -25,8 +25,8 @@ class AddSendRequestVisitViewController: UIViewController {
     private var pickerView = UIPickerView()
     public weak var delegate: AddSendRequestVisitDelegate?
     
-    private var manager: Manager?
-
+    var manager: Manager?
+    var message: String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +36,10 @@ class AddSendRequestVisitViewController: UIViewController {
         buttonHandle()
         textViewHandle()
         self.hideKeyboardWhenTappedAround()
+        if manager != nil && message != nil {
+            managerTextField.text = manager?.name
+            msgTextView.text = message?.fromBase64()
+        }
     }
     
     private func buttonHandle() {

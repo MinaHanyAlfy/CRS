@@ -33,7 +33,7 @@ class ButtonTableViewCell: UITableViewCell {
     
     func config(title: String, isOpenToUpdate: Bool? = false) {
         button.setTitle(title, for: .normal)
-        if title == "Next Visit" {
+        if title == "Plan Next Visit" {
             button.addTarget(self, action: #selector(nextVisitTap), for: .touchUpInside)
         } else if title == "Send Request" {
             button.addTarget(self, action: #selector(sendRequestTap), for: .touchUpInside)

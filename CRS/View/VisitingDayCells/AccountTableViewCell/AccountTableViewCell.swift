@@ -21,7 +21,9 @@ class AccountTableViewCell: UITableViewCell {
 //    let dropDown = DropDown()
     private var account: Account?
     private var accounts: Accounts = []
-    var isOpenToUpdate = false 
+    var clients: [SearchObject] = []
+    var isOpenToUpdate = false
+    var navigationController: UINavigationController?
     private var updateAccount: Account? {
         didSet {
             DispatchQueue.main.async {
@@ -37,9 +39,10 @@ class AccountTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        accountNameTextField.delegate = self
+//        accountNameTextField.delegate = self
         mapButton.addTarget(self, action: #selector(mapAction), for: .touchUpInside)
         accounts = CoreDataManager.shared.getAccounts()
+        accountNameTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(accountTapped)))
 //        dropDown.anchorView = accountNameTextField
 //        dropDown.dataSource = accounts.map({ $0.accountName ?? "" })
         
@@ -59,7 +62,9 @@ class AccountTableViewCell: UITableViewCell {
             }
         }
     }
-    
+    func cellConfig(with navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
     @objc private func mapAction() {
         if isOpenToUpdate {
             guard let account = updateAccount else { return }
@@ -88,46 +93,74 @@ class AccountTableViewCell: UITableViewCell {
     
     func handleCellView() {
         guard let account = account else { return }
+        accountNameTextField.text = account.accountName
         spLabel.text = account.specialityName
         potLabel.text = account.accountPotential
         rxPotLabel.text = account.accountPrescription
         delegate?.getAccount(account: account)
     }
+    
+    @objc func accountTapped() {
+        guard let navigationController = navigationController else { return }
+        let vc = ActionSheetViewController()
+        vc.delegate = self
+//        vc.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 //MARK: - UITextFieldDelegate
-extension AccountTableViewCell: UITextFieldDelegate{
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return !autoCompleteText( in : textField, using: string, suggestionsArray: accounts)
+//extension AccountTableViewCell: UITextFieldDelegate{
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//            return !autoCompleteText( in : textField, using: string, suggestionsArray: accounts)
+//    }
+//    func autoCompleteText( in textField: UITextField, using string: String, suggestionsArray: Accounts) -> Bool {
+//            if !string.isEmpty,
+//                let selectedTextRange = textField.selectedTextRange,
+//                selectedTextRange.end == textField.endOfDocument,
+//                let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
+//                let text = textField.text( in : prefixRange) {
+//                let prefix = text + string
+//                let matches = suggestionsArray.filter {
+//                    $0.accountName!.hasPrefix(prefix)
+//                }
+//                if (matches.count > 0) {
+//                    textField.text = matches[0].accountName
+//                    account = matches[0]
+//
+//                    if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
+//                        textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
+//                        return true
+//                    }
+//                }
+//            }
+//            return false
+//        }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//            textField.resignFirstResponder()
+//            handleCellView()
+//
+//            return true
+//    }
+//}
+//MARK: - ActionSheetDelegate -
+extension AccountTableViewCell: ActionSheetDelegate {
+    func didSelectItem(with id: String) {
+        account = accounts.filter { $0.accountID == id }.first
+        handleCellView()
+        self.navigationController?.popViewController(animated: true)
     }
-    func autoCompleteText( in textField: UITextField, using string: String, suggestionsArray: Accounts) -> Bool {
-            if !string.isEmpty,
-                let selectedTextRange = textField.selectedTextRange,
-                selectedTextRange.end == textField.endOfDocument,
-                let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
-                let text = textField.text( in : prefixRange) {
-                let prefix = text + string
-                let matches = suggestionsArray.filter {
-                    $0.accountName!.hasPrefix(prefix)
-                }
-                if (matches.count > 0) {
-                    textField.text = matches[0].accountName
-                    account = matches[0]
-                    
-                    if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
-                        textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
-                        return true
-                    }
-                }
-            }
-            return false
+    
+    var dataSource: [SearchObject]? {
+        clients = []
+        for account in accounts {
+            clients.append(SearchObject(id: account.accountID ?? "", title: account.accountName ?? "No Customer Name"))
         }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            handleCellView()
-        
-            return true
+        return clients
     }
     
-    
-    
+    func didSelectItem(at index: Int) {
+        account = accounts.filter { $0.accountID == clients[index].id }.first
+        handleCellView()
+        self.navigationController?.popViewController(animated: true)
+    }
 }

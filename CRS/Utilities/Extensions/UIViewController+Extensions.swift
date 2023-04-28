@@ -33,7 +33,6 @@ extension UIViewController {
             let alert = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { alert in
                 self.navigationController?.popViewController(animated: true)
-                self.navigationController?.dismiss(animated: true)
             }))
             alert.popoverPresentationController?.sourceRect = self.view.bounds
             alert.popoverPresentationController?.sourceView = self.view

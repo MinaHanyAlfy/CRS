@@ -22,8 +22,6 @@ class AddViewController: UIViewController {
         tableView.registerCell(tableViewCell: DoubleVisitTableViewCell.self)
         tableView.registerCell(tableViewCell: CommentTableViewCell.self)
         tableView.registerCell(tableViewCell: ButtonTableViewCell.self)
-        //        tableView.registerCell(tableViewCell: NextVisitTableViewCell.self)
-        //        tableView.registerCell(tableViewCell: RequestTableViewCell.self)
         tableView.registerCell(tableViewCell: KeyPersonsTableViewCell.self)
         tableView.registerCell(tableViewCell: AccountTableViewCell.self)
         tableView.allowsSelection = false
@@ -31,6 +29,7 @@ class AddViewController: UIViewController {
         return tableView
     }()
     private var planNextVisitDate: String = ""
+    private var planNextVisitWithDate: Date?
     private var planManager: Manager?
     private var planMessage: String = ""
     private var customer: Customer?
@@ -53,13 +52,13 @@ class AddViewController: UIViewController {
     var reportPM: ReportPM?
     var isPm: Bool = false
     var isOPenToUpdate: Bool = false
-    
-    private var buttons = ["Next Visit","Send Request","Report","Cancel"]
-    private var buttonsForUpdate = ["Next Visit","Send Request","Update","Cancel"]
+    var sendingReportDate: String?
+    private var buttons = ["Plan Next Visit","Send Request","Report","Cancel"]
+    private var buttonsForUpdate = ["Plan Next Visit","Send Request","Update","Cancel"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        date = todayDate()
+        date = sendingReportDate ?? todayDate()
         setupNavigation()
         self.hideKeyboardWhenTappedAround()
     }
@@ -139,12 +138,14 @@ extension AddViewController: UITableViewDataSource {
             if isPm {
                 let cell = tableView.dequeue(tableViewCell: DoctorTableViewCell.self , forIndexPath: indexPath)
                 cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
+                cell.cellConfig(with: navigationController!)
                 cell.delegate = self
                 cell.isOpenToUpdate = isOPenToUpdate
                 return cell
             } else {
                 let cell = tableView.dequeue(tableViewCell: AccountTableViewCell.self,forIndexPath: indexPath)
                 cell.delegate = self
+                cell.cellConfig(with: navigationController!)
                 cell.isOpenToUpdate = isOPenToUpdate
                 cell.cellConfigToUpdate(isOpenToUpdate: isOPenToUpdate)
                 return cell
@@ -166,6 +167,7 @@ extension AddViewController: UITableViewDataSource {
                 if let nav = navigationController {
                     cell.config(navigationController: nav)
                     cell.delegate = self
+//                    cell.clientId = customer?.customerID
                 }
                 return cell
             } else {
@@ -173,6 +175,7 @@ extension AddViewController: UITableViewDataSource {
                 if let nav = navigationController {
                     cell.config(navigationController: nav)
                     cell.delegate = self
+//                    cell.clientId = account?.accountID
                 }
                 
                 return cell
@@ -186,7 +189,6 @@ extension AddViewController: UITableViewDataSource {
         default:
             let cell = tableView.dequeue(tableViewCell: ButtonTableViewCell.self , forIndexPath: indexPath)
             if isOPenToUpdate {
-                
                 cell.config(title: buttonsForUpdate[indexPath.row],isOpenToUpdate: isOPenToUpdate)
             } else {
                 cell.config(title: buttons[indexPath.row],isOpenToUpdate: isOPenToUpdate)
@@ -199,10 +201,27 @@ extension AddViewController: UITableViewDataSource {
     
 }
 
-////MARK: - UITableViewDelegate -
+//MARK: - UITableViewDelegate -
 //extension AddViewController: UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("Index: ", indexPath.row)
+//        if indexPath.section == 3 {
+//            if isPm {
+//                let cell = tableView.cellForRow(at: indexPath) as! PharmaciesTableViewCell
+//                guard let customer = customer else {
+//                    self.alertIssues(message: "Please Select Doctor first")
+//                    return
+//                }
+//                cell.clientId = customer.customerID
+//            } else {
+//                let cell = tableView.cellForRow(at: indexPath) as! KeyPersonsTableViewCell
+//                guard let account = account else {
+//                    self.alertIssues(message: "Please select account first")
+//                    throw
+//                }
+//                cell.clientId = account.accountID
+//            }
+//
+//        }
 //    }
 //}
 //MARK: - ButtonTableViewCellDelegate -
@@ -220,6 +239,9 @@ extension AddViewController: ButtonTableViewCellDelegate {
         print("NextVisit")
         let vc = AddNextVisitViewController()
         vc.delegate = self
+        if planNextVisitWithDate != nil {
+            vc.planNextVisitWithDate = planNextVisitWithDate
+        }
         vc.modalPresentationStyle = .popover
         if UIDevice.current.userInterfaceIdiom == .pad {
             vc.popoverPresentationController?.sourceView = button
@@ -230,6 +252,10 @@ extension AddViewController: ButtonTableViewCellDelegate {
     func sendRequestAction(button: UIButton) {
         let vc = AddSendRequestVisitViewController()
         vc.delegate = self
+        if planManager != nil{
+            vc.manager = planManager
+            vc.message = planMessage
+        }
         vc.modalPresentationStyle = .popover
         if UIDevice.current.userInterfaceIdiom == .pad {
             vc.popoverPresentationController?.sourceView = button
@@ -379,9 +405,6 @@ extension AddViewController {
     }
     
     private func sendPMReports(user: User,sendingDate: String,long: String? = "",lat: String? = "") {
-        DispatchQueue.main.async {
-            SVProgressHUD.show()
-        }
         guard let customer = self.customer else {
             SVProgressHUD.dismiss()
             alertIssues(message: "Please update Customer field.")
@@ -397,7 +420,9 @@ extension AddViewController {
         let pharmacyPhones: String = pharmacies.map { $0.phone?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
         let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
-        
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         network.getResultsStrings(APICase: .addPMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, customer_id: customer.customerID ?? "", lat: customer.customerLatitude, long: customer.customerLongitude, comment: comment, plan_date: planNextVisitDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: sendingDate, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let message):
@@ -424,10 +449,6 @@ extension AddViewController {
     }
     
     private func sendAMReports(user: User,sendingDate: String,long: String? = "",lat: String? = "") {
-        DispatchQueue.main.async {
-            SVProgressHUD.show()
-        }
-        
         guard let account = self.account else {
             SVProgressHUD.dismiss()
             alertIssues(message: "Please update Account field.")
@@ -443,7 +464,9 @@ extension AddViewController {
         let keyPerMobiles: String = keyPersons.map { $0.mobile?.toBase64() ?? "Unavalible Phone" } .joined(separator: " | ")
         let keyPerSpecial: String = keyPersons.map { $0.specialityName?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
-        
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         network.getResultsStrings(APICase: .addAMVisit(level: user.level!, userId: user.idEncoded!, manager_level: self.manager?.level , manager_id: self.manager?.id, product_1: product.productID ?? "0", product_2: product_2?.productID, product_3: product_3?.productID, product_4: product_4?.productID, account_id: account.accountID, lat: account.accountLatitude, long: account.accountLongitude, comment: comment, plan_date: planNextVisitDate, recipient_level: planManager?.level, recipient_id: planManager?.id, message: planMessage, visiting_day_date: sendingDate, k_ids: keyPerIDs, k_names: keyPerNames , k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { response in
             switch response {
             case .success(let message):
@@ -470,9 +493,7 @@ extension AddViewController {
     }
     
     private func updateReportPM () {
-        DispatchQueue.main.async {
-            SVProgressHUD.show()
-        }
+
         guard self.customer != nil else {
             SVProgressHUD.dismiss()
             alertIssues(message: "Please update Customer field.")
@@ -489,6 +510,10 @@ extension AddViewController {
         let pharmacyAddresses: String = pharmacies.map { $0.address?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let pharmacyComments: String = pharmacyComments.map { $0 } .joined(separator: " | ")
         let serial = UserDefaults.standard.string(forKey: "serial")
+        
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         network.getResultsStrings(APICase: .updatePMVisit(serial: serial ?? "",manager_level: manager?.level ?? "", managerId: manager?.id ?? "", product_1: product_1?.productID ?? "", product_2: product_2?.productID ?? "", product_3: product_3?.productID ?? "", product_4: product_4?.productID ?? "", comment: comment, p_ids: pharmacyIDs, p_names: pharmacyNames, p_addresses: pharmacyAddresses, p_phones: pharmacyPhones, p_comments: pharmacyComments), decodingModel: ResponseString.self) { result in
             switch result {
             case .success(let response):
@@ -497,15 +522,10 @@ extension AddViewController {
                 print(failure.localizedDescription)
             }
         }
-        print(serial)
     
     }
     
     private func updateReportAM () {
-        DispatchQueue.main.async {
-            SVProgressHUD.show()
-        }
-        
         guard self.account != nil else {
             SVProgressHUD.dismiss()
             alertIssues(message: "Please update Account field.")
@@ -523,7 +543,9 @@ extension AddViewController {
         let keyPerSpecial: String = keyPersons.map { $0.specialityName?.toBase64() ?? "Unavalible Address" } .joined(separator: " | ")
         let kerPerComments: String = keyPersonsComments.map { $0 } .joined(separator: " | ")
         let serial = UserDefaults.standard.string(forKey: "serial")
-        print(serial)
+        DispatchQueue.main.async {
+            SVProgressHUD.show()
+        }
         network.getResultsStrings(APICase: .updateAMVisit(serial: serial ?? "", manager_level: manager?.level ?? "", managerId: manager?.id ?? "", product_1: product_1?.productID ?? "", product_2: product_2?.productID ?? "", product_3: product_3?.productID ?? "", product_4: product_4?.productID ?? "", comment: comment, k_ids: keyPerIDs, k_names: keyPerNames, k_specialities: keyPerSpecial, k_mobiles: keyPerMobiles, k_comments: kerPerComments), decodingModel: ResponseString.self) { result in
             switch result {
             case .success(let response):
@@ -552,6 +574,10 @@ extension AddViewController {
 
 //MARK: - AddNextVisitDelegate
 extension AddViewController: AddNextVisitDelegate {
+    func nextVisitWithDate(date: Date) {
+        self.planNextVisitWithDate = date
+    }
+    
     func nextVisitTime(date: String) {
         print("Success Date: ", date)
         self.planNextVisitDate = date
@@ -606,6 +632,14 @@ extension AddViewController: KeyPersonsTableViewDelegate {
         self.keyPersons = keyPersons
         self.keyPersonsComments = comments
     }
+    func selectedAccount() -> String {
+        guard let account = account else {
+            self.alertIssues(message: "Please select Account first")
+            return ""
+        }
+        return account.accountID ?? ""
+
+    }
 }
 
 //MARK: - PharmaciesTableViewDelegate
@@ -614,6 +648,13 @@ extension AddViewController: PharmaciesTableViewDelegate {
         print("Pharmacies, ", pharmacies)
         self.pharmacies = pharmacies
         self.pharmacyComments = comments
+    }
+    func selectPharmacy() -> String {
+        guard let customer = customer else {
+            self.alertIssues(message: "Please select Doctor first")
+            return ""
+        }
+        return customer.customerID ?? ""
     }
 }
 

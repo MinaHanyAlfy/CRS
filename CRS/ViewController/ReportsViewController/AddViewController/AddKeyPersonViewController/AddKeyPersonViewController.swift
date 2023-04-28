@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 protocol AddKeyPersonViewrDelegate: AnyObject {
     func addKeyPersonObject(keyPerson: Key,comment: String)
@@ -18,7 +19,8 @@ class AddKeyPersonViewController: UIViewController {
     @IBOutlet weak var specTextField: UITextField!
     @IBOutlet weak var keyPersonNameTextField: UITextField!
     @IBOutlet weak var keyPersonView: UIView!
-    
+    var accountId: String?
+    let dropDown = DropDown()
     public weak var delegate: AddKeyPersonViewrDelegate?
     private var keyPersons: Keys = []
     private var keyPerson: Key?{
@@ -36,6 +38,18 @@ class AddKeyPersonViewController: UIViewController {
         handleViewController()
         self.hideKeyboardWhenTappedAround()
         keyPersons = CoreDataManager.shared.getKeys()
+        
+        var keys = keyPersons.filter { $0.accountID == accountId }
+        dropDown.anchorView = view
+        dropDown.direction = .bottom
+        dropDown.width = 200
+        DropDown.startListeningToKeyboard()
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            keyPersonNameTextField.text = item
+            keyPerson = keys[index]
+        }
+
+        dropDown.dataSource = keys.map({ $0.keyPersonName ?? "" })
     }
     
     private func handleViewController() {
@@ -76,14 +90,17 @@ class AddKeyPersonViewController: UIViewController {
         phoneTextField.text = keyPerson.mobile
         specTextField.text = keyPerson.specialityName
     }
-
-
+    
+    
 }
 
 
 
 //MARK: - UITextFieldDelegate
 extension AddKeyPersonViewController: UITextFieldDelegate{
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+        dropDown.show()
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return !autoCompleteText( in : textField, using: string, suggestionsArray: keyPersons)
     }

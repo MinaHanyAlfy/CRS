@@ -20,7 +20,7 @@
     <string>I want to use the location to check for your report visit and match them.</string>
 
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    I want to use the location to check for your report visit and match them.
+    <string>I want to use the location to check for your report visit and match them.</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>I want to use the location to check for your report visit and match them.</string>
 </dict>

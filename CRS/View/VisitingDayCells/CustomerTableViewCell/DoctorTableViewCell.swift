@@ -18,6 +18,7 @@ class DoctorTableViewCell: UITableViewCell {
     @IBOutlet weak var spLabel: UILabel!
     @IBOutlet weak var doctorTextField: UITextField!
     public weak var delegate: DoctorTableViewDelegate?
+    var navigationController: UINavigationController?
     private var customer: Customer?
     private var updateCustomer: Customer? {
         didSet {
@@ -26,13 +27,14 @@ class DoctorTableViewCell: UITableViewCell {
             }
         }
     }
+    var doctors: [SearchObject] = []
     var isOpenToUpdate = false
     private var customers: Customers = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        doctorTextField.delegate = self
-        
+//        doctorTextField.delegate = self
+        doctorTextField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(doctorTapped)))
         mapButton.addTarget(self, action: #selector(mapAction), for: .touchUpInside)
         customers = CoreDataManager.shared.getCustomers()
     }
@@ -49,6 +51,10 @@ class DoctorTableViewCell: UITableViewCell {
                 updateCustomer = customers.filter { $0.customerID == id }[0]
             }
         }
+    }
+    
+    func cellConfig(with navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     @objc private func mapAction() {
@@ -93,38 +99,68 @@ class DoctorTableViewCell: UITableViewCell {
         doctorTextField.isEnabled = false
         delegate?.getCustomer(customer: customer)
     }
+    
+    @objc func doctorTapped() {
+        guard let navigationController = navigationController else { return }
+        let vc = ActionSheetViewController()
+        vc.delegate = self
+//        vc.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
 
 //MARK: - UITextFieldDelegate
 extension DoctorTableViewCell: UITextFieldDelegate{
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return !autoCompleteText( in : textField, using: string, suggestionsArray: customers)
-    }
-    func autoCompleteText( in textField: UITextField, using string: String, suggestionsArray: Customers) -> Bool {
-        if !string.isEmpty,
-           let selectedTextRange = textField.selectedTextRange,
-           selectedTextRange.end == textField.endOfDocument,
-           let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
-           let text = textField.text( in : prefixRange) {
-            let prefix = text + string
-            let matches = suggestionsArray.filter {
-                $0.customerName!.hasPrefix(prefix)
-            }
-            if (matches.count > 0) {
-                textField.text = matches[0].customerName
-                customer = matches[0]
-                if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
-                    textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
-                    return true
-                }
-            }
-        }
-        return false
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    //
+    //        return !autoCompleteText( in : textField, using: string, suggestionsArray: customers)
+    //    }
+    //    func autoCompleteText( in textField: UITextField, using string: String, suggestionsArray: Customers) -> Bool {
+    //        if !string.isEmpty,
+    //           let selectedTextRange = textField.selectedTextRange,
+    //           selectedTextRange.end == textField.endOfDocument,
+    //           let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
+    //           let text = textField.text( in : prefixRange) {
+    //            let prefix = text + string
+    //            let matches = suggestionsArray.filter {
+    //                $0.customerName!.hasPrefix(prefix)
+    //            }
+    //            if (matches.count > 0) {
+    //                textField.text = matches[0].customerName
+    //                customer = matches[0]
+    //                if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
+    //                    textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
+    //                    return true
+    //                }
+    //            }
+    //        }
+    //        return false
+    //    }
+    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //        textField.resignFirstResponder()
+    //        handleCellView()
+    //        return true
+    //    }
+}
+//MARK: - ActionSheetDelegate -
+extension DoctorTableViewCell: ActionSheetDelegate {
+    func didSelectItem(with id: String) {
+        customer = customers.filter { $0.customerID == id }.first
         handleCellView()
-        return true
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    var dataSource: [SearchObject]? {
+        doctors = []
+        for customer in customers {
+            doctors.append(SearchObject(id: customer.customerID ?? "", title: customer.customerName ?? "No Customer Name"))
+        }
+        return doctors
+    }
+    
+    func didSelectItem(at index: Int) {
+        customer = customers.filter { $0.customerID == doctors[index].id }.first
+        handleCellView()
+        self.navigationController?.popViewController(animated: true)
     }
 }
-

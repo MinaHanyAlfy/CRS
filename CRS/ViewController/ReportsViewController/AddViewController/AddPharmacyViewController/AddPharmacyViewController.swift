@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-
+import DropDown
 
 protocol AddPharmacyViewDelegate: AnyObject {
     func addPharmacyObject(pharmacy: Pharmacy,comment: String)
@@ -22,6 +21,8 @@ class AddPharmacyViewController: UIViewController {
     @IBOutlet weak var pharmacyNameTextField: UITextField!
     @IBOutlet weak var pharmacyView: UIView!
     
+    var customerID: String? = ""
+    let dropDown = DropDown()
     public weak var delegate: AddPharmacyViewDelegate?
     private var pharmacies: Pharmacies = []
     private var pharmacy: Pharmacy?{
@@ -39,12 +40,22 @@ class AddPharmacyViewController: UIViewController {
         handleViewController()
         self.hideKeyboardWhenTappedAround()
         pharmacies = CoreDataManager.shared.getPharmacy()
+        var pharm = pharmacies.filter { $0.customerID == customerID }
+        dropDown.anchorView = view
+        dropDown.direction = .bottom
+        dropDown.width = 200//
+        DropDown.startListeningToKeyboard()
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            pharmacyNameTextField.text = item
+            pharmacy = pharm[index]
+        }
+        dropDown.dataSource = pharm.map({ $0.pharmacyName ?? "" })
+
     }
     
     private func handleViewController() {
         pharmacyView.clipsToBounds = true
         pharmacyView.layer.cornerRadius = 8
-        
         noButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
         yesButton.addTarget(self, action: #selector(addPharmacyAction), for: .touchUpInside)
       
@@ -85,6 +96,9 @@ class AddPharmacyViewController: UIViewController {
 
 //MARK: - UITextFieldDelegate
 extension AddPharmacyViewController: UITextFieldDelegate{
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+        dropDown.show()
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return !autoCompleteText( in : textField, using: string, suggestionsArray: pharmacies)
     }
@@ -113,5 +127,4 @@ extension AddPharmacyViewController: UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
-    
 }

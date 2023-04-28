@@ -94,6 +94,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
+        coreData.clearAll()
         guard let username = usernameTextField.text, let password = passwordTextField.text, password != "", username != "" else {
             self.alertIssues(message: "Please, Check your level, username and password")
             return

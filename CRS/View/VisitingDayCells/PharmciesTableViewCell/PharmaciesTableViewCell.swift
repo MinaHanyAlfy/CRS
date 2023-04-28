@@ -9,6 +9,7 @@ import UIKit
 
 protocol PharmaciesTableViewDelegate: AnyObject {
     func getPharmacies(pharmacies: Pharmacies,comments: [String])
+    func selectPharmacy() -> String
 }
 class PharmaciesTableViewCell: UITableViewCell {
     
@@ -18,7 +19,7 @@ class PharmaciesTableViewCell: UITableViewCell {
     private var comments: [String] = []
     private var navigationController: UINavigationController?
     public weak var delegate: PharmaciesTableViewDelegate?
-    
+    var clientId: String? = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         addPharmacyButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
@@ -44,6 +45,7 @@ class PharmaciesTableViewCell: UITableViewCell {
             }
         }
     }
+    
     func config(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -61,17 +63,20 @@ class PharmaciesTableViewCell: UITableViewCell {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.registerCell(tableViewCell: PharmacyTableViewCell.self)
     }
+     
     @objc private func addAction() {
         print("addd")
-        let vc = AddPharmacyViewController()
-        vc.delegate = self
-        vc.modalPresentationStyle = .popover
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            vc.popoverPresentationController?.sourceView = self.contentView
-            vc.popoverPresentationController?.sourceRect = self.contentView.bounds
+        if delegate?.selectPharmacy() != "" {
+            let vc = AddPharmacyViewController()
+            vc.delegate = self
+            vc.customerID = delegate?.selectPharmacy()
+            vc.modalPresentationStyle = .popover
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                vc.popoverPresentationController?.sourceView = self.contentView
+                vc.popoverPresentationController?.sourceRect = self.contentView.bounds
+            }
+            navigationController?.present(vc, animated: true)
         }
-        navigationController?.present(vc, animated: true)
-        
     }
     private func addPharmacy(pharmacy: Pharmacy,comment: String) {
         self.pharmacies.append(pharmacy)

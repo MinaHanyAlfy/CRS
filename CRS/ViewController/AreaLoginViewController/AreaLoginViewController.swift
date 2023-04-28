@@ -112,6 +112,33 @@ class AreaLoginViewController: UIViewController {
                      }
                  }
              }
+         } else {
+             // initialise a pop up for using later
+                let alertController = UIAlertController(title: "TITLE", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
+
+                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                     }
+                }
+                let cancelAction = UIAlertAction(title: "Cancerl", style: .default, handler: nil)
+
+                alertController.addAction(cancelAction)
+                alertController.addAction(settingsAction)
+
+                // check the permission status
+                switch(CLLocationManager.authorizationStatus()) {
+                    case .authorizedAlways, .authorizedWhenInUse:
+                        print("Authorize.")
+                        // get the user location
+                    case .notDetermined, .restricted, .denied:
+                        // redirect the users to settings
+                        self.present(alertController, animated: true, completion: nil)
+                }
+             
          }
     }
     

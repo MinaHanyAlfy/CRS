@@ -24,7 +24,9 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        numberLabel.isUserInteractionEnabled = true
+        numberLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mobileNumberTapped)))
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -51,6 +53,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func mobileNumberTapped() {
+        if numberLabel.text != "" && numberLabel.text != "Number" {
+            UIApplication.shared.openURL(URL(string: "tel://+20222030198")!)
+        }
+        
+
+    }
    
     
 }

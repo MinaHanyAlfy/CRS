@@ -8,6 +8,22 @@
 import UIKit
 import DZNEmptyDataSet
 
+
+
+struct SearchObject {
+    var id: String
+    var title: String
+    
+    init(id: String, title: String) {
+        self.id = id
+        self.title = title
+    }
+}
+
+protocol SearchResultViewControllerDelegate {
+    func getObject(searchObject: SearchObject)
+}
+
 class SearchResultViewController: UIViewController {
     
     var customers: Customers = [] {
@@ -24,11 +40,24 @@ class SearchResultViewController: UIViewController {
             }
         }
     }
+    
+    var objects: [SearchObject] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.allowsSelection = true
+                self.tableView.reloadData()
+            }
+        }
+    }
+    var delegate: SearchResultViewControllerDelegate?
+    var isStringSearch: Bool = false
+    
     var isPm: Bool = false
     private let tableView :UITableView = {
         let tableView = UITableView()
         tableView.registerCell(tableViewCell: CustomerTableViewCell.self)
         tableView.registerCell(tableViewCell: AccountTableViewCell.self)
+        tableView.registerCell(tableViewCell: CustomersTableViewCell.self)
         return tableView
     }()
     
@@ -61,7 +90,11 @@ class SearchResultViewController: UIViewController {
 //MARK: - UITableViewDelegate
 extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        print(customers[indexPath.row])
+        if isStringSearch {
+            print(objects[indexPath.row])
+            delegate?.getObject(searchObject: objects[indexPath.row]) 
+        }
+        //        print([indexPath.row])
     }
 }
 
@@ -71,19 +104,27 @@ extension SearchResultViewController: UITableViewDataSource {
         if isPm {
             return customers.count
         }
+        if isStringSearch {
+            return objects.count
+        }
         return accounts.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(tableViewCell: CustomerTableViewCell.self, forIndexPath: indexPath)
-        if isPm {
-            cell.config(customer: customers[indexPath.row])
+        if isStringSearch {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomersTableViewCell", for: indexPath) as! CustomersTableViewCell
+            cell.customerLabel.text = objects[indexPath.row].title
+            return cell
         } else {
-            cell.config(account: accounts[indexPath.row])
+            let cell = tableView.dequeue(tableViewCell: CustomerTableViewCell.self, forIndexPath: indexPath)
+            if isPm {
+                cell.config(customer: customers[indexPath.row])
+            } else {
+                cell.config(account: accounts[indexPath.row])
+            }
+            return cell
         }
-        return cell
-        
     }
     
     

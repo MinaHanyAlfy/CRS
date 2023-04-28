@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddNextVisitDelegate: AnyObject {
     func nextVisitTime(date: String)
+    func nextVisitWithDate(date: Date)
 }
 class AddNextVisitViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class AddNextVisitViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var datePickerView: UIDatePicker!
     public weak var delegate: AddNextVisitDelegate?
+    var planNextVisitWithDate: Date?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +33,9 @@ class AddNextVisitViewController: UIViewController {
                 datePickerView.date = DateFormatter().date(from: date) ?? Date()
                 delegate?.nextVisitTime(date: date)
             }
+        }
+        if planNextVisitWithDate != nil {
+            datePickerView.date = planNextVisitWithDate ?? Date()
         }
     }
     
@@ -48,6 +54,7 @@ class AddNextVisitViewController: UIViewController {
         let date: String = dateFormatter.string(from: datePickerView.date)
         print("Next Visit ", date)
         delegate?.nextVisitTime(date: date)
+        delegate?.nextVisitWithDate(date: datePickerView.date)
         self.dismiss(animated: true, completion: nil)
     }
     

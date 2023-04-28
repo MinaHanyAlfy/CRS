@@ -66,6 +66,8 @@
 		7F7EA412293EB51000E72E49 /* CustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA410293EB51000E72E49 /* CustomerTableViewCell.swift */; };
 		7F7EA413293EB51000E72E49 /* CustomerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F7EA411293EB51000E72E49 /* CustomerTableViewCell.xib */; };
 		7F824D0D297DCA62001698C3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F824D0C297DCA62001698C3 /* String+Extensions.swift */; };
+		7F8AA85E29F167DE0022416C /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8AA85C29F167DE0022416C /* ActionSheetViewController.swift */; };
+		7F8AA85F29F167DE0022416C /* ActionSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F8AA85D29F167DE0022416C /* ActionSheetViewController.xib */; };
 		7FA939C82946698900AF3A33 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA939C62946698900AF3A33 /* ReportTableViewCell.swift */; };
 		7FA939C92946698900AF3A33 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */; };
 		7FA939CD294678C200AF3A33 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA939CB294678C200AF3A33 /* AddViewController.swift */; };
@@ -200,6 +202,8 @@
 		7F7EA410293EB51000E72E49 /* CustomerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewCell.swift; sourceTree = "<group>"; };
 		7F7EA411293EB51000E72E49 /* CustomerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerTableViewCell.xib; sourceTree = "<group>"; };
 		7F824D0C297DCA62001698C3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		7F8AA85C29F167DE0022416C /* ActionSheetViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = ActionSheetViewController.swift; sourceTree = "<group>"; };
+		7F8AA85D29F167DE0022416C /* ActionSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionSheetViewController.xib; sourceTree = "<group>"; };
 		7FA939C62946698900AF3A33 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
 		7FA939C72946698900AF3A33 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
 		7FA939CB294678C200AF3A33 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +452,15 @@
 			path = CustomerCell;
 			sourceTree = "<group>";
 		};
+		7F8AA85B29F167B20022416C /* ActionSheetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F8AA85C29F167DE0022416C /* ActionSheetViewController.swift */,
+				7F8AA85D29F167DE0022416C /* ActionSheetViewController.xib */,
+			);
+			path = ActionSheetViewController;
+			sourceTree = "<group>";
+		};
 		7FA939CA2946789000AF3A33 /* AddViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +551,7 @@
 		7FC5CB0D292A0B18000D228A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7F8AA85B29F167B20022416C /* ActionSheetViewController */,
 				7F418261293285530055DC7B /* Extensions */,
 				7FC5CB0F292A0B36000D228A /* Core Data Manager */,
 				7FC5CB0E292A0B2A000D228A /* Network Layer */,
@@ -868,6 +882,8 @@
 				7FC5CAD3292A0B07000D228A /* Sources */,
 				7FC5CAD4292A0B07000D228A /* Frameworks */,
 				7FC5CAD5292A0B07000D228A /* Resources */,
+				7F37C66834913C9E863ECCE0 /* [CP] Embed Pods Frameworks */,
+				7E448D39F96B5C39731E2CFD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -905,6 +921,8 @@
 				7FC5CAF6292A0B09000D228A /* Sources */,
 				7FC5CAF7292A0B09000D228A /* Frameworks */,
 				7FC5CAF8292A0B09000D228A /* Resources */,
+				680F42A47461C6E074A42484 /* [CP] Embed Pods Frameworks */,
+				16AEC40AA14E5EDA841BC3B6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -981,6 +999,7 @@
 				7FD607F1295B28AC00A1D5AA /* AddSendRequestVisitViewController.xib in Resources */,
 				7F7EA3F9293E933700E72E49 /* AccountsViewController.xib in Resources */,
 				7FD7398E295486AD00261488 /* DoctorTableViewCell.xib in Resources */,
+				7F8AA85F29F167DE0022416C /* ActionSheetViewController.xib in Resources */,
 				7FD7399E2954884400261488 /* PharmaciesTableViewCell.xib in Resources */,
 				7FD739942954870100261488 /* DoubleVisitTableViewCell.xib in Resources */,
 				7F7EA40E293EB34300E72E49 /* SearchResultViewController.xib in Resources */,
@@ -1018,6 +1037,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		16AEC40AA14E5EDA841BC3B6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		255C2C7DB9185A47F43413F4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1038,6 +1074,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		680F42A47461C6E074A42484 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CRS-CRSUITests/Pods-CRS-CRSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E448D39F96B5C39731E2CFD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS/Pods-CRS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS/Pods-CRS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CRS/Pods-CRS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F37C66834913C9E863ECCE0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS/Pods-CRS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CRS/Pods-CRS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CRS/Pods-CRS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BD2E3A4C8CB9FCAAD3D964A3 /* [CP] Check Pods Manifest.lock */ = {
@@ -1131,6 +1218,7 @@
 				7F0AAAD7293A485900454371 /* UITableView+Extensions.swift in Sources */,
 				7F427634293FE990006B063C /* AccountsCD+CoreDataProperties.swift in Sources */,
 				7F7EA401293E94BB00E72E49 /* ProspectionToolViewController.swift in Sources */,
+				7F8AA85E29F167DE0022416C /* ActionSheetViewController.swift in Sources */,
 				7FDC0F5D293FD5880025D3DC /* CustomerCD+CoreDataProperties.swift in Sources */,
 				7F7EA409293E9A0500E72E49 /* CoreDataManager.swift in Sources */,
 				7F15F3952930CB4E009BD8D0 /* EndPoint.swift in Sources */,
@@ -1344,7 +1432,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J7NP4MJJL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CRS/Info.plist;
@@ -1363,7 +1451,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ark.crs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1379,7 +1467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J7NP4MJJL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CRS/Info.plist;
@@ -1398,7 +1486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ark.crs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

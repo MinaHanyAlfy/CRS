@@ -87,10 +87,15 @@ class ReportsViewController: UIViewController {
         super.viewDidLoad()
         buttonsAction()
         setupTableView()
-        loadData()
         datePicker.backgroundColor = .white
         datePicker.contentVerticalAlignment = .center
         datePicker.contentHorizontalAlignment = .center
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let date = datePicker.date.updateDate
+        loadData(date: date)
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
@@ -215,6 +220,7 @@ extension ReportsViewController {
         if isPM {
             vc.isPm = true
         }
+        vc.sendingReportDate = datePicker.date.updateDate
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
     }
