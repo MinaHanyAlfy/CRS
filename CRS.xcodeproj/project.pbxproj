@@ -1438,8 +1438,9 @@
 				INFOPLIST_FILE = CRS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ARK-CRS";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application Need Location";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application Need Location";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "I want to use the location to check for your report visit and match them.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "I want to use the location to check for your report visit and match them.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "I want to use the location to check for your report visit and match them.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1451,8 +1452,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ark.crs;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ark.ark-crs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1473,8 +1474,9 @@
 				INFOPLIST_FILE = CRS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ARK-CRS";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application Need Location";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application Need Location";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "I want to use the location to check for your report visit and match them.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "I want to use the location to check for your report visit and match them.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "I want to use the location to check for your report visit and match them.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1486,8 +1488,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ark.crs;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ark.ark-crs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
